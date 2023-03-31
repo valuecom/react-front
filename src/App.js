@@ -1,11 +1,30 @@
 import React from "react";
-import HomePage from "./components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+
+import {
+  _Header,
+  Page_Home,
+  Page_WeAreTrusted
+} from "./components";
 
 function App() {
   return (
-    <div className="App">
-        <HomePage />
-    </div>
+    <HelmetProvider>
+      <div className="App">
+          <Helmet>
+              <title>VALUECOM</title>
+              <meta name="description" content="Helmet application" />
+          </Helmet>
+          <BrowserRouter>
+              <_Header />
+              <Routes>
+                <Route exact path="/" element={<Page_Home /> } />
+                <Route exact path="/we-are-trusted" element={ <Page_WeAreTrusted /> } />
+              </Routes>
+          </BrowserRouter>
+      </div>
+    </HelmetProvider>
   );
 }
 

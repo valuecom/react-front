@@ -1,5 +1,9 @@
-import HomePage from "HomePage";
+import _Header from "./_Header";
+import Page_Home from "./Page_Home";
+import Page_WeAreTrusted from "./Page_WeAreTrusted";
 
-export {
-    HomePage
-}
+export { 
+    _Header,
+    Page_Home,
+    Page_WeAreTrusted
+};
