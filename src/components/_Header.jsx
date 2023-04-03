@@ -18,7 +18,7 @@ class _Header extends Component {
                         <div className="col-6 col-lg-2">
                             <div className="logo-wrap">
                                 <Link to="/">
-                                    <img src={logo} alt="Valuecom" width="100" />
+                                    <img src={logo} alt="Valuecom" />
                                 </Link>
                             </div>
                         </div>
