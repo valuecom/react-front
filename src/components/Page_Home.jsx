@@ -12,9 +12,15 @@ import {
     we_team
 } from "../assets";
 
+import {
+    Widget_HomeSlider
+} from "./";
+
+
 
 const Page_Home = () => (
     <>
+        <Widget_HomeSlider />
         <section className="py-3">
             <div className="container-xxl">
             <div className="row">

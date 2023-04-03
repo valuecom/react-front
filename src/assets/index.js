@@ -10,6 +10,11 @@ import we_believe from "../assets/images/home/we-believe.jpg";
 import we_study_and_research from "../assets/images/home/we-study-and-research.jpg";
 import we_have_faces from "../assets/images/home/we-have-faces.jpg"
 import we_team from "../assets/images/home/we-team.jpg";
+
+import ermis_gold from "../assets/images/home/ermis-gold.jpg";
+import fullstack_marketing from "../assets/images/home/fullstack-marketing.jpg";
+import digital_dissraption_sessions from "../assets/images/home/digital-dissraption-sessions.jpg";
+
 export {
     logo,
     favicon,
@@ -21,5 +26,9 @@ export {
     we_believe,
     we_study_and_research,
     we_have_faces,
-    we_team
+    we_team,
+
+    ermis_gold,
+    fullstack_marketing,
+    digital_dissraption_sessions
 };
