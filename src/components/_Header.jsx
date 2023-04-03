@@ -34,19 +34,19 @@ class _Header extends Component {
                                             <Link className="nav-link" to="/we-are-trusted">Clients</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" href="#">Work</Link>
+                                            <Link className="nav-link" to="#">Work</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" href="/we-believe">Culture</Link>
+                                            <Link className="nav-link" to="/we-believe">Culture</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" href="/the-team">The team</Link>
+                                            <Link className="nav-link" to="/the-team">The team</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" href="/valuecom-team">Careers</Link>
+                                            <Link className="nav-link" to="/we-team">Careers</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" href="/contact-us">Contact</Link>
+                                            <Link className="nav-link" to="/contact">Contact</Link>
                                         </li>
                                         </ul>
                                     </div>
