@@ -8,6 +8,8 @@ import {
   Page_Home,
   Page_WeAreTrusted,
   Page_WeTeam,
+  Page_WeBelieve,
+  Page_TheTeam,
   Page_Contact
 } from "./components";
 
@@ -24,6 +26,8 @@ function App() {
                   <Route exact path="/" element={<Page_Home /> } />
                   <Route exact path="/we-are-trusted" element={ <Page_WeAreTrusted /> } />
                   <Route exact path="/we-team" element={ <Page_WeTeam /> } />
+                  <Route exact path="/we-believe" element={ <Page_WeBelieve /> } />
+                  <Route exact path="/the-team" element={ <Page_TheTeam /> } />
                   <Route exact path="/contact" element={ <Page_Contact /> } />
                 </Routes>
               </main>

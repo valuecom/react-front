@@ -74,6 +74,20 @@ import We_are_trusted_Art from "../assets/images/we-are-trusted/We-are-trusted_A
  
 import valuecom_team from "../assets/images/valuecom-team/valuecom-team.jpg";
 
+import we_believe_2 from "../assets/images/we-believe/we-believe.png";
+
+import manos from "../assets/images/the-team/manos.jpg";
+import virna from "../assets/images/the-team/virna.jpg";
+import daskalopoulos from "../assets/images/the-team/daskalopoulos.jpg";
+import rita from "../assets/images/the-team/rita.jpg";
+import rania from "../assets/images/the-team/rania.jpg";
+import mitsi from "../assets/images/the-team/mitsi.jpg";
+import takis from "../assets/images/the-team/takis.jpg";
+import athina from "../assets/images/the-team/athina.jpg";
+import aggelos from "../assets/images/the-team/aggelos.jpg";
+ 
+
+
 export {
     logo,
     favicon,
@@ -149,5 +163,18 @@ export {
     fullstack_marketing,
     digital_dissraption_sessions,
 
-    valuecom_team
+    valuecom_team,
+
+    we_believe_2,
+
+    manos,
+    virna,
+    daskalopoulos,
+    rita,
+    rania,
+    mitsi,
+    takis,
+    athina,
+    aggelos
+
 };
