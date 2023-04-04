@@ -34,7 +34,7 @@ class _Header extends Component {
                                             <Link className="nav-link" to="/we-are-trusted">Clients</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#">Work</Link>
+                                            <Link className="nav-link" to="/we-deliver">Work</Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="/we-believe">Culture</Link>

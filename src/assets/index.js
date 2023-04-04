@@ -85,7 +85,26 @@ import mitsi from "../assets/images/the-team/mitsi.jpg";
 import takis from "../assets/images/the-team/takis.jpg";
 import athina from "../assets/images/the-team/athina.jpg";
 import aggelos from "../assets/images/the-team/aggelos.jpg";
- 
+
+
+import Janssen_Tile_2 from "../assets/images/we-deliver/Janssen_Tile-2.jpg";
+import Finish_Tile from "../assets/images/we-deliver/Finish-Tile.jpg";
+import ezgif_com_gif_make from "../assets/images/we-deliver/ezgif.com-gif-maker.gif";
+import Ciroc_Tile from "../assets/images/we-deliver/Ciroc-Tile.jpg";
+import Don_Julio_Tile from "../assets/images/we-deliver/Don-Julio-Tile.jpg";
+import Header_Banner_tile_emvolio from "../assets/images/we-deliver/Header-Banner_tile_emvolio.jpg";
+import Header_Banner_tile_alpro from "../assets/images/we-deliver/Header-Banner_tile_alpro.jpg";
+import Header_Banner_tile_Jhonnie_Walker from "../assets/images/we-deliver/Header-Banner_tile_Jhonnie-Walker.jpg";
+import JW_Header_Banner_Tile from "../assets/images/we-deliver/JW-Header-Banner_Tile.jpg";
+import Delta_Moms_tile from "../assets/images/we-deliver/Delta-Moms_tile.jpg";
+import Oreo_Tile from "../assets/images/we-deliver/Oreo-Tile.jpg";
+import FD_Tile_640x420_1 from "../assets/images/we-deliver/FD-Tile-640x420-1.png";
+import BD_NIKE_SEPOLIA_Tile_640x420_1 from "../assets/images/we-deliver/19031BD_NIKE-SEPOLIA_Tile-640x420-1.png";
+import Allazoume_Sinitheies_Tile from "../assets/images/we-deliver/Allazoume-Sinitheies-Tile.jpg";
+import Giannis_AllStar_Tile_640x420_1 from "../assets/images/we-deliver/Giannis_AllStar_Tile-640x420-1.jpg";
+import EU_Memes_Tile_640x420_1 from "../assets/images/we-deliver/EU-Memes-Tile-640x420-1.png";
+import VF_Breaking_The_Glass_Tile_640x420_1 from "../assets/images/we-deliver/VF-Breaking-The-Glass_Tile-640x420-1.jpg";
+
 
 
 export {
@@ -175,6 +194,24 @@ export {
     mitsi,
     takis,
     athina,
-    aggelos
+    aggelos,
+
+    Janssen_Tile_2,
+    Finish_Tile,
+    ezgif_com_gif_make,
+    Ciroc_Tile,
+    Don_Julio_Tile,
+    Header_Banner_tile_emvolio,
+    Header_Banner_tile_alpro,
+    Header_Banner_tile_Jhonnie_Walker,
+    JW_Header_Banner_Tile,
+    Delta_Moms_tile,
+    Oreo_Tile,
+    FD_Tile_640x420_1,
+    BD_NIKE_SEPOLIA_Tile_640x420_1,
+    Allazoume_Sinitheies_Tile,
+    Giannis_AllStar_Tile_640x420_1,
+    EU_Memes_Tile_640x420_1,
+    VF_Breaking_The_Glass_Tile_640x420_1
 
 };

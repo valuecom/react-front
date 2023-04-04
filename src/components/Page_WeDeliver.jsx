@@ -1,14 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import{
-    manos,
-    virna,
-    daskalopoulos,
-    rita,
-    rania,
-    mitsi,
-    takis,
-    athina,
-    aggelos
+    Janssen_Tile_2,
+    Finish_Tile,
+    ezgif_com_gif_make,
+    Ciroc_Tile,
+    Don_Julio_Tile,
+    Header_Banner_tile_emvolio,
+    Header_Banner_tile_alpro,
+    Header_Banner_tile_Jhonnie_Walker,
+    JW_Header_Banner_Tile,
+    Delta_Moms_tile,
+    Oreo_Tile,
+    FD_Tile_640x420_1,
+    BD_NIKE_SEPOLIA_Tile_640x420_1,
+    Allazoume_Sinitheies_Tile,
+    Giannis_AllStar_Tile_640x420_1,
+    EU_Memes_Tile_640x420_1,
+    VF_Breaking_The_Glass_Tile_640x420_1
 }  from "../assets";
 
 const Page_WeDeliver = () => (  
@@ -16,123 +25,219 @@ const Page_WeDeliver = () => (
         <section className="page-title-section">
             <div className="container-xxl">
                 <div className="page-title-wrap my-5 px-5">
-                    <h1 className="page-title fs-1 fw-normal text-center text-lg-start">We have faces</h1>
+                    <h1 className="page-title fs-1 fw-normal text-center text-lg-start">We deliver</h1>
+                    <p className="mt-5 text-center text-lg-start">Award-winning projects in a variety of categories & verticals :</p>
                 </div>
             </div>
         </section>
-
-        <section>
+        <section className="py-3">
             <div className="container-xxl">
                 <div className="row">
-                    <div className="col-12 the-team-cards d-grid px-md-5 px-xxl-0 pb-5">
-                        <div className="card">
-                            <img src={manos} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Alexandros Manos</h5>
-                                <p className="card-text">Founder, CEO</p>
-                                <hr />
-                                <p>With an Economics / IT background Alex has an international experience in leading global brands in diverse projects since 1998.</p>
-                                <p>Keen to envision and deliver the business results of communication work, Alex believes in the no-frills, max ROI, efficiency focused approach to communication issues. A partner more than a consultant, Alex views communication work within a &ldquo;define problem &ndash; find solution&rdquo; framework.</p>
-                                <p>Alex embraces the technological revolution &amp; digital innovation as forces of transparency, empowerment and expression.&nbsp;</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <img src={virna} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Virna Ntanou</h5>
-                                <p className="card-text">Deputy CEO, Partner </p>
-                                <hr />
-                                <p>Virna has an extensive experience with global brands in Greece and abroad working for awarded advertising agencies and brands.</p>
-                                <p>She considers marketing communication as a force to evolve, always excited to jump into unchartered territories, challenging projects and transforming ecosystems.</p>
-                                <p>Firm believer that purposeful brands can create stories and experiences that bring meaning to people&rsquo;s lives.</p>
-                                <p>Virna thinks that creative inspiration can be found in the most unlikely places as long as you look for it.</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <img src={daskalopoulos} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Vassilios Dascalopoulos</h5>
-                                <p className="card-text">Vice President Corporate Affairs</p>
-                                <hr />
-                                <p>An innovator and strategist, with a distinguished career in political consultancy, corporate communication, media relations, crisis management, public affairs, pharma &amp; wellbeing comms, Vassilios has worked closely with top tier multinational and national companies, leaders, governments, state institutions and NGOs.</p>
-                                <p>Besides award winning campaigns and efficient strategy design, Vassilios has proven a very successful manager, in transforming a small public relations agency into a market leader.</p>
-                                <p>He always enjoys new challenges, preaches and practices the religion of client-centrism, creates thought leadership and views entrepreneurship as a vehicle for economic growth, social progress and prosperity for all.</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <img src={rita} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Rita Makraki</h5>
-                                <p className="card-text">Business Unit Director</p>
-                                <hr />
-                                <p>Rita has worked with top international brands -within corporations or agencies &ndash; building and shaping brands.</p>
-                                <p>Very client focused, she believes in making every client feel precious. Networking, connecting and building relations is her hero power.</p>
-                                <p>Her mantra &ldquo;Every goal achieved is an opportunity for celebration&rdquo; is in line with her outgoing spirit and endless energy.</p>
-                                <p>Fast and fearless Rita injects stamina and ambition to her team and partners.</p>
-                                <p>She feels mark-comms is the best job in the world and thoroughly enjoys it.</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <img src={rania} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Rania Chartofylaka</h5>
-                                <p className="card-text">Senior Content Director, Stardust GM</p>
-                                <hr />
-                                <p>Rania has won awards and accolades for her work with top international brands, companies and public figures.</p>
-                                <p>Fashion and culture are her soft spots &ndash; Rania is a natural in discovering consumer tribes, mining valuable insights and creating memorable campaigns.</p>
-                                <p>Uniquely, she may also juggle brand, product and corporate comms in a seamless and very easy looking way. Looking just as comfortable and assured whether she discusses women&rsquo;s empowerment initiatives or retail regulation, Rania enjoys her work thoroughly.</p>
-                                <p>It comes as no surprise that she considers marketing comms as a great platform for creativity and self-expression.</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <img src={mitsi} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Mitsi Staikou</h5>
-                                <p className="card-text">Senior Content Director</p>
-                                <hr />
-                                <p>Mitsi is a purpose-driven senior marketing executive with over 20 years of experience in the market.&nbsp;Having worked closely with a wide spectrum of national and multinational clients, she has shaped the communication strategy for widely recognizable brands and awarded campaigns.</p>
-                                <p>Curious, open-minded, and agile, she enjoys collaborating with teams with various professional backgrounds, integrating knowledge from different sources to deliver best results.</p>
-                                <p>For her, every new project is an opportunity to live a mind-challenging, creative experience.</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <img src={takis} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Takis Karagiannis</h5>
-                                <p className="card-text">Director, Sustainability & Innovation</p>
-                                <hr />
-                                <p>A communications strategist with an impressive track record, Takis is experienced in public relations, public affairs, crisis management, and high-profile political situations requesting demanding multi-stakeholder engagement.</p>
-                                <p>As a keen admirer of the "Show, don't tell" mantra, Takis implements a data-driven rationale in ambitious and integrated campaigns under Sustainability &amp; Innovation pillars.</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <img src={athina} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Athina Georgiadou</h5>
-                                <p className="card-text">Creative Content Director</p>
-                                <hr />
-                                <p>An experienced creative thinker and lifestyle curator, Athina is a creative content director who has collaborated with top Greek and international brands.</p>
-                                <p>Her extensive experience with fashion and luxury products, makes her the go to person for colleagues and clients interested in new trends and rising cultures.</p>
-                                <p>Athina's passion is introducing new perspectives and creative inspiration, in a disruptive and out-of-the-box way.</p>
-                                <p>Athina thinks and understands through design - every idea has a visual interpretation, and every design indicates numerous story building opportunities.</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <img src={aggelos} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Aggelos Filis</h5>
-                                <p className="card-text">Finance Director</p>
-                                <hr />
-                                <p>An accounting and finance professional who has specialized in the marketing and communications business.</p>
-                                <p>Aggelos is solutions provider, characterized by his knowledgeable decision making, clear thinking and calm persistency.</p>
-                                <p>Resilient and purposeful, he has navigated our agency through a very turbulent decade that has brought major challenges, disruptions, and changes in the way we do business.</p>
-                            </div>
-                        </div>
-
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={Janssen_Tile_2} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">Janssen Greece</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Ready To Make A Difference</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={Finish_Tile} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">Reckitt Benckiser</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Finish, To Nero Einai Sta Xeria mas</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={ezgif_com_gif_make} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">Public</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Public x Klarna</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={Ciroc_Tile} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">Diageo</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Cîroc campaign</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={Don_Julio_Tile} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">Diageo</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Don Julio campaign</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={Header_Banner_tile_emvolio} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">Greek Government</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Εθνική Εκστρατεία Εμβολιασμού</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={Header_Banner_tile_alpro} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">Danone</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Alpro</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={Header_Banner_tile_Jhonnie_Walker} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">Diageo</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Johnnie Walker 200 years celebration</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={JW_Header_Banner_Tile} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">Diageo</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Johnnie Walker Campaign</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={Delta_Moms_tile} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">DELTA</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Deltamoms.gr</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={Oreo_Tile} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">Mondelez</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Oreo</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={FD_Tile_640x420_1} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">Diageo</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">World className Fine Drinking Festival</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={BD_NIKE_SEPOLIA_Tile_640x420_1} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">NIKE</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">AntetokounBros</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={Allazoume_Sinitheies_Tile} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">AB Vassilopoulos</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">#allazoumesinitheies</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={Giannis_AllStar_Tile_640x420_1} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">NIKE</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Antentokounmpo All Star Game</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={EU_Memes_Tile_640x420_1} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">European Commission</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">EU memes</figcaption>
+                            </Link>
+                        </figure>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <figure className="figure mb-5">
+                            <Link to="/">
+                                <div className="figure-img-wrap">
+                                    <img src={VF_Breaking_The_Glass_Tile_640x420_1} className="figure-img img-fluid" alt="..." />
+                                </div>
+                                <figcaption className="figure-caption fw-medium">VODAFONE</figcaption>
+                                <figcaption className="figure-caption fw-bold p-0">Breaking The Glass Ceiling</figcaption>
+                            </Link>
+                        </figure>
                     </div>
                 </div>
             </div>
-
         </section>
     </>
 );

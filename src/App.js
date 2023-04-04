@@ -7,6 +7,7 @@ import {
   _Footer,
   Page_Home,
   Page_WeAreTrusted,
+  Page_WeDeliver,
   Page_WeTeam,
   Page_WeBelieve,
   Page_TheTeam,
@@ -25,6 +26,7 @@ function App() {
                 <Routes>
                   <Route exact path="/" element={<Page_Home /> } />
                   <Route exact path="/we-are-trusted" element={ <Page_WeAreTrusted /> } />
+                  <Route exact path="/we-deliver" element={ <Page_WeDeliver /> } />
                   <Route exact path="/we-team" element={ <Page_WeTeam /> } />
                   <Route exact path="/we-believe" element={ <Page_WeBelieve /> } />
                   <Route exact path="/the-team" element={ <Page_TheTeam /> } />
