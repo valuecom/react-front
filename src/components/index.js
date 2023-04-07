@@ -10,6 +10,8 @@ import Page_TheTeam from "./Page_TheTeam";
 
 import Widget_HomeSlider from "./Widget_HomeSlider";
 
+import AnimationLayout from "./AnimationLayout";
+
 export { 
     _Header,
     _Footer,
@@ -21,4 +23,7 @@ export {
     Page_TheTeam,
     Page_Contact,
     Widget_HomeSlider,
+
+    AnimationLayout
+
 };

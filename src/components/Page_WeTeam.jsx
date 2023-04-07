@@ -5,7 +5,7 @@ import{
 
    
 }  from "../assets";
-
+import { AnimatePresence, motion } from "framer-motion";
 const Page_WeTeam = () => (  
     <>
         <section className="page-title-section">

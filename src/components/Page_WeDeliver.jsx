@@ -20,6 +20,8 @@ import{
     VF_Breaking_The_Glass_Tile_640x420_1
 }  from "../assets";
 
+import { AnimatePresence, motion } from "framer-motion";
+
 const Page_WeDeliver = () => (  
     <>
         <section className="page-title-section">

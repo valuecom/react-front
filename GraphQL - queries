@@ -1,0 +1,25 @@
+query GET_MENU_BY_NAME {
+  menu(id: "Primary Menu", idType: NAME) {
+    count
+    id
+    databaseId
+    name
+    slug
+    menuItems {
+      nodes {
+        id
+        databaseId
+        title
+        url
+        cssClasses
+        description
+        label
+        linkRelationship
+        target
+        parentId
+      }
+    }
+  }
+}
+
+

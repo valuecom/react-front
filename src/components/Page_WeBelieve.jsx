@@ -2,6 +2,7 @@ import React from "react";
 import{
     we_believe_2,
 }  from "../assets";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Page_WeBelieve = () => (  
     <>
@@ -28,5 +29,5 @@ const Page_WeBelieve = () => (
         </section>
     </>
 );
- 
+
 export default Page_WeBelieve;

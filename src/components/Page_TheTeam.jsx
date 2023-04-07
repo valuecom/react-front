@@ -11,6 +11,8 @@ import{
     aggelos
 }  from "../assets";
 
+import { AnimatePresence, motion } from "framer-motion";
+
 const Page_TheTeam = () => (  
     <>
         <section className="page-title-section">
@@ -20,7 +22,6 @@ const Page_TheTeam = () => (
                 </div>
             </div>
         </section>
-
         <section>
             <div className="container-xxl">
                 <div className="row">

@@ -16,10 +16,11 @@ import {
     Widget_HomeSlider
 } from "./";
 
+import { AnimatePresence, motion } from "framer-motion";
 
 
 const Page_Home = () => (
-    <>
+    <main className="page">
         <Widget_HomeSlider />
         <section className="py-3">
             <div className="container-xxl">
@@ -129,7 +130,7 @@ const Page_Home = () => (
             </div>
             </div>
         </section>
-    </>
+        </main>
 )
  
 export default Page_Home;
