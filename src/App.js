@@ -13,8 +13,8 @@ import {
   Page_TheTeam,
   Page_Contact,
 
-  AnimationLayout
-  
+  _AnimationLayout
+
 } from "./components";
 // import { AnimatePresence, motion } from "framer-motion";
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -85,7 +85,7 @@ const  App = () => {
           <BrowserRouter>
               <_Header menuLinks={ menuNodes } />
                 <Routes >
-                  <Route element={<AnimationLayout />}>
+                  <Route element={<_AnimationLayout />}>
                     <Route exact path="/" element={<Page_Home /> } />
                     {menuNodes.map((menuNode, index) => {
                         let PageComponent = PageComponents[menuNode.description];
