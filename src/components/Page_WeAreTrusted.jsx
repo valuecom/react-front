@@ -1,65 +1,8 @@
-import React from "react";
-// import parse from 'html-react-parser';
-import { useQuery, gql } from "@apollo/client";
-// import{
-//     // We_are_trusted_Art,
-//     kyvernisi_logo,
-//     aade_logo,
-//     Fraport_logo,
-//     EU,
-//     Janssen_1,
-//     Alpha_Bank_1,
-//     Diageo,
-//     Beiersdorf,
-//     Microsoft,
-//     Peiraios,
-//     LAFARGE,
-//     Cosmote,
-//     JandJ_logo,
-//     Nike,
-//     Nestle,
-//     Reckitt,
-//     AB,
-//     VF,
-//     Modelez,
-//     Philips,
-//     NIVEA,
-//     DELTA,
-//     PEPSICO,
-//     DANONE,
-//     Public_1,
-//     JW,
-//     Cardhu,
-//     Don_Julio,
-//     Ciroc,
-//     Kaizen_1,
-//     fenix,
-//     HALLS,
-//     OREO,
-//     Caudalie,
-//     Vivartia,
-//     Tetrapak,
-//     BIC,
-//     PIAGGIO,
-//     Teva_logo,
-//     ucb_logo,
-//     ASHOKA,
-//     RELOAD,
-//     Mazi_Gia_To_Paidi,
-//     Anasa_1,
-//     athinaiki_logo,
-//     Amstel_logo,
-//     Heineken_logo,
-//     Alfa_logo,
-//     Fischer_logo,
-//     Mamos_logo,
-//     Ioli_logo,
-//     Lagunitas_logo,
-//     Milokleftis_logo,
-//     Nimfi_logo,
-// }  from "../assets";
-
-import { AnimatePresence, motion } from "framer-motion";
+ import { useQuery, gql } from "@apollo/client";
+ 
+import Widget_SimpleTitle from "./Widget_SimpleTitle";
+import Widget_SimpleHeroImage from "./Widget_SimpleHeroImage";
+import Widget_SimpleContent from "./Widget_SimpleContent";
 
 const Page_WeAreTrusted = (props) => {
 
@@ -94,7 +37,7 @@ const Page_WeAreTrusted = (props) => {
     // console.log(content);
 
     // strip tags from html in text
-    const text = nodeMoreData.content.replace(/<\/?[^>]+(>|$)/g, '');
+    // const text = nodeMoreData.content.replace(/<\/?[^>]+(>|$)/g, '');
 
     const wysiwyg_html = nodeMoreData.weAreTrustedExtras.images;
 
@@ -108,25 +51,9 @@ const Page_WeAreTrusted = (props) => {
 
     return (
         <>
-            <section className="page-title-section">
-                <div className="container-xxl">
-                    <div className="page-title-wrap my-5 px-5">
-                        <h1 className="page-title fs-1 fw-normal text-center text-lg-start">{nodeMoreData.title}</h1>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <div className="container-xxl d-flex justify-content-center pb-5">
-                    <img src={nodeMoreData.featuredImage.node.sourceUrl} />
-                </div>
-            </section>
-            <section>
-                <div className="container-xxl pb-5 px-5">
-                    <div className="px-md-5 mx-lg-5">
-                        <p>{text}</p>
-                    </div>
-                </div>
-            </section>
+            <Widget_SimpleTitle widgetTitle={nodeData.title} />
+            <Widget_SimpleHeroImage sourceUrl={nodeMoreData.featuredImage.node.sourceUrl} />
+            <Widget_SimpleContent contentHTML={nodeMoreData.content} />
             <section>
                 <div className="container-xxl">
                     <div className="row">

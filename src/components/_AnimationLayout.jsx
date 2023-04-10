@@ -25,7 +25,6 @@ const _AnimationLayout = () => {
 
 
   return (
- 
       <motion.main
         key={pathname}
         initial="initial"

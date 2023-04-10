@@ -3,10 +3,42 @@ import React  from "react";
 import { Link } from "react-router-dom";
 import { logo } from "../assets";
 
+import { useQuery, gql } from "@apollo/client";
+
+ const GET_MENU_BY_NAME_QUERY = gql`
+ {
+    menu(id: "Primary Menu", idType: NAME) {
+      count
+      id
+      name
+      slug
+      menuItems {
+        nodes {
+          connectedObject {
+            __typename ... on Page {
+              title
+              databaseId
+            } 
+          }
+          id
+          uri
+          description
+          label
+        }
+      }
+    }
+  }
+`;
+
+const _Header = () =>  {
  
-const _Header = (props) =>  {
- 
-    const menuNodes = props.menuLinks;
+    const { data, loading, error } = useQuery(GET_MENU_BY_NAME_QUERY);
+
+    if (loading) { console.log('loading _Header'); return }
+    if (error) { console.log('error _Header'); return }
+    if (!data) { console.log('!data _Header'); return }
+
+    const menuNodes = data.menu.menuItems.nodes;
 
     return (
         <header className="d-flex align-items-center">
