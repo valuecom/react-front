@@ -29,10 +29,12 @@ export {
     
     Page_TemplateSimple,
 
+    
     Widget_HomeSlider,
     Widget_SimpleHeroImage,
     Widget_SimpleContent,
     Widget_SimpleTitle,
+
 
     _AnimationLayout
 

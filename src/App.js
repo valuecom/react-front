@@ -8,7 +8,6 @@ import {
   Page_Home,
   Page_WeAreTrusted,
   Page_WeDeliver,
-  Page_WeTeam,
   Page_TheTeam,
   Page_Contact,
 
@@ -17,7 +16,6 @@ import {
   _AnimationLayout
 
 } from "./components";
-
 
 
 // const GET_MENU_BY_NAME_QUERY = gql`
@@ -74,20 +72,9 @@ const  App = () => {
   const siteNodes = data.pages.nodes;
   console.log(siteNodes);
 
-  // const PageComponents = {
-  //   'Page_WeAreTrusted': Page_WeAreTrusted, 
-  //   'Page_WeDeliver': Page_WeDeliver, 
-  //   'Page_WeTeam': Page_WeTeam, 
-  //   'Page_WeBelieve': Page_WeBelieve, 
-  //   'Page_TemplateSimple': Page_TemplateSimple, 
-  //   'Page_TheTeam': Page_TheTeam, 
-  //   'Page_Contact': Page_Contact
-  // }
-
   const PageComponentsMap_slug_component = {
     'we-are-trusted': Page_WeAreTrusted, 
     'we-deliver': Page_WeDeliver, 
-    // 'we-team': Page_WeTeam, 
     'the-team': Page_TheTeam,
     'contact': Page_Contact,
 
@@ -95,6 +82,9 @@ const  App = () => {
     'we-believe': Page_TemplateSimple,
     'we-do-fs-marketing': Page_TemplateSimple,
     'study-and-research': Page_TemplateSimple,
+    'we-are-storytellers': Page_TemplateSimple,
+    'we-dream': Page_TemplateSimple,
+    '404-2' : Page_TemplateSimple,
   }
 
  
@@ -108,23 +98,20 @@ const  App = () => {
                 <Routes >
                   <Route element={<_AnimationLayout />}>
                     <Route exact path="/" element={<Page_Home /> } />
-                    {/* {menuNodes.map((menuNode, index) => {
-                        let PageComponent = PageComponents[menuNode.description];
-                        return (
-                          <Route key={index} path={menuNode.uri} element={<PageComponent nodeData={menuNode.connectedObject} />}   />
-                        );
-                    })} */}
-
                       {siteNodes.map((siteNode, index) => {
-                        if (siteNode.slug!='homepage'){
-                            let PageComponent = PageComponentsMap_slug_component[siteNode.slug];
-                            // console.log(PageComponent);
-                            // console.log(siteNode.uri);
-                            // console.log(siteNode.databaseId);
-                            return (
-                              <Route key={index} path={siteNode.uri} element={<PageComponent nodeData={siteNode} />}   />
-                            );
-                        }
+                          if (siteNode.slug!='homepage'){
+                              let PageComponent = PageComponentsMap_slug_component[siteNode.slug];
+                              // 404 - slug 404 is reserved from wordpress but that is not a problem
+                              if (siteNode.slug!='404-2') {
+                                  return (
+                                    <Route key={index} path={siteNode.uri} element={<PageComponent nodeData={siteNode} />}   />
+                                  );
+                              } else { 
+                                  return (
+                                    <Route key={index} path="*" element={<PageComponent nodeData={siteNode} />}   />
+                                  );
+                              }
+                          }
                       })}
                   </Route>
                 </Routes>

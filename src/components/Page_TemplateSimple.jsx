@@ -1,12 +1,8 @@
- 
- 
 import { useQuery, gql } from "@apollo/client";
 
 import Widget_SimpleTitle  from "./Widget_SimpleTitle";
 import Widget_SimpleHeroImage  from "./Widget_SimpleHeroImage";
 import Widget_SimpleContent  from "./Widget_SimpleContent";
-
-
 
 const Page_WeBelieve = (props) => {
     console.log(props);
@@ -38,9 +34,25 @@ const Page_WeBelieve = (props) => {
 
     return (
         <>
-            <Widget_SimpleTitle widgetTitle={nodeData.title} />
-            <Widget_SimpleHeroImage sourceUrl={nodeMoreData.featuredImage.node.sourceUrl} />
-            <Widget_SimpleContent contentHTML={nodeMoreData.content} />
+            {
+                nodeMoreData.title!==null ? 
+                <Widget_SimpleTitle widgetTitle={nodeData.title} />
+                    :
+                    'no-title'
+            }
+            {
+                nodeMoreData.featuredImage!==null ? 
+                    <Widget_SimpleHeroImage sourceUrl={nodeMoreData.featuredImage.node.sourceUrl} /> 
+                    :
+                    ''
+            }
+            {
+                nodeMoreData.content!==null ? 
+                    <Widget_SimpleContent contentHTML={nodeMoreData.content} /> 
+                    :
+                    ''
+            }
+           
         </>
     )
 }

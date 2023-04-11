@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
- 
-import { AnimatePresence, motion } from "framer-motion";
+import Widget_SimpleTitle from "./Widget_SimpleTitle";
 
 const Page_Contact = (props) => { 
 
@@ -9,13 +8,7 @@ const Page_Contact = (props) => {
 
     return (
         <main className="page">
-            <section className="page-title-section">
-                <div className="container-xxl">
-                    <div className="page-title-wrap my-5 px-5">
-                        <h1 className="page-title fs-1 fw-normal text-center text-lg-start">{nodeData.title} - {nodeData.databaseId}</h1>
-                    </div>
-                </div>
-            </section>
+            <Widget_SimpleTitle widgetTitle={nodeData.title} />
             <section>
                 <div className="container-xxl w-50 px-5 pb-5">
                     <div className="contact-form-wrap py-5">
