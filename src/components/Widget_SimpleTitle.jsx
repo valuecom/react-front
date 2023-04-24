@@ -1,5 +1,3 @@
-import React from "react";
-
 const Widget_SimpleTitle = (props) => {
 
     return(  

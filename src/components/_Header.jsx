@@ -39,6 +39,7 @@ const _Header = () =>  {
     if (!data) { console.log('!data _Header'); return }
 
     const menuNodes = data.menu.menuItems.nodes;
+    // console.log(menuNodes);
 
     return (
         <header className="d-flex align-items-center">

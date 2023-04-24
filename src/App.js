@@ -11,10 +11,12 @@ import {
   Page_TheTeam,
   Page_Contact,
 
+  Page_TemplatePoject,
   Page_TemplateSimple,
 
-  _AnimationLayout
+  _AnimationLayout,
 
+  Tool_EditPage
 } from "./components";
 
 
@@ -45,7 +47,7 @@ import {
 
 const GET_SITEMAP = gql`
 {
-  pages {
+  pages(first: 10000) {
     nodes {
       id
       databaseId
@@ -53,6 +55,13 @@ const GET_SITEMAP = gql`
       slug
       uri
       status
+      parent {
+        node {
+          id
+          databaseId
+          slug
+        }
+      }
     }
   }
 }
@@ -76,18 +85,11 @@ const  App = () => {
     'we-are-trusted': Page_WeAreTrusted, 
     'we-deliver': Page_WeDeliver, 
     'the-team': Page_TheTeam,
-    'contact': Page_Contact,
+    'contact': Page_Contact
 
-    'we-team': Page_TemplateSimple,
-    'we-believe': Page_TemplateSimple,
-    'we-do-fs-marketing': Page_TemplateSimple,
-    'study-and-research': Page_TemplateSimple,
-    'we-are-storytellers': Page_TemplateSimple,
-    'we-dream': Page_TemplateSimple,
-    '404-2' : Page_TemplateSimple,
+    // all other slugs go to - >Page_TemplateSimple see below in routing
   }
-
- 
+  
   return (
     <HelmetProvider>
           <Helmet>
@@ -95,20 +97,31 @@ const  App = () => {
           </Helmet>
           <BrowserRouter>
               <_Header />
+                <Tool_EditPage />
                 <Routes >
                   <Route element={<_AnimationLayout />}>
                     <Route exact path="/" element={<Page_Home /> } />
                       {siteNodes.map((siteNode, index) => {
                           if (siteNode.slug!='homepage'){
                               let PageComponent = PageComponentsMap_slug_component[siteNode.slug];
+                              // console.log(PageComponent==undefined);
+                              // console.log(PageComponent);
                               // 404 - slug 404 is reserved from wordpress but that is not a problem
-                              if (siteNode.slug!='404-2') {
+                              if (siteNode.slug=='404-2') { // all pages that have no wrong slug go to 404-2 page template
+                                  return (
+                                    <Route key={index} path="*" element={<Page_TemplateSimple nodeData={siteNode} />}   />
+                                  );
+                              }else if (siteNode.parent!=null && siteNode.parent.node.slug == 'we-deliver') {// all pages that have work as parent are projects 
+                                  return (
+                                    <Route key={index} path={siteNode.uri} element={<Page_TemplatePoject nodeData={siteNode} />}   />
+                                  );
+                              }else if (PageComponent!=undefined) {// all pages that have custom template are mapped 
                                   return (
                                     <Route key={index} path={siteNode.uri} element={<PageComponent nodeData={siteNode} />}   />
                                   );
-                              } else { 
+                              } else { // all pages that dont have custom template are not mapped mapped
                                   return (
-                                    <Route key={index} path="*" element={<PageComponent nodeData={siteNode} />}   />
+                                    <Route key={index} path={siteNode.uri} element={<Page_TemplateSimple nodeData={siteNode} />}   />
                                   );
                               }
                           }

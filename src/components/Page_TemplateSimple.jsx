@@ -5,8 +5,6 @@ import Widget_SimpleHeroImage  from "./Widget_SimpleHeroImage";
 import Widget_SimpleContent  from "./Widget_SimpleContent";
 
 const Page_WeBelieve = (props) => {
-    console.log(props);
-
     const nodeData = props.nodeData;
     // console.log(nodeData);
     const GET_CONTENT = gql`{

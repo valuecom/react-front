@@ -8,11 +8,13 @@ import Page_Contact from "./Page_Contact";
 import Page_TheTeam from "./Page_TheTeam";
 
 import Page_TemplateSimple from "./Page_TemplateSimple";
+import Page_TemplatePoject from "./Page_TemplatePoject";
 
 import Widget_HomeSlider from "./Widget_HomeSlider";
 import Widget_SimpleHeroImage from "./Widget_SimpleHeroImage";
 import Widget_SimpleContent from "./Widget_SimpleContent";
 import Widget_SimpleTitle from "./Widget_SimpleTitle";
+import Tool_EditPage from "./Tool_EditPage";
 
 
 import _AnimationLayout from "./_AnimationLayout";
@@ -28,7 +30,7 @@ export {
     Page_Contact,
     
     Page_TemplateSimple,
-
+    Page_TemplatePoject,
     
     Widget_HomeSlider,
     Widget_SimpleHeroImage,
@@ -36,6 +38,8 @@ export {
     Widget_SimpleTitle,
 
 
-    _AnimationLayout
+    _AnimationLayout,
 
+    Tool_EditPage
+    
 };
