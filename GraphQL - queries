@@ -21,5 +21,3 @@ query GET_MENU_BY_NAME {
     }
   }
 }
-
-
