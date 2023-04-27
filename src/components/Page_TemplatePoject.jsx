@@ -20,6 +20,9 @@ const Page_TemplatePoject = (props) => {
                 ourServices
                 project
                 mainText
+                heroImage{
+                    sourceUrl
+                }
             }
         }
     }`;
@@ -37,7 +40,7 @@ const Page_TemplatePoject = (props) => {
             <section className="mb-5 ">
                 <div className="container-fluid px-0">
                     <div className="project-featured-image">
-                        <img src={nodeMoreData.featuredImage.node.sourceUrl} alt="" />
+                        <img src={nodeMoreData.projectsExtras.heroImage.sourceUrl} alt="" />
                     </div>
                 </div>
             </section>

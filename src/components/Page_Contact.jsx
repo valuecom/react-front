@@ -34,9 +34,22 @@ const Page_Contact = (props) => {
         let form_message = document.getElementById('form_message').value;
 
         let doSubmit = true;
-        if ( !validateName(form_name) ) doSubmit = false;
+        if ( !validateName(form_name) ) {
+            // form_name
+            document.getElementById("form_name").classList.add("input-error");
+            doSubmit = false;
+        }
+        
+        // form_email html validation
+        // form_message html validation
 
-        const data = { 'test':'test123123'} ;
+        if (!doSubmit) return false;
+
+        const data = { 
+            'form_name': form_name,
+            'form_email': form_email,
+            'form_message': form_message 
+        } ;
 
         const json_url = "http://localhost/githubVC/newsite2023.valuecom.gr/wp-json/contact/v1/send";
         fetch(json_url,{
@@ -56,6 +69,13 @@ const Page_Contact = (props) => {
             return response.json();
         }).then(result => {
             console.log(result);
+            if (result.status==200){
+               document.getElementById('contact-msg-error').innerHTML = '';
+               document.getElementById('contact-msg').innerHTML = 'Your message has been sent successfully!';
+            }else{
+                document.getElementById('contact-msg').innerHTML = '';
+                document.getElementById('contact-msg-error').innerHTML = 'There was an error when sending your message!';
+            }
         })
         .catch(error => {
             console.log(error );
@@ -76,10 +96,12 @@ const Page_Contact = (props) => {
                     <div className="contact-form-wrap py-5">
                         <h3 style={{'fontWeight': '400'}}>Get in touch with us</h3>
                         <form action="#" method="post" onSubmit={handleContactSubmit}>
-                            <input type="text" id="form_name" name="name" placeholder="Name" />
-                            <input type="email" id="form_email" name="email" placeholder="Email" />
-                            <textarea id="form_message" name="message" placeholder="Message" style={{'height':"200px"}} ></textarea>
+                            <input type="text" id="form_name" name="name" placeholder="Name" required maxLength="100" />
+                            <input type="email" id="form_email" name="email" placeholder="Email"  required />
+                            <textarea id="form_message" name="message" placeholder="Message" style={{'height':"200px"}}  required maxLength="2000"  ></textarea>
                             <input style={{'backgroundColor': "#FDDD31", 'color': "#1D1D1D", 'fontWeight':"600"}} type="submit" value="Send" />
+                            <div id="contact-msg" className="contact-msg" ></div>
+                            <div id="contact-msg-error" className="contact-msg-error" ></div>
                         </form>
                     </div>
                     <hr />
@@ -96,8 +118,9 @@ const Page_Contact = (props) => {
     )
 }
 
-const validateName = (v) => {
-    return true;
+const validateName = (val) => {
+    var reg =  /^[αβγδεζηθικλμνξοπρστυφχψωΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩςάέύίόώήϊϋa-zA-Z ]+$/;
+    return reg.test(val);
 }
 
 

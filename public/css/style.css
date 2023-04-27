@@ -182,3 +182,15 @@ input[type=text],input[type=email], select, textarea {
     padding: 5px;
     font-size: 10px;
   }
+
+  .input-error{
+    border: 2px solid red  !important;
+  }
+
+    .contact-msg{
+        margin-top: 30px;
+    }
+    .contact-msg-error{
+        margin-top: 30px;
+        color:red;
+    }
