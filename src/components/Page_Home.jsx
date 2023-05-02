@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { 
-    we_do_fullStack_marketing,
-    we_are_storytellers,
-    we_dream,
-    we_are_trusted,
-    we_deliver,
-    we_believe,
-    we_study_and_research,
-    we_have_faces,
-    we_team
-} from "../assets";
+// import { 
+//     we_do_fullStack_marketing,
+//     we_are_storytellers,
+//     we_dream,
+//     we_are_trusted,
+//     we_deliver,
+//     we_believe,
+//     we_study_and_research,
+//     we_have_faces,
+//     we_team
+// } from "../assets";
 
 import {
     Widget_HomeSlider
@@ -33,54 +33,90 @@ const Page_Home = () => {
                       title
                       altText
                       targetUrl: description
+                      mediaDetails {
+                        height
+                        width
+                      }
                     }
                     image2 {
                         sourceUrl
                         title
                         altText
                         targetUrl: description
+                        mediaDetails {
+                            height
+                            width
+                        }
                     }
                     image3 {
                         sourceUrl
                         title
                         altText
                         targetUrl: description
+                        mediaDetails {
+                            height
+                            width
+                        }
                     }
                     image4 {
                         sourceUrl
                         title
                         altText
                         targetUrl: description
+                        mediaDetails {
+                            height
+                            width
+                        }
                     }
                     image5 {
                         sourceUrl
                         title
                         altText
                         targetUrl: description
+                        mediaDetails {
+                            height
+                            width
+                        }
                     }
                     image6 {
                         sourceUrl
                         title
                         altText
                         targetUrl: description
+                        mediaDetails {
+                            height
+                            width
+                        }
                     }
                     image7 {
                         sourceUrl
                         title
                         altText
                         targetUrl: description
+                        mediaDetails {
+                            height
+                            width
+                        }
                     }
                     image8 {
                         sourceUrl
                         title
                         altText
                         targetUrl: description
+                        mediaDetails {
+                            height
+                            width
+                        }
                     }
                     image9 {
                         sourceUrl
                         title
                         altText
                         targetUrl: description
+                        mediaDetails {
+                            height
+                            width
+                        }
                     }
                 }
             }
@@ -115,7 +151,7 @@ const Page_Home = () => {
     for (const [key, value] of Object.entries(homepageExtrasArray)) {
         if (key!='__typename'){
             var _targetUrl = value.targetUrl==null?'':value.targetUrl.replace(/<\/?[^>]+(>|$)/g, '').replace("\n","");
-            img_arr_inner[n++] = { img_src: value.sourceUrl, title: value.title, _targetUrl: _targetUrl };
+            img_arr_inner[n++] = { img_src: value.sourceUrl, title: value.title, _targetUrl: _targetUrl, width: value.mediaDetails.width, height: value.mediaDetails.height };
         }
     }
 
@@ -129,13 +165,13 @@ const Page_Home = () => {
                     <div className="row">
                         {[6,3,3].map( (value, index) => {
                             // console.log('tolis')
-                            console.log(img_arr_inner[index]._targetUrl)
+                            // console.log(img_arr_inner[index]._targetUrl)
                             return (
-                                <div key={"img__"+index} className={"col-" + value }>
+                                <div key={"img__"+index} className={"col-sm-" + value }>
                                     <figure className="figure">
                                         <Link to={img_arr_inner[index]._targetUrl} >
                                             <div className="figure-img-wrap">
-                                                <img src={img_arr_inner[index].img_src} className="figure-img img-fluid" alt="..." />
+                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height} className="figure-img img-fluid" loading="lazy" alt="..." />
                                             </div>
                                             <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
                                         </Link>
@@ -153,11 +189,11 @@ const Page_Home = () => {
                             // console.log('tolis')
                             index = index+3;
                             return (
-                                <div key={"img__"+index} className={"col-" + value }>
+                                <div key={"img__"+index} className={"col-sm-" + value }>
                                     <figure className="figure">
                                         <Link to={img_arr_inner[index]._targetUrl} >
                                             <div className="figure-img-wrap">
-                                                <img src={img_arr_inner[index].img_src} className="figure-img img-fluid" alt="..." />
+                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height}  className="figure-img img-fluid" loading="lazy" alt="..." />
                                             </div>
                                             <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
                                         </Link>
@@ -175,11 +211,11 @@ const Page_Home = () => {
                             // console.log('tolis')
                             index = index + 6;
                             return (
-                                <div key={"img__"+index} className={"col-" + value }>
+                                <div key={"img__"+index} className={"col-sm-" + value }>
                                     <figure className="figure">
                                         <Link to={img_arr_inner[index]._targetUrl} >
                                             <div className="figure-img-wrap">
-                                                <img src={img_arr_inner[index].img_src} className="figure-img img-fluid" alt="..." />
+                                                <img src={img_arr_inner[index].img_src}  width={img_arr_inner[index].width} height={img_arr_inner[index].height}  className="figure-img img-fluid" loading="lazy" alt="..." />
                                             </div>
                                             <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
                                         </Link>

@@ -5,14 +5,8 @@ import { logo } from "../assets";
 
 import { useQuery, gql } from "@apollo/client";
 
- const GET_MENU_BY_NAME_QUERY = gql`
- {
-    menu(id: "Primary Menu", idType: NAME) {
-      count
-      id
-      name
-      slug
-      menuItems {
+ const GET_MENU_BY_NAME_QUERY = gql`{
+      menuItems(where: {location: PRIMARY})  {
         nodes {
           connectedObject {
             __typename ... on Page {
@@ -27,7 +21,7 @@ import { useQuery, gql } from "@apollo/client";
         }
       }
     }
-  }
+ 
 `;
 
 const _Header = () =>  {
@@ -38,7 +32,7 @@ const _Header = () =>  {
     if (error) { console.log('error _Header'); return }
     if (!data) { console.log('!data _Header'); return }
 
-    const menuNodes = data.menu.menuItems.nodes;
+    const menuNodes = data.menuItems.nodes;
     // console.log(menuNodes);
 
     return (
@@ -48,7 +42,7 @@ const _Header = () =>  {
                     <div className="col-6 col-lg-2">
                         <div className="logo-wrap">
                             <Link to="/">
-                                <img src={logo} alt="Valuecom" />
+                                <img src={logo} alt="Valuecom" width="196" height="46" />
                             </Link>
                         </div>
                     </div>

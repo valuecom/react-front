@@ -194,3 +194,20 @@ input[type=text],input[type=email], select, textarea {
         margin-top: 30px;
         color:red;
     }
+
+    .project-featured-image img{
+        object-fit:cover;
+        width:100%;
+        max-height: 830px;
+    }
+
+    .video-frame {
+        aspect-ratio: 16 / 9;box-sizing: border-box;
+    }
+    .video-frame iframe{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        border: none;
+        background-color: #000;
+    }

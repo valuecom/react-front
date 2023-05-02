@@ -134,6 +134,8 @@ for (const [key, value] of Object.entries(nodeMoreData.weHaveFacesExtras)) {
       card_array[card_array.length] = value;
 }
 
+
+
 console.log(card_array);
 
     return (  

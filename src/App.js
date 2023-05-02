@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useQuery, gql } from "@apollo/client";
@@ -69,6 +69,11 @@ const GET_SITEMAP = gql`
 
 const  App = () => {
 
+  useEffect(() => {
+      setTimeout(function(){
+        if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
+    },2000);
+  });
   const { data, loading, error } = useQuery(GET_SITEMAP);
 
   if (loading) { console.log('loading'); return }
@@ -90,6 +95,10 @@ const  App = () => {
     // all other slugs go to - >Page_TemplateSimple see below in routing
   }
   
+
+    
+ 
+
   return (
     <HelmetProvider>
           <Helmet>
