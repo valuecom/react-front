@@ -264,3 +264,7 @@ input[type=text],input[type=email], select, textarea {
     .footer-menu li{
         display:inline;
     }
+
+    .iframe-creative-review{
+        width:100%;
+    }

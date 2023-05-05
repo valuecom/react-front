@@ -8,6 +8,7 @@ import Page_Contact from "./Page_Contact";
 import Page_TheTeam from "./Page_TheTeam";
 
 import Page_CreativeReviews from "./Page_CreativeReviews";
+import Page_TemplateCreativeReview from "./Page_TemplateCreativeReview";
 
 import Page_TemplateSimple from "./Page_TemplateSimple";
 import Page_TemplatePoject from "./Page_TemplatePoject";
@@ -32,7 +33,8 @@ export {
     Page_Contact,
 
     Page_CreativeReviews,
-    
+    Page_TemplateCreativeReview,
+
     Page_TemplateSimple,
     Page_TemplatePoject,
     

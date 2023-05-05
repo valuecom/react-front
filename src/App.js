@@ -12,7 +12,8 @@ import {
   Page_Contact,
 
   Page_CreativeReviews,
-
+  Page_TemplateCreativeReview,
+  
   Page_TemplatePoject,
   Page_TemplateSimple,
 
@@ -118,6 +119,10 @@ const  App = () => {
                               if (siteNode.slug=='404-2') { // all pages that have no wrong slug go to 404-2 page template
                                   return (
                                     <Route key={index} path="*" element={<Page_TemplateSimple nodeData={siteNode} />}   />
+                                  );
+                              }else if (siteNode.parent!=null && siteNode.parent.node.slug == 'creative-reviews') {// all pages that have creative-reviews as parent are creative-review html newsletters 
+                                  return (
+                                    <Route key={index} path={siteNode.uri} element={<Page_TemplateCreativeReview nodeData={siteNode} />}   />
                                   );
                               }else if (siteNode.parent!=null && siteNode.parent.node.slug == 'we-deliver') {// all pages that have work as parent are projects 
                                   return (
