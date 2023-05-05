@@ -14,9 +14,22 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 
 // import './assets/css/style.css?v=1';
 
+// 
+
+let __uri = "";
+console.log('---');
+console.log(process.env);
+if (process.env.NODE_ENV == 'development') {
+  // development build code
+    __uri = "http://localhost/GitHubVC/newsite2023.valuecom.gr/graphql";
+  console.log('Dev');
+} else {
+    __uri = "https://newsite2023.valuecom.gr/backend/graphql"; 
+  console.log('Prod');
+}
 
 const client = new ApolloClient({
-  uri: "http://localhost/GitHubVC/newsite2023.valuecom.gr/graphql",
+  uri: __uri,
   cache: new InMemoryCache()
 });
 

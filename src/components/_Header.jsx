@@ -24,7 +24,7 @@ import { useQuery, gql } from "@apollo/client";
  
 `;
 
-const _Header = () =>  {
+const _Header = () =>  { 
  
     const { data, loading, error } = useQuery(GET_MENU_BY_NAME_QUERY);
 

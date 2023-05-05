@@ -106,7 +106,13 @@ const  App = () => {
           </Helmet>
           <BrowserRouter>
               <_Header />
+              {
+                (process.env.NODE_ENV == 'development') 
+                ?
                 <Tool_EditPage />
+                :
+                <></>
+              }
                 <Routes >
                   <Route element={<_AnimationLayout />}>
                     <Route exact path="/" element={<Page_Home /> } />
