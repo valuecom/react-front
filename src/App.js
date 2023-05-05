@@ -11,6 +11,8 @@ import {
   Page_TheTeam,
   Page_Contact,
 
+  Page_CreativeReviews,
+
   Page_TemplatePoject,
   Page_TemplateSimple,
 
@@ -84,20 +86,17 @@ const  App = () => {
   // console.log('1');
   // const menuNodes = data.menu.menuItems.nodes;
   const siteNodes = data.pages.nodes;
-  console.log(siteNodes);
+  // console.log(siteNodes);
 
   const PageComponentsMap_slug_component = {
     'we-are-trusted': Page_WeAreTrusted, 
     'we-deliver': Page_WeDeliver, 
     'the-team': Page_TheTeam,
-    'contact': Page_Contact
+    'contact': Page_Contact,
+    'creative-reviews': Page_CreativeReviews
 
     // all other slugs go to - >Page_TemplateSimple see below in routing
   }
-  
-
-    
- 
 
   return (
     <HelmetProvider>

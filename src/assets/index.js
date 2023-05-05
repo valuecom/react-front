@@ -106,6 +106,8 @@ import EU_Memes_Tile_640x420_1 from "../assets/images/we-deliver/EU-Memes-Tile-6
 import VF_Breaking_The_Glass_Tile_640x420_1 from "../assets/images/we-deliver/VF-Breaking-The-Glass_Tile-640x420-1.jpg";
 
 
+import creativeReviewsFeaturedImage from "../assets/images/creative-reviews/creativeReviewsFeaturedImage.jpg";
+
 
 export {
     logo,
@@ -212,6 +214,8 @@ export {
     Allazoume_Sinitheies_Tile,
     Giannis_AllStar_Tile_640x420_1,
     EU_Memes_Tile_640x420_1,
-    VF_Breaking_The_Glass_Tile_640x420_1
+    VF_Breaking_The_Glass_Tile_640x420_1,
+
+    creativeReviewsFeaturedImage
 
 };
