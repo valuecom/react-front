@@ -1,7 +1,4 @@
 import React from "react";
-import{
-    we_believe_2,
-}  from "../assets";
  
 
 const Widget_SimpleHeroImage = (props) => {

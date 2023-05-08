@@ -5,7 +5,7 @@ import { useQuery, gql } from "@apollo/client";
 const Page_TemplateCreativeReview = (props) => {
     const nodeData = props.nodeData;
 
-    const GET_CONTENT_CREATIVE_REVIEW = gql`{
+    const GET_CONTENT_CREATIVE_REVIEW = gql`query GET_CONTENT_CREATIVE_REVIEW {
         page( id: ${nodeData.databaseId}, idType: DATABASE_ID ) {
             id
             title

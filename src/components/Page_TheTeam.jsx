@@ -19,7 +19,7 @@ const Page_TheTeam = (props) => {
 
     const nodeData = props.nodeData;
 
-    const GET_FACES = gql`
+    const GET_FACES = gql`query GET_FACES
 {
     page(id: ${nodeData.databaseId}, idType: DATABASE_ID) {
       id

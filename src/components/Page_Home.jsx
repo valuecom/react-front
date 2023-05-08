@@ -22,7 +22,7 @@ const Page_Home = () => {
 
     const homepage_databaseId = 7;
     // console.log(nodeData);
-    const HOMEPAGE_CONTENT = gql`{
+    const HOMEPAGE_CONTENT = gql`query HOMEPAGE_CONTENT {
         page( id: ${homepage_databaseId}, idType: DATABASE_ID ) {
                 id
                 title

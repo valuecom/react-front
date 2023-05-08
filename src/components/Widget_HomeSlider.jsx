@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 
-import {     
-    ermis_gold,
-    fullstack_marketing,
-    digital_dissraption_sessions 
-} from "../assets";
-
 // class Widget_HomeSlider extends Component {
 const Widget_HomeSlider = (props) => {
  

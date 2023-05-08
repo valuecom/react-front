@@ -5,7 +5,7 @@ import { logo } from "../assets";
 
 import { useQuery, gql } from "@apollo/client";
 
- const GET_MENU_BY_NAME_QUERY = gql`{
+ const GET_MENU_BY_NAME_QUERY = gql`query GET_MENU_BY_NAME_QUERY{
       menuItems(where: {location: PRIMARY})  {
         nodes {
           connectedObject {
@@ -23,6 +23,8 @@ import { useQuery, gql } from "@apollo/client";
     }
  
 `;
+
+
 
 const _Header = () =>  { 
  

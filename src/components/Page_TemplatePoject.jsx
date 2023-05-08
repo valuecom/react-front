@@ -4,7 +4,7 @@ const Page_TemplatePoject = (props) => {
 
     const nodeData = props.nodeData;
     // console.log(nodeData);
-    const GET_CONTENT = gql`{
+    const GET_PROJECT_CONTENT = gql`query GET_PROJECT_CONTENT {
         page( id: ${nodeData.databaseId}, idType: DATABASE_ID ) {
             id
             title
@@ -27,7 +27,7 @@ const Page_TemplatePoject = (props) => {
         }
     }`;
 
-    const { data, loading, error } = useQuery(GET_CONTENT);
+    const { data, loading, error } = useQuery(GET_PROJECT_CONTENT);
 
     if (loading) { console.log('loading From Page_TemplateProject'); return }
     if (error) { console.log('error From Page_TemplateProject'); return }

@@ -7,7 +7,7 @@ import Widget_SimpleContent  from "./Widget_SimpleContent";
 const Page_WeBelieve = (props) => {
     const nodeData = props.nodeData;
     // console.log(nodeData);
-    const GET_CONTENT = gql`{
+    const GET_SIMPLE_CONTENT = gql`query GET_SIMPLE_CONTENT{
         page( id: ${nodeData.databaseId}, idType: DATABASE_ID ) {
             id
             title
@@ -22,7 +22,7 @@ const Page_WeBelieve = (props) => {
         }
     `;
 
-    const { data, loading, error } = useQuery(GET_CONTENT);
+    const { data, loading, error } = useQuery(GET_SIMPLE_CONTENT);
 
     if (loading) { console.log('loading From Page_WeAreTrusted'); return }
     if (error) { console.log('error From Page_WeAreTrusted'); return }

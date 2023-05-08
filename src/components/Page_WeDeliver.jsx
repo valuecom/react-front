@@ -1,24 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import{
-    Janssen_Tile_2,
-    Finish_Tile,
-    ezgif_com_gif_make,
-    Ciroc_Tile,
-    Don_Julio_Tile,
-    Header_Banner_tile_emvolio,
-    Header_Banner_tile_alpro,
-    Header_Banner_tile_Jhonnie_Walker,
-    JW_Header_Banner_Tile,
-    Delta_Moms_tile,
-    Oreo_Tile,
-    FD_Tile_640x420_1,
-    BD_NIKE_SEPOLIA_Tile_640x420_1,
-    Allazoume_Sinitheies_Tile,
-    Giannis_AllStar_Tile_640x420_1,
-    EU_Memes_Tile_640x420_1,
-    VF_Breaking_The_Glass_Tile_640x420_1
-}  from "../assets";
+ 
 
 import { useQuery, gql } from "@apollo/client";
 
@@ -114,7 +96,7 @@ const Page_WeDeliver = (props) => {
                                             <figure className="figure mb-5">
                                                 <Link to={childPage[1].uri}>
                                                     <div className="figure-img-wrap">
-                                                        <img src={childPage[1].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." />
+                                                        <img src={childPage[1].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." loading="lazy" />
                                                     </div>
                                                     <figcaption className="figure-caption fw-medium">{childPage[1].projectsExtras.client}</figcaption>
                                                     <figcaption className="figure-caption fw-bold p-0">{childPage[1].title}</figcaption>

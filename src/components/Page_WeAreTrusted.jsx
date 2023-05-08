@@ -8,7 +8,7 @@ const Page_WeAreTrusted = (props) => {
 
     const nodeData = props.nodeData;
     // console.log(nodeData);
-    const GET_CLIENTS_CONTENT = gql`{
+    const GET_CLIENTS_CONTENT = gql`query GET_CLIENTS_CONTENT{
         page( id: ${nodeData.databaseId}, idType: DATABASE_ID ) {
             id
             title
