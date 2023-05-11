@@ -7,46 +7,46 @@ import Widget_SimpleContent  from "./Widget_SimpleContent";
 const Page_WeBelieve = (props) => {
     const nodeData = props.nodeData;
     // console.log(nodeData);
-    const GET_SIMPLE_CONTENT = gql`query GET_SIMPLE_CONTENT{
-        page( id: ${nodeData.databaseId}, idType: DATABASE_ID ) {
-            id
-            title
-            content
-            featuredImage {
-                    node {
-                        id
-                        sourceUrl
-                    }
-                }
-            }
-        }
-    `;
+    // const GET_SIMPLE_CONTENT = gql`query GET_SIMPLE_CONTENT{
+    //     page( id: ${nodeData.databaseId}, idType: DATABASE_ID ) {
+    //         id
+    //         title
+    //         content
+    //         featuredImage {
+    //                 node {
+    //                     id
+    //                     sourceUrl
+    //                 }
+    //             }
+    //         }
+    //     }
+    // `;
 
-    const { data, loading, error } = useQuery(GET_SIMPLE_CONTENT);
+    // const { data, loading, error } = useQuery(GET_SIMPLE_CONTENT);
 
-    if (loading) { console.log('loading From Page_WeAreTrusted'); return }
-    if (error) { console.log('error From Page_WeAreTrusted'); return }
-    if (!data) { console.log('!data From Page_WeAreTrusted'); return }
+    // if (loading) { console.log('loading From Page_WeAreTrusted'); return }
+    // if (error) { console.log('error From Page_WeAreTrusted'); return }
+    // if (!data) { console.log('!data From Page_WeAreTrusted'); return }
 
-    const nodeMoreData = data.page;
+    // const nodeMoreData = data.page;
 
     return (
         <>
             {
-                nodeMoreData.title!==null ? 
+                nodeData.title!==null ? 
                 <Widget_SimpleTitle widgetTitle={nodeData.title} />
                     :
                     'no-title'
             }
             {
-                nodeMoreData.featuredImage!==null ? 
-                    <Widget_SimpleHeroImage sourceUrl={nodeMoreData.featuredImage.node.sourceUrl} /> 
+                nodeData.featuredImage!==null ? 
+                    <Widget_SimpleHeroImage sourceUrl={nodeData.featuredImage.node.sourceUrl} /> 
                     :
                     ''
             }
             {
-                nodeMoreData.content!==null ? 
-                    <Widget_SimpleContent contentHTML={nodeMoreData.content} /> 
+                nodeData.content!==null ? 
+                    <Widget_SimpleContent contentHTML={nodeData.content} /> 
                     :
                     ''
             }

@@ -60,7 +60,7 @@ const Page_WeAreTrusted = (props) => {
                         <div className="col-12 logos-gallery d-grid px-md-5 px-xxl-0 py-5">
                             {img_arr.map( (_src, index) => {
                                 return (
-                                    <img key={index} src={_src} className="w-100" />
+                                    <img key={index} src={_src} className="w-100 w-trusted" width="212" height="171" />
                                 );
                             })}
                         </div>

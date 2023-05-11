@@ -1,33 +1,14 @@
 import React  from "react";
- 
 import { Link } from "react-router-dom";
 import { logo } from "../assets";
 
-import { useQuery, gql } from "@apollo/client";
-
- const GET_MENU_BY_NAME_QUERY = gql`query GET_MENU_BY_NAME_QUERY{
-      menuItems(where: {location: PRIMARY})  {
-        nodes {
-          id
-          uri
-          label
-        }
-      }
-    }
-`;
+ 
 
 
+const _Header = (props) =>  {
+    
+    const menuNodes = props.menuNodes;
 
-const _Header = () =>  {
-
-    const { data, loading, error } = useQuery(GET_MENU_BY_NAME_QUERY);
-
-    if (loading) { console.log('loading _Header'); return }
-    if (error) { console.log('error _Header'); return }
-    if (!data) { console.log('!data _Header'); return }
-
-    const menuNodes = data.menuItems.nodes;
-    // console.log(menuNodes);
 
     return (
         <header className="d-flex align-items-center">

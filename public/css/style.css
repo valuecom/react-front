@@ -268,3 +268,7 @@ input[type=text],input[type=email], select, textarea {
     .iframe-creative-review{
         width:100%;
     }
+
+    .w-trusted{
+        aspect-ratio: 212/171;
+    }

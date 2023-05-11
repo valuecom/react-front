@@ -148,7 +148,7 @@ console.log(card_array);
                             {card_array.map( (card, index) => {
                                 return (
                                     <div key={index} className="card">
-                                        <img src={card.thumb.sourceUrl} className="card-img-top" alt="..." />
+                                        <img src={card.thumb.sourceUrl} className="card-img-top" alt="..." width="413" height="275" />
                                         <div className="card-body">
                                             <h5 className="card-title">{card.title}</h5>
                                             <p className="card-text">{card.subTitle}</p>

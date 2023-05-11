@@ -22,44 +22,201 @@ import {
   Tool_EditPage
 } from "./components";
 
-const GET_SITEMAP = gql`query GET_SITEMAP
+
+import 'bootstrap/dist/css/bootstrap.css';
+
+
+let GET_SITEMAP_AND_MENU = null;
+ 
+if(window.location.href!='http://localhost:3000/' && window.location.href!='https://newsite2023.valuecom.gr/'){
+GET_SITEMAP_AND_MENU = gql`query GET_SITEMAP_AND_MENU 
 {
   pages(first: 10000) {
     nodes {
-      id
       databaseId
       title
+      content
       slug
       uri
+      featuredImage {
+              node {
+                  id
+                  sourceUrl
+              }
+      }
       parent {
         node {
-          id
           databaseId
           slug
         }
       }
     }
   }
+  menuItems(where: {location: PRIMARY})  {
+    nodes {
+      id
+      uri
+      label
+    }
+  }
 }
 `;
+}else{
+GET_SITEMAP_AND_MENU = gql`query GET_SITEMAP_AND_MENU_AND_HOME
+{
+  pages(first: 10000) {
+    nodes {
+      databaseId
+      title
+      content
+      slug
+      uri
+      featuredImage {
+              node {
+                  id
+                  sourceUrl
+              }
+      }
+      parent {
+        node {
+          databaseId
+          slug
+        }
+      }
+    }
+  }
+  menuItems(where: {location: PRIMARY})  {
+    nodes {
+      id
+      uri
+      label
+    }
+  }
+  
+  page( id: 7, idType: DATABASE_ID ) {
+    id
+    title
+    content
+    homepageExtras {
+        image1 {
+          sourceUrl
+          title
+          altText
+          targetUrl: description
+          mediaDetails {
+            height
+            width
+          }
+        }
+        image2 {
+            sourceUrl
+            title
+            altText
+            targetUrl: description
+            mediaDetails {
+                height
+                width
+            }
+        }
+        image3 {
+            sourceUrl
+            title
+            altText
+            targetUrl: description
+            mediaDetails {
+                height
+                width
+            }
+        }
+        image4 {
+            sourceUrl
+            title
+            altText
+            targetUrl: description
+            mediaDetails {
+                height
+                width
+            }
+        }
+        image5 {
+            sourceUrl
+            title
+            altText
+            targetUrl: description
+            mediaDetails {
+                height
+                width
+            }
+        }
+        image6 {
+            sourceUrl
+            title
+            altText
+            targetUrl: description
+            mediaDetails {
+                height
+                width
+            }
+        }
+        image7 {
+            sourceUrl
+            title
+            altText
+            targetUrl: description
+            mediaDetails {
+                height
+                width
+            }
+        }
+        image8 {
+            sourceUrl
+            title
+            altText
+            targetUrl: description
+            mediaDetails {
+                height
+                width
+            }
+        }
+        image9 {
+            sourceUrl
+            title
+            altText
+            targetUrl: description
+            mediaDetails {
+                height
+                width
+            }
+        }
+    }
+  }
+}
+`;
+}
 
 const  App = () => {
 
   useEffect(() => {
       setTimeout(function(){
         if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
-    },2000);
+    },800);
   });
-  const { data, loading, error } = useQuery(GET_SITEMAP);
+
+  const { data, loading, error } = useQuery(GET_SITEMAP_AND_MENU);
 
   if (loading) { console.log('loading'); return }
   if (error) { console.log('error'); return }
   if (!data) { console.log('!data'); return }
 
-  // console.log(data);
-  // console.log('1');
+ 
+  console.log(data);
   // const menuNodes = data.menu.menuItems.nodes;
   const siteNodes = data.pages.nodes;
+  const menuNodes = data.menuItems.nodes;
+  const currentPage = data.page;
+
+  // console.log(menuNodes);
+
   // console.log(siteNodes);
 
   const PageComponentsMap_slug_component = {
@@ -78,7 +235,7 @@ const  App = () => {
               <title>VALUECOM | React</title>
           </Helmet>
           <BrowserRouter>
-              <_Header />
+              <_Header menuNodes={menuNodes} />
               {
                 (process.env.NODE_ENV == 'development') 
                 ?
@@ -87,7 +244,8 @@ const  App = () => {
                 <></>
               }
                 <Routes >
-                  <Route element={<_AnimationLayout />}>
+                  {/* <Route element={<_AnimationLayout />}  > */}
+                  <Route>
                     <Route exact path="/" element={<Page_Home /> } />
                       {siteNodes.map((siteNode, index) => {
                           if (siteNode.slug!='homepage'){

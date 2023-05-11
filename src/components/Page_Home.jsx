@@ -115,6 +115,8 @@ const Page_Home = () => {
 
     const { data, loading, error } = useQuery(HOMEPAGE_CONTENT);
 
+    console.log(data);
+
     if (loading) { console.log('loading From Page_Home'); return }
     if (error) { console.log('error From Page_Home'); return }
     if (!data) { console.log('!data From Page_Home'); return }
@@ -145,7 +147,7 @@ const Page_Home = () => {
         }
     }
 
- console.log(img_arr_inner);
+//  console.log(img_arr_inner);
 
     return (
         <main className="page">
