@@ -10,7 +10,7 @@ const Page_CreativeReviews = (props) => {
     const nodeData = props.nodeData;
 
     const GET_CONTENT_CREATIVE_REVIEWS = gql`query GET_CONTENT_CREATIVE_REVIEWS {
-        page( id: ${nodeData.databaseId}, idType: DATABASE_ID ) {
+        page( id: "${nodeData.slug}", idType: URI ) {
             id
             title
             content

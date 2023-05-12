@@ -21,7 +21,7 @@ const Page_TheTeam = (props) => {
 
     const GET_FACES = gql`query GET_FACES
 {
-    page(id: ${nodeData.databaseId}, idType: DATABASE_ID) {
+    page(id: "${nodeData.slug}", idType: URI) {
       id
       title
       content

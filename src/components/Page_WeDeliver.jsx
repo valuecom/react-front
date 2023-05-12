@@ -10,7 +10,7 @@ const Page_WeDeliver = (props) => {
     const nodeData = props.nodeData;
 
     const GET_CONTENT_WE_DELIVER = gql`query GET_CONTENT_WE_DELIVER{
-        page( id: ${nodeData.databaseId}, idType: DATABASE_ID ) {
+        page( id: "${nodeData.slug}", idType: URI ) {
             id
             title
             content

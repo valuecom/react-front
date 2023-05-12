@@ -9,7 +9,7 @@ const Page_WeAreTrusted = (props) => {
     const nodeData = props.nodeData;
     // console.log(nodeData);
     const GET_CLIENTS_CONTENT = gql`query GET_CLIENTS_CONTENT{
-        page( id: ${nodeData.databaseId}, idType: DATABASE_ID ) {
+        page( id: "${nodeData.slug}", idType: URI ) {
             id
             title
             content
@@ -21,10 +21,9 @@ const Page_WeAreTrusted = (props) => {
                         id
                         sourceUrl
                     }
-                }
             }
         }
-    `;
+    }`;
 
     const { data, loading, error } = useQuery(GET_CLIENTS_CONTENT);
 
@@ -60,7 +59,7 @@ const Page_WeAreTrusted = (props) => {
                         <div className="col-12 logos-gallery d-grid px-md-5 px-xxl-0 py-5">
                             {img_arr.map( (_src, index) => {
                                 return (
-                                    <img key={index} src={_src} className="w-100 w-trusted" width="212" height="171" />
+                                    <img key={index} src={_src} className="w-100 w-trusted" width="212" height="141" />
                                 );
                             })}
                         </div>

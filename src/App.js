@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useQuery, gql } from "@apollo/client";
+import __GraphQL_Queries from "./components/__GraphQL_Queries";
 import {
   _Header,
   _Footer,
@@ -26,183 +27,95 @@ import {
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-let GET_SITEMAP_AND_MENU = null;
+const PageComponentsMap_slug_component = {
+  'we-are-trusted': Page_WeAreTrusted, 
+  'we-deliver': Page_WeDeliver, 
+  'the-team': Page_TheTeam,
+  'contact': Page_Contact,
+  'creative-reviews': Page_CreativeReviews
+
+  // all other slugs go to - > 
+  // Page_TemplateSimple, 
+  // Page_TemplatePoject, 
+  // Page_TemplateCreativeReview according to their parent
+}
+
+ ;
+
+const current_pathname = window.location.pathname;
+console.log(current_pathname);
+let GET_MAIN_QUERY = null;
+
+
+// for loading all queries together - caching
+switch (current_pathname) {
+  case '/': // homepage
+    GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_HOME
+    {
+      ${__GraphQL_Queries.queries.pages}
+      ${__GraphQL_Queries.queries.menuItems}
+      ${__GraphQL_Queries.queries.homePage}
+    }`;
+    break;
+  case '/we-are-trusted/': // homepage
+    GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_WE_ARE_TRUSTED
+    {
+      ${__GraphQL_Queries.queries.pages}
+      ${__GraphQL_Queries.queries.menuItems}
+      ${__GraphQL_Queries.queries.weAreTrusted}
+    }`;
+    break;
+  case '/we-deliver/': // homepage
+    GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_WE_DELIVER
+    {
+      ${__GraphQL_Queries.queries.pages}
+      ${__GraphQL_Queries.queries.menuItems}
+      ${__GraphQL_Queries.queries.weDeliver}
+    }`;
+    break;
+  case '/the-team/': // homepage
+    GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_WE_TEAM
+    {
+      ${__GraphQL_Queries.queries.pages}
+      ${__GraphQL_Queries.queries.menuItems}
+      ${__GraphQL_Queries.queries.theTeam}
+    }`;
+    break;
+  case '/creative-reviews/': // homepage
+    GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_CREATIVE_REVIEWS
+    {
+      ${__GraphQL_Queries.queries.pages}
+      ${__GraphQL_Queries.queries.menuItems}
+      ${__GraphQL_Queries.queries.creativeReviews}
+    }`;
+    break;
+  default:
+    GET_MAIN_QUERY = gql`query GET_CLIENTS_CONTENT 
+    {
+      ${__GraphQL_Queries.queries.pages}
+      ${__GraphQL_Queries.queries.menuItems}
+    }`;
+    // add creative review inner and project inner template
+}
+
+
+
+
+
  
-if(window.location.href!='http://localhost:3000/' && window.location.href!='https://newsite2023.valuecom.gr/'){
-GET_SITEMAP_AND_MENU = gql`query GET_SITEMAP_AND_MENU 
-{
-  pages(first: 10000) {
-    nodes {
-      databaseId
-      title
-      content
-      slug
-      uri
-      featuredImage {
-              node {
-                  id
-                  sourceUrl
-              }
-      }
-      parent {
-        node {
-          databaseId
-          slug
-        }
-      }
-    }
-  }
-  menuItems(where: {location: PRIMARY})  {
-    nodes {
-      id
-      uri
-      label
-    }
-  }
-}
-`;
-}else{
-GET_SITEMAP_AND_MENU = gql`query GET_SITEMAP_AND_MENU_AND_HOME
-{
-  pages(first: 10000) {
-    nodes {
-      databaseId
-      title
-      content
-      slug
-      uri
-      featuredImage {
-              node {
-                  id
-                  sourceUrl
-              }
-      }
-      parent {
-        node {
-          databaseId
-          slug
-        }
-      }
-    }
-  }
-  menuItems(where: {location: PRIMARY})  {
-    nodes {
-      id
-      uri
-      label
-    }
-  }
-  
-  page( id: 7, idType: DATABASE_ID ) {
-    id
-    title
-    content
-    homepageExtras {
-        image1 {
-          sourceUrl
-          title
-          altText
-          targetUrl: description
-          mediaDetails {
-            height
-            width
-          }
-        }
-        image2 {
-            sourceUrl
-            title
-            altText
-            targetUrl: description
-            mediaDetails {
-                height
-                width
-            }
-        }
-        image3 {
-            sourceUrl
-            title
-            altText
-            targetUrl: description
-            mediaDetails {
-                height
-                width
-            }
-        }
-        image4 {
-            sourceUrl
-            title
-            altText
-            targetUrl: description
-            mediaDetails {
-                height
-                width
-            }
-        }
-        image5 {
-            sourceUrl
-            title
-            altText
-            targetUrl: description
-            mediaDetails {
-                height
-                width
-            }
-        }
-        image6 {
-            sourceUrl
-            title
-            altText
-            targetUrl: description
-            mediaDetails {
-                height
-                width
-            }
-        }
-        image7 {
-            sourceUrl
-            title
-            altText
-            targetUrl: description
-            mediaDetails {
-                height
-                width
-            }
-        }
-        image8 {
-            sourceUrl
-            title
-            altText
-            targetUrl: description
-            mediaDetails {
-                height
-                width
-            }
-        }
-        image9 {
-            sourceUrl
-            title
-            altText
-            targetUrl: description
-            mediaDetails {
-                height
-                width
-            }
-        }
-    }
-  }
-}
-`;
-}
+
+
 
 const  App = () => {
-
+  
+  // show footer a liitle bit late for LCP reasons
   useEffect(() => {
       setTimeout(function(){
         if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
     },800);
   });
 
-  const { data, loading, error } = useQuery(GET_SITEMAP_AND_MENU);
+  const { data, loading, error } = useQuery(GET_MAIN_QUERY);
 
   if (loading) { console.log('loading'); return }
   if (error) { console.log('error'); return }
@@ -219,15 +132,6 @@ const  App = () => {
 
   // console.log(siteNodes);
 
-  const PageComponentsMap_slug_component = {
-    'we-are-trusted': Page_WeAreTrusted, 
-    'we-deliver': Page_WeDeliver, 
-    'the-team': Page_TheTeam,
-    'contact': Page_Contact,
-    'creative-reviews': Page_CreativeReviews
-
-    // all other slugs go to - >Page_TemplateSimple see below in routing
-  }
 
   return (
     <HelmetProvider>
