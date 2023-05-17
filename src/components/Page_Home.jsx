@@ -17,7 +17,7 @@ const Page_Home = () => {
 
     const { data, loading, error } = useQuery(HOMEPAGE_CONTENT);
 
-    console.log(data);
+    // console.log(data);
 
     if (loading) { console.log('loading From Page_Home'); return }
     if (error) { console.log('error From Page_Home'); return }

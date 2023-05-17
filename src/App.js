@@ -44,7 +44,7 @@ const PageComponentsMap_slug_component = {
 
 let current_pathname = window.location.pathname;
 
-if (current_pathname.substr(current_pathname.length - 1)!="/"){
+if ( current_pathname.substr(current_pathname.length - 1) != "/" ){
   current_pathname+="/";
 }
 
@@ -137,20 +137,72 @@ const  App = () => {
 
   const { data, loading, error } = useQuery(GET_MAIN_QUERY);
 
-  if (loading) { console.log('loading'); return }
-  if (error) { console.log('error'); return }
-  if (!data) { console.log('!data'); return }
+  if (loading) { console.log('loading main query'); return }
+  if (error) { console.log('error main query '); return }
+  if (!data) { console.log('!data main query'); return }
 
  
   console.log(data);
-  // const menuNodes = data.menu.menuItems.nodes;
+
   const siteNodes = data.pages.nodes;
   const menuNodes = data.menuItems.nodes;
-  const currentPage = data.page;
 
-  // console.log(menuNodes);
+  // preload images
+  const imagesPreload = [];
 
-  // console.log(siteNodes);
+  // homepage
+  const homePageData = data.homePage;
+
+  const parser = new DOMParser();
+  const parsedDocument = parser.parseFromString(homePageData.content, "text/html");
+  const imgs = parsedDocument.getElementsByTagName("img");
+  for (const [key, value] of Object.entries(imgs)) {
+      imagesPreload.push(value.src.replace('-1024x373', ''));
+
+  }
+
+  imagesPreload.push(homePageData.homepageExtras.image1.sourceUrl);
+  imagesPreload.push(homePageData.homepageExtras.image2.sourceUrl);
+  imagesPreload.push(homePageData.homepageExtras.image3.sourceUrl);
+  imagesPreload.push(homePageData.homepageExtras.image4.sourceUrl);
+  imagesPreload.push(homePageData.homepageExtras.image5.sourceUrl);
+  imagesPreload.push(homePageData.homepageExtras.image6.sourceUrl);
+  imagesPreload.push(homePageData.homepageExtras.image7.sourceUrl);
+  imagesPreload.push(homePageData.homepageExtras.image8.sourceUrl);
+  imagesPreload.push(homePageData.homepageExtras.image9.sourceUrl);
+
+  // weAreTrusted
+  const weAreTrustedData = data.weAreTrusted;
+  imagesPreload.push(weAreTrustedData.featuredImage.node.sourceUrl);
+
+  // weDeliver
+  const weDeliverData = data.weDeliver;
+  weDeliverData.children.edges.forEach((element, ind) => {
+    imagesPreload.push(element.node.featuredImage.node.sourceUrl);
+  });
+
+  // theTeam
+  const theTeamrData = data.theTeam;
+  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile1.thumb.sourceUrl);
+  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile2.thumb.sourceUrl);
+  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile3.thumb.sourceUrl);
+  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile4.thumb.sourceUrl);
+  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile5.thumb.sourceUrl);
+  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile6.thumb.sourceUrl);
+  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile7.thumb.sourceUrl);
+  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile8.thumb.sourceUrl);
+  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile9.thumb.sourceUrl);
+
+
+
+  console.log("imagesPreload", imagesPreload );
+
+  imagesPreload.forEach((image) => {
+      const newImage = new Image();
+      newImage.src = image;
+      window[image] = newImage;
+  });
+
 
 
   return (

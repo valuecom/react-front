@@ -7,7 +7,7 @@ import { useQuery, gql } from "@apollo/client";
 
 
 const Page_WeDeliver = (props) => {
-    const nodeData = props.nodeData;
+    // const nodeData = props.nodeData;
 
     const GET_CONTENT_WE_DELIVER = gql`query GET_CONTENT_WE_DELIVER
     {
