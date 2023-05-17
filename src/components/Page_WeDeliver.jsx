@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
- 
+import __GraphQL_Queries from "./__GraphQL_Queries";
 
 import { useQuery, gql } from "@apollo/client";
 
@@ -9,34 +9,10 @@ import { useQuery, gql } from "@apollo/client";
 const Page_WeDeliver = (props) => {
     const nodeData = props.nodeData;
 
-    const GET_CONTENT_WE_DELIVER = gql`query GET_CONTENT_WE_DELIVER{
-        page( id: "${nodeData.slug}", idType: URI ) {
-            id
-            title
-            content
-            children(first: 100) {
-                edges {
-                    node {
-                        ...on Page {
-                            title
-                            uri
-                            featuredImage {
-                                node {
-                                    id
-                                    sourceUrl
-                                }
-                            }
-                            projectsExtras {
-                                client
-                                ourServices
-                                project
-                            }
-                        }
-                    }
-                }
-            }
-        }
-}`;
+    const GET_CONTENT_WE_DELIVER = gql`query GET_CONTENT_WE_DELIVER
+    {
+      ${__GraphQL_Queries.queries.weDeliver}
+    }`;
 
     const { data, loading, error } = useQuery(GET_CONTENT_WE_DELIVER);
 
@@ -44,7 +20,7 @@ const Page_WeDeliver = (props) => {
     if (error) { console.log('error From Page_WeDeliver'); return }
     if (!data) { console.log('!data From Page_WeDeliver'); return }
 
-    const nodeMoreData = data.page;
+    const nodeMoreData = data.weDeliver;
 
     const parser = new DOMParser();
     const parsedDocument = parser.parseFromString(nodeMoreData.content, "text/html");

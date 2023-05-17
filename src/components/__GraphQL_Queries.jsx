@@ -2,7 +2,7 @@ const homePage_SLUG = "homepage";
 const weAreTrusted_SLUG = "we-are-trusted";
 const weDeliver_SLUG = "we-deliver";
 const theTeam_SLUG = "the-team";
-const creativeReview_SLUG = "creative-review";
+const creativeReview_SLUG = "creative-reviews";
 
 const __GraphQL_Queries = {
     queries : {
@@ -37,7 +37,7 @@ const __GraphQL_Queries = {
                   }
                 }
             }`,
-        homePage:`page( id: "${homePage_SLUG}", idType: URI ) 
+        homePage:`homePage: page( id: "${homePage_SLUG}", idType: URI ) 
             {
               id
               title
@@ -135,7 +135,7 @@ const __GraphQL_Queries = {
                   }
               }
             }`,
-            weAreTrusted:`page( id: "${weAreTrusted_SLUG}", idType: URI ) 
+            weAreTrusted:`weAreTrusted:page( id: "${weAreTrusted_SLUG}", idType: URI ) 
             {
                 id
                 title
@@ -150,7 +150,7 @@ const __GraphQL_Queries = {
                     }
                 }
             }`,
-            weDeliver:`page( id: "${weDeliver_SLUG}", idType: URI ) 
+            weDeliver:`weDeliver:page( id: "${weDeliver_SLUG}", idType: URI ) 
             {
                 id
                 title
@@ -177,7 +177,7 @@ const __GraphQL_Queries = {
                     }
                 }
             }`,
-            theTeam:`page( id: "${theTeam_SLUG}", idType: URI ) {
+            theTeam:`theTeam:page( id: "${theTeam_SLUG}", idType: URI ) {
               id
               title
               content
@@ -271,7 +271,7 @@ const __GraphQL_Queries = {
                 }
               }
             }`,
-            creativeReview:`page( id: "${creativeReview_SLUG}", idType: URI ) 
+            creativeReviews:`creativeReviews:page( id: "${creativeReview_SLUG}", idType: URI ) 
             {
               id
               title

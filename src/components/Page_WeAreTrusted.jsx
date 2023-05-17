@@ -4,25 +4,15 @@ import Widget_SimpleTitle from "./Widget_SimpleTitle";
 import Widget_SimpleHeroImage from "./Widget_SimpleHeroImage";
 import Widget_SimpleContent from "./Widget_SimpleContent";
 
+import __GraphQL_Queries from "./__GraphQL_Queries";
+
 const Page_WeAreTrusted = (props) => {
 
     const nodeData = props.nodeData;
-    // console.log(nodeData);
-    const GET_CLIENTS_CONTENT = gql`query GET_CLIENTS_CONTENT{
-        page( id: "${nodeData.slug}", idType: URI ) {
-            id
-            title
-            content
-            weAreTrustedExtras{
-                images
-            }
-            featuredImage {
-                    node {
-                        id
-                        sourceUrl
-                    }
-            }
-        }
+
+    const GET_CLIENTS_CONTENT = gql`query GET_CLIENTS_CONTENT
+    {
+      ${__GraphQL_Queries.queries.weAreTrusted}
     }`;
 
     const { data, loading, error } = useQuery(GET_CLIENTS_CONTENT);
@@ -31,7 +21,7 @@ const Page_WeAreTrusted = (props) => {
     if (error) { console.log('error From Page_WeAreTrusted'); return }
     if (!data) { console.log('!data From Page_WeAreTrusted'); return }
   
-    const nodeMoreData = data.page;
+    const nodeMoreData = data.weAreTrusted;
     // const content = parse(nodeMoreData.content);
     // console.log(content);
 

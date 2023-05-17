@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
- 
+import __GraphQL_Queries from "./__GraphQL_Queries";
 
 import {
     Widget_HomeSlider
@@ -10,108 +10,10 @@ import { useQuery, gql } from "@apollo/client";
 
 const Page_Home = () => {
 
-   
-    // console.log(nodeData);
-    const HOMEPAGE_CONTENT = gql`query HOMEPAGE_CONTENT {
-        page( id: "homepage", idType: URI ) {
-                id
-                title
-                content
-                homepageExtras {
-                    image1 {
-                      sourceUrl
-                      title
-                      altText
-                      targetUrl: description
-                      mediaDetails {
-                        height
-                        width
-                      }
-                    }
-                    image2 {
-                        sourceUrl
-                        title
-                        altText
-                        targetUrl: description
-                        mediaDetails {
-                            height
-                            width
-                        }
-                    }
-                    image3 {
-                        sourceUrl
-                        title
-                        altText
-                        targetUrl: description
-                        mediaDetails {
-                            height
-                            width
-                        }
-                    }
-                    image4 {
-                        sourceUrl
-                        title
-                        altText
-                        targetUrl: description
-                        mediaDetails {
-                            height
-                            width
-                        }
-                    }
-                    image5 {
-                        sourceUrl
-                        title
-                        altText
-                        targetUrl: description
-                        mediaDetails {
-                            height
-                            width
-                        }
-                    }
-                    image6 {
-                        sourceUrl
-                        title
-                        altText
-                        targetUrl: description
-                        mediaDetails {
-                            height
-                            width
-                        }
-                    }
-                    image7 {
-                        sourceUrl
-                        title
-                        altText
-                        targetUrl: description
-                        mediaDetails {
-                            height
-                            width
-                        }
-                    }
-                    image8 {
-                        sourceUrl
-                        title
-                        altText
-                        targetUrl: description
-                        mediaDetails {
-                            height
-                            width
-                        }
-                    }
-                    image9 {
-                        sourceUrl
-                        title
-                        altText
-                        targetUrl: description
-                        mediaDetails {
-                            height
-                            width
-                        }
-                    }
-                }
-            }
-        }
-    `;
+    const HOMEPAGE_CONTENT = gql`query HOMEPAGE_CONTENT
+    {
+      ${__GraphQL_Queries.queries.homePage}
+    }`;
 
     const { data, loading, error } = useQuery(HOMEPAGE_CONTENT);
 
@@ -121,10 +23,8 @@ const Page_Home = () => {
     if (error) { console.log('error From Page_Home'); return }
     if (!data) { console.log('!data From Page_Home'); return }
 
-    const nodeMoreData = data.page;
+    const nodeMoreData = data.homePage;
     const home_gallery_html = nodeMoreData.content;
-
-
 
     const parser = new DOMParser();
     const parsedDocument = parser.parseFromString(home_gallery_html, "text/html");
@@ -218,9 +118,8 @@ const Page_Home = () => {
                     </div>
                 </div>
             </section>
-   
         </main>
     )
 }
- 
+
 export default Page_Home;

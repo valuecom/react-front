@@ -42,67 +42,87 @@ const PageComponentsMap_slug_component = {
 
  ;
 
-const current_pathname = window.location.pathname;
+let current_pathname = window.location.pathname;
+
+if (current_pathname.substr(current_pathname.length - 1)!="/"){
+  current_pathname+="/";
+}
+
 console.log(current_pathname);
 let GET_MAIN_QUERY = null;
 
 
-// for loading all queries together - caching
-switch (current_pathname) {
-  case '/': // homepage
-    GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_HOME
-    {
-      ${__GraphQL_Queries.queries.pages}
-      ${__GraphQL_Queries.queries.menuItems}
-      ${__GraphQL_Queries.queries.homePage}
-    }`;
-    break;
-  case '/we-are-trusted/': // homepage
-    GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_WE_ARE_TRUSTED
-    {
-      ${__GraphQL_Queries.queries.pages}
-      ${__GraphQL_Queries.queries.menuItems}
-      ${__GraphQL_Queries.queries.weAreTrusted}
-    }`;
-    break;
-  case '/we-deliver/': // homepage
-    GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_WE_DELIVER
-    {
-      ${__GraphQL_Queries.queries.pages}
-      ${__GraphQL_Queries.queries.menuItems}
-      ${__GraphQL_Queries.queries.weDeliver}
-    }`;
-    break;
-  case '/the-team/': // homepage
-    GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_WE_TEAM
-    {
-      ${__GraphQL_Queries.queries.pages}
-      ${__GraphQL_Queries.queries.menuItems}
-      ${__GraphQL_Queries.queries.theTeam}
-    }`;
-    break;
-  case '/creative-reviews/': // homepage
-    GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_CREATIVE_REVIEWS
-    {
-      ${__GraphQL_Queries.queries.pages}
-      ${__GraphQL_Queries.queries.menuItems}
-      ${__GraphQL_Queries.queries.creativeReviews}
-    }`;
-    break;
-  default:
-    GET_MAIN_QUERY = gql`query GET_CLIENTS_CONTENT 
-    {
-      ${__GraphQL_Queries.queries.pages}
-      ${__GraphQL_Queries.queries.menuItems}
-    }`;
-    // add creative review inner and project inner template
+const caching_type = 'all site';
+// const caching_type = 'main queries';
+// const caching_type = 'none';
+
+if (caching_type == 'all site'){
+      // caching all site
+      GET_MAIN_QUERY = gql`query GET_ALL_PAGES
+      {
+        ${__GraphQL_Queries.queries.pages}
+        ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.homePage}
+        ${__GraphQL_Queries.queries.weAreTrusted}
+        ${__GraphQL_Queries.queries.weDeliver}
+        ${__GraphQL_Queries.queries.theTeam}
+        ${__GraphQL_Queries.queries.creativeReviews}
+      }`;
+
+}else if (caching_type == 'main queries') {
+  // caching three main queries
+  switch (current_pathname) {
+    case '/': // homepage
+      GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_HOME
+      {
+        ${__GraphQL_Queries.queries.pages}
+        ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.homePage}
+      }`;
+      break;
+    case '/we-are-trusted/': // homepage
+      GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_WE_ARE_TRUSTED
+      {
+        ${__GraphQL_Queries.queries.pages}
+        ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.weAreTrusted}
+      }`;
+      break;
+    case '/we-deliver/': // homepage
+      GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_WE_DELIVER
+      {
+        ${__GraphQL_Queries.queries.pages}
+        ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.weDeliver}
+      }`;
+      break;
+    case '/the-team/': // homepage
+      GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_WE_TEAM
+      {
+        ${__GraphQL_Queries.queries.pages}
+        ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.theTeam}
+      }`;
+      break;
+    case '/creative-reviews/': // creative-reviews
+      GET_MAIN_QUERY = gql`query GET_SITEMAP_AND_MENU_AND_CREATIVE_REVIEWS
+      {
+        ${__GraphQL_Queries.queries.pages}
+        ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.creativeReviews}
+      }`;
+      break;
+    default:
+      GET_MAIN_QUERY = gql`query GET_CLIENTS_CONTENT 
+      {
+        ${__GraphQL_Queries.queries.pages}
+        ${__GraphQL_Queries.queries.menuItems}
+      }`;
+      // add creative review inner and project inner template
+  }
 }
 
 
-
-
-
- 
 
 
 
@@ -148,8 +168,8 @@ const  App = () => {
                 <></>
               }
                 <Routes >
-                  {/* <Route element={<_AnimationLayout />}  > */}
-                  <Route>
+                  <Route element={<_AnimationLayout />}  >
+                  {/* <Route> */}
                     <Route exact path="/" element={<Page_Home /> } />
                       {siteNodes.map((siteNode, index) => {
                           if (siteNode.slug!='homepage'){

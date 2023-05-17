@@ -1,15 +1,5 @@
 import React from "react";
-import{
-    manos,
-    virna,
-    daskalopoulos,
-    rita,
-    rania,
-    mitsi,
-    takis,
-    athina,
-    aggelos
-}  from "../assets";
+import __GraphQL_Queries from "./__GraphQL_Queries";
 import Widget_SimpleTitle from "./Widget_SimpleTitle";
 import { useQuery, gql } from "@apollo/client";
 
@@ -20,123 +10,29 @@ const Page_TheTeam = (props) => {
     const nodeData = props.nodeData;
 
     const GET_FACES = gql`query GET_FACES
-{
-    page(id: "${nodeData.slug}", idType: URI) {
-      id
-      title
-      content
-      featuredImage {
-        node {
-          id
-          sourceUrl
-        }
-      }
-      weHaveFacesExtras {
-        tile1 {
-          fieldGroupName
-          subTitle
-          text
-          title
-          thumb {
-            sourceUrl
-          }
-        }
-        tile2 {
-          fieldGroupName
-          subTitle
-          text
-          title
-          thumb {
-            sourceUrl
-          }
-        }
-        tile3 {
-          fieldGroupName
-          subTitle
-          text
-          title
-          thumb {
-            sourceUrl
-          }
-        }
-        tile4 {
-          fieldGroupName
-          subTitle
-          text
-          title
-          thumb {
-            sourceUrl
-          }
-        }
-        tile5 {
-          fieldGroupName
-          subTitle
-          text
-          title
-          thumb {
-            sourceUrl
-          }
-        }
-        tile6 {
-          fieldGroupName
-          subTitle
-          text
-          title
-          thumb {
-            sourceUrl
-          }
-        }
-        tile7 {
-          fieldGroupName
-          subTitle
-          text
-          title
-          thumb {
-            sourceUrl
-          }
-        }
-        tile8 {
-          fieldGroupName
-          subTitle
-          text
-          title
-          thumb {
-            sourceUrl
-          }
-        }
-        tile9 {
-          fieldGroupName
-          subTitle
-          text
-          title
-          thumb {
-            sourceUrl
-          }
-        }
-      }
+    {
+      ${__GraphQL_Queries.queries.theTeam}
+    }`;
+
+    const { data, loading, error } = useQuery(GET_FACES);
+
+    if (loading) { console.log('loading From Page_TheTeam'); return }
+    if (error) { console.log('error From Page_TheTeam'); return }
+    if (!data) { console.log('!data From Page_TheTeam'); return }
+
+    const nodeMoreData = data.theTeam;
+
+    const card_array = [];
+    for (const [key, value] of Object.entries(nodeMoreData.weHaveFacesExtras)) {
+        // console.log(key);
+        // console.log(value);
+        if (value!= "Page_Wehavefacesextras")
+          card_array[card_array.length] = value;
     }
-  }
-`;
-
-const { data, loading, error } = useQuery(GET_FACES);
-
-if (loading) { console.log('loading From Page_TheTeam'); return }
-if (error) { console.log('error From Page_TheTeam'); return }
-if (!data) { console.log('!data From Page_TheTeam'); return }
-
-const nodeMoreData = data.page;
-
-const card_array = [];
-for (const [key, value] of Object.entries(nodeMoreData.weHaveFacesExtras)) {
-    // console.log(key);
-    // console.log(value);
-    if (value!= "Page_Wehavefacesextras")
-      card_array[card_array.length] = value;
-}
 
 
 
-console.log(card_array);
+    console.log(card_array);
 
     return (  
         <>

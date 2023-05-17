@@ -1,4 +1,5 @@
 import React from "react";
+import __GraphQL_Queries from "./__GraphQL_Queries";
 import { Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import{
@@ -9,37 +10,18 @@ import{
 const Page_CreativeReviews = (props) => {
     const nodeData = props.nodeData;
 
-    const GET_CONTENT_CREATIVE_REVIEWS = gql`query GET_CONTENT_CREATIVE_REVIEWS {
-        page( id: "${nodeData.slug}", idType: URI ) {
-            id
-            title
-            content
-            children(first: 100) {
-                edges {
-                    node {
-                        ...on Page {
-                            title
-                            uri
-                            featuredImage {
-                                node {
-                                    id
-                                    sourceUrl
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    const GET_CONTENT_CREATIVE_REVIEWS = gql`query GET_CONTENT_CREATIVE_REVIEWS
+    {
+      ${__GraphQL_Queries.queries.creativeReviews}
     }`;
-
+    
     const { data, loading, error } = useQuery(GET_CONTENT_CREATIVE_REVIEWS);
 
     if (loading) { console.log('loading From Page_CreativeReviews'); return }
     if (error) { console.log('error From Page_CreativeReviews'); return }
     if (!data) { console.log('!data From Page_CreativeReviews'); return }
 
-    const nodeMoreData = data.page;
+    const nodeMoreData = data.creativeReviews;
 
     const parser = new DOMParser();
     const parsedDocument = parser.parseFromString(nodeMoreData.content, "text/html");
