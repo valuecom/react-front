@@ -63,7 +63,7 @@ const Page_Home = () => {
                                     <figure className="figure">
                                         <Link to={img_arr_inner[index]._targetUrl} >
                                             <div className="figure-img-wrap">
-                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height} className="figure-img img-fluid" loading="lazy" alt={img_arr_inner[index].altText} />
+                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height} className="figure-img img-fluid" alt={img_arr_inner[index].altText} />
                                             </div>
                                             <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
                                         </Link>
@@ -85,7 +85,7 @@ const Page_Home = () => {
                                     <figure className="figure">
                                         <Link to={img_arr_inner[index]._targetUrl} >
                                             <div className="figure-img-wrap">
-                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height}  className="figure-img img-fluid" loading="lazy" alt="..." />
+                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height}  className="figure-img img-fluid" alt="..." />
                                             </div>
                                             <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
                                         </Link>
