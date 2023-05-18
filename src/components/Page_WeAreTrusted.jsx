@@ -41,7 +41,7 @@ const Page_WeAreTrusted = (props) => {
     return (
         <>
             <Widget_SimpleTitle widgetTitle={nodeData.title} />
-            <Widget_SimpleHeroImage sourceUrl={nodeMoreData.featuredImage.node.sourceUrl} />
+            <Widget_SimpleHeroImage imgObj={nodeMoreData.featuredImage.node} />
             <Widget_SimpleContent contentHTML={nodeMoreData.content} />
             <section>
                 <div className="container-xxl">

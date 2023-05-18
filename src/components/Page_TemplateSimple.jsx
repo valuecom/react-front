@@ -40,7 +40,7 @@ const Page_WeBelieve = (props) => {
             }
             {
                 nodeData.featuredImage!==null ? 
-                    <Widget_SimpleHeroImage sourceUrl={nodeData.featuredImage.node.sourceUrl} /> 
+                    <Widget_SimpleHeroImage imgObj={nodeData.featuredImage.node} /> 
                     :
                     ''
             }
