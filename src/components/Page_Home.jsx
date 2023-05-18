@@ -29,13 +29,16 @@ const Page_Home = () => {
     const parser = new DOMParser();
     const parsedDocument = parser.parseFromString(home_gallery_html, "text/html");
     const imgs = parsedDocument.getElementsByTagName("img");
-    const img_arr = [];
-    for (const [key, value] of Object.entries(imgs)) {
-        img_arr[key] = value.src.replace('-1024x373', '');
-    }
+    // const img_arr = {};
+    // const src_set = [];
+    // for (const [key, value] of Object.entries(imgs)) {
+    //     // img_arr[key] = value.src.replace('-1024x373', '');
+    //     img_arr[key] = value;
+    //     // src_set[key].srcset = value.srcset;
+    // }
 
     const homepageExtrasArray = nodeMoreData.homepageExtras;
-    // console.log(homepageExtrasArray);
+    // console.log(img_arr);
 
 
     const img_arr_inner = [];
@@ -51,7 +54,7 @@ const Page_Home = () => {
 
     return (
         <main className="page">
-            <Widget_HomeSlider images = {img_arr} />
+            <Widget_HomeSlider images = {imgs} />
             <section className="py-3">
                 <div className="container-xxl">
                     <div className="row">
