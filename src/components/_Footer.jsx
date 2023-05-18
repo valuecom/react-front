@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const _Footer = () => {
 
     return (
-        <footer id="footer" className=" py-5 hidden">
+        <footer id="footer" className=" py-5 mt-auto hidden">
             <div className="container-xxl d-flex justify-content-end">
                 <ul className="footer-menu m-0 p-0">
                     <li className="">
