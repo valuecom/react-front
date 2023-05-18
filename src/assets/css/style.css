@@ -272,3 +272,33 @@ input[type=text],input[type=email], select, textarea {
     .w-trusted{
         aspect-ratio: 212/141;
     }
+
+
+@media (max-width: 991px) {
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    .navbar.navbar-expand-lg {
+        position: inherit;
+    }
+
+    div#navbarNav {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        z-index: 9999999999999999999;
+        background: white;
+        border-bottom: 1px solid #000;
+        border-top: 1px solid #000;
+    }
+
+    ul.navbar-nav {
+        padding: 10px;
+    }
+
+    ul.navbar-nav li.nav-item {
+        margin: 0 5px;
+        padding: 0 10px;
+    }
+}

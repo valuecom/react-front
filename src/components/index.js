@@ -19,7 +19,6 @@ import Widget_SimpleContent from "./Widget_SimpleContent";
 import Widget_SimpleTitle from "./Widget_SimpleTitle";
 import Tool_EditPage from "./Tool_EditPage";
 
-import __GraphQL_Queries from "./__GraphQL_Queries";
 import _AnimationLayout from "./_AnimationLayout";
 
 export { 

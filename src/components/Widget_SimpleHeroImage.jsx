@@ -3,7 +3,7 @@ const Widget_SimpleHeroImage = (props) => {
     return (  
         <section>
             <div className="container-xxl d-flex justify-content-center pb-5">
-                <img src={imgUrl} width="1296" height="384" />
+                <img src={imgUrl} width="1296" height="384" alt="..."/>
             </div>
         </section>
     );
