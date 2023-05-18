@@ -213,11 +213,14 @@ const  App = () => {
 
   // console.log("imagesPreload", imagesPreload );
 
-  imagesPreload.forEach((image) => {
-      const newImage = new Image();
-      newImage.src = image;
-      window[image] = newImage;
-  });
+  const preloadImage = false;
+  if (preloadImage){
+    imagesPreload.forEach((image) => {
+        const newImage = new Image();
+        newImage.src = image;
+        window[image] = newImage;
+    });
+  }
 
 
 
