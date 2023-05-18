@@ -45,7 +45,7 @@ const Page_WeDeliver = (props) => {
                 <div className="container-xxl">
                     <div className="page-title-wrap my-5 px-5">
                         <h1 className="page-title fs-1 fw-normal text-center text-lg-start">{nodeMoreData.title}</h1>
-                        <p className="mt-5 text-center text-lg-start">{content_text[0].innerText}</p>
+                        <p className="mt-5 text-center text-lg-start">{content_text[0]!=null?content_text[0].innerText:''}</p>
                     </div>
                 </div>
             </section>

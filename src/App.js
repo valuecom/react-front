@@ -56,7 +56,7 @@ const caching_type = 'all site';
 // const caching_type = 'main queries';
 // const caching_type = 'none';
 
-if (caching_type == 'main queries'){
+if (caching_type == 'all site'){
       // caching all site
       GET_MAIN_QUERY = gql`query GET_ALL_PAGES
       {
