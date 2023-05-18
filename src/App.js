@@ -25,7 +25,7 @@ import {
 
 
 import 'bootstrap/dist/css/bootstrap.css';
-
+import './assets/css/style.css';
 
 const PageComponentsMap_slug_component = {
   'we-are-trusted': Page_WeAreTrusted, 
@@ -48,7 +48,7 @@ if ( current_pathname.substr(current_pathname.length - 1) != "/" ){
   current_pathname+="/";
 }
 
-console.log(current_pathname);
+// console.log(current_pathname);
 let GET_MAIN_QUERY = null;
 
 
@@ -128,11 +128,16 @@ if (caching_type == 'all site'){
 
 const  App = () => {
   
+    // preload images
+    let imagesPreload = [];
+    
   // show footer a liitle bit late for LCP reasons
   useEffect(() => {
       setTimeout(function(){
         if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
-    },800);
+        if (document.getElementById('header-nav'))  document.getElementById('header-nav').classList.remove('hidden');
+
+      },400);
   });
 
   const { data, loading, error } = useQuery(GET_MAIN_QUERY);
@@ -142,13 +147,12 @@ const  App = () => {
   if (!data) { console.log('!data main query'); return }
 
  
-  console.log(data);
+  // console.log(data);
 
   const siteNodes = data.pages.nodes;
   const menuNodes = data.menuItems.nodes;
 
-  // preload images
-  const imagesPreload = [];
+
 
   // homepage
   const homePageData = data.homePage;
@@ -164,12 +168,12 @@ const  App = () => {
   imagesPreload.push(homePageData.homepageExtras.image1.sourceUrl);
   imagesPreload.push(homePageData.homepageExtras.image2.sourceUrl);
   imagesPreload.push(homePageData.homepageExtras.image3.sourceUrl);
-  imagesPreload.push(homePageData.homepageExtras.image4.sourceUrl);
-  imagesPreload.push(homePageData.homepageExtras.image5.sourceUrl);
-  imagesPreload.push(homePageData.homepageExtras.image6.sourceUrl);
-  imagesPreload.push(homePageData.homepageExtras.image7.sourceUrl);
-  imagesPreload.push(homePageData.homepageExtras.image8.sourceUrl);
-  imagesPreload.push(homePageData.homepageExtras.image9.sourceUrl);
+  // imagesPreload.push(homePageData.homepageExtras.image4.sourceUrl);
+  // imagesPreload.push(homePageData.homepageExtras.image5.sourceUrl);
+  // imagesPreload.push(homePageData.homepageExtras.image6.sourceUrl);
+  // imagesPreload.push(homePageData.homepageExtras.image7.sourceUrl);
+  // imagesPreload.push(homePageData.homepageExtras.image8.sourceUrl);
+  // imagesPreload.push(homePageData.homepageExtras.image9.sourceUrl);
 
   // weAreTrusted
   const weAreTrustedData = data.weAreTrusted;
@@ -178,24 +182,36 @@ const  App = () => {
   // weDeliver
   const weDeliverData = data.weDeliver;
   weDeliverData.children.edges.forEach((element, ind) => {
-    imagesPreload.push(element.node.featuredImage.node.sourceUrl);
+    if (ind<5)
+      imagesPreload.push(element.node.featuredImage.node.sourceUrl);
   });
 
   // theTeam
-  const theTeamrData = data.theTeam;
-  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile1.thumb.sourceUrl);
-  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile2.thumb.sourceUrl);
-  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile3.thumb.sourceUrl);
-  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile4.thumb.sourceUrl);
-  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile5.thumb.sourceUrl);
-  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile6.thumb.sourceUrl);
-  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile7.thumb.sourceUrl);
-  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile8.thumb.sourceUrl);
-  imagesPreload.push(theTeamrData.weHaveFacesExtras.tile9.thumb.sourceUrl);
+  const theTeamData = data.theTeam;
+  imagesPreload.push(theTeamData.weHaveFacesExtras.tile1.thumb.sourceUrl);
+  imagesPreload.push(theTeamData.weHaveFacesExtras.tile2.thumb.sourceUrl);
+  imagesPreload.push(theTeamData.weHaveFacesExtras.tile3.thumb.sourceUrl);
+  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile4.thumb.sourceUrl);
+  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile5.thumb.sourceUrl);
+  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile6.thumb.sourceUrl);
+  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile7.thumb.sourceUrl);
+  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile8.thumb.sourceUrl);
+  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile9.thumb.sourceUrl);
 
+  // pages
+  const otherPages = data.pages;
+  // console.log(otherPages);
+  otherPages.nodes.forEach((element, ind) => {
+    if (element.featuredImage){
+      if (
+        ind == 14 ||  // we believe 
+        ind == 16     // we team
+      ) 
+        imagesPreload.push(element.featuredImage.node.sourceUrl);
+    }
+  });
 
-
-  console.log("imagesPreload", imagesPreload );
+  // console.log("imagesPreload", imagesPreload );
 
   imagesPreload.forEach((image) => {
       const newImage = new Image();

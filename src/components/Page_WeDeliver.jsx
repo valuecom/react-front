@@ -58,7 +58,7 @@ const Page_WeDeliver = (props) => {
                                     <figure className="figure mb-5">
                                         <Link to={childPage[0].uri}>
                                             <div className="figure-img-wrap">
-                                                <img src={childPage[0].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." />
+                                                <img src={childPage[0].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." width="636" height="417" />
                                             </div>
                                             <figcaption className="figure-caption fw-medium">{childPage[0].projectsExtras.client}</figcaption>
                                             <figcaption className="figure-caption fw-bold p-0">{childPage[0].title}</figcaption>
@@ -72,7 +72,7 @@ const Page_WeDeliver = (props) => {
                                             <figure className="figure mb-5">
                                                 <Link to={childPage[1].uri}>
                                                     <div className="figure-img-wrap">
-                                                        <img src={childPage[1].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." loading="lazy" />
+                                                        <img src={childPage[1].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..."  width="636" height="417" />
                                                     </div>
                                                     <figcaption className="figure-caption fw-medium">{childPage[1].projectsExtras.client}</figcaption>
                                                     <figcaption className="figure-caption fw-bold p-0">{childPage[1].title}</figcaption>

@@ -23,7 +23,7 @@ const _Header = (props) =>  {
                     </div>
                     <div className="col-6 col-lg-10">
                         <nav className="navbar navbar-expand-lg justify-content-end">
-                            <div className="">
+                            <div className="hidden" id="header-nav">
                                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                     <span className="navbar-toggler-icon"></span>
                                 </button>

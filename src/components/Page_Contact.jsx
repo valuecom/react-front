@@ -32,12 +32,24 @@ const Page_Contact = (props) => {
     const handleLoadedScript = _ => {
         console.log('script google recaptcha loaded!');
     }
-
+ 
+    
     useEffect( () => {
+      
+            
+        
         const script = document.createElement('script');
         script.src = "https://www.google.com/recaptcha/api.js?render=" + reCAPTCHA_site_key;
+        script.id = "g-rec";
         script.addEventListener("load", handleLoadedScript)
         document.body.appendChild(script);
+
+        // clean up after unload
+        return () => {
+            document.getElementById('g-rec').remove();
+            if (document.getElementsByClassName('grecaptcha-badge')[0]) 
+                document.getElementsByClassName('grecaptcha-badge')[0].remove();
+        }
     });
 
     const handleContactSubmit = (e) => {

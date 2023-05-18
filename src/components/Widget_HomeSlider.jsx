@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 
+import "../assets/slick/slick.css";
+import "../assets/slick/slick-theme.css";
+
 // class Widget_HomeSlider extends Component {
 const Widget_HomeSlider = (props) => {
  
