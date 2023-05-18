@@ -236,8 +236,8 @@ const  App = () => {
                 <></>
               }
                 <Routes >
-                  <Route element={<_AnimationLayout />}  >
-                  {/* <Route> */}
+                  {/* <Route element={<_AnimationLayout />}  > */}
+                  <Route>
                     <Route exact path="/" element={<Page_Home /> } />
                       {siteNodes.map((siteNode, index) => {
                           if (siteNode.slug!='homepage'){
