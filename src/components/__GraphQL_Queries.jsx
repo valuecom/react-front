@@ -158,6 +158,17 @@ const __GraphQL_Queries = {
                     node {
                         id
                         sourceUrl
+                        mediaDetails {
+                          sizes {
+                            file
+                            fileSize
+                            height
+                            mimeType
+                            name
+                            sourceUrl
+                            width
+                          }
+                        }
                     }
                 }
             }`,
