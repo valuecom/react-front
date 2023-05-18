@@ -182,7 +182,7 @@ const  App = () => {
   // weDeliver
   const weDeliverData = data.weDeliver;
   weDeliverData.children.edges.forEach((element, ind) => {
-    if (ind<5)
+    if (ind<2)
       imagesPreload.push(element.node.featuredImage.node.sourceUrl);
   });
 
