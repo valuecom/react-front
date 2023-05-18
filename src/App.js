@@ -133,11 +133,11 @@ const  App = () => {
     
   // show footer a liitle bit late for LCP reasons
   useEffect(() => {
-      setTimeout(function(){
-        if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
-        if (document.getElementById('header-nav'))  document.getElementById('header-nav').classList.remove('hidden');
+      // setTimeout(function(){
+      //   if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
+      //   if (document.getElementById('header-nav'))  document.getElementById('header-nav').classList.remove('hidden');
 
-      },400);
+      // },400);
   });
 
   const { data, loading, error } = useQuery(GET_MAIN_QUERY);
