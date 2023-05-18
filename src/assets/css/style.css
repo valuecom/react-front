@@ -274,31 +274,46 @@ input[type=text],input[type=email], select, textarea {
     }
 
 
-@media (max-width: 991px) {
-    .navbar-toggler:focus {
-        box-shadow: none;
-    }
+    @media (max-width: 991px) {
+        header {
+            min-height: 75px;
+        }
 
-    .navbar.navbar-expand-lg {
-        position: inherit;
-    }
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
 
-    div#navbarNav {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        z-index: 9999999999999999999;
-        background: white;
-        border-bottom: 1px solid #000;
-        border-top: 1px solid #000;
-    }
+        .navbar-toggler {
+            border: none;
+        }
 
-    ul.navbar-nav {
-        padding: 10px;
-    }
+        .navbar.navbar-expand-lg {
+            position: inherit;
+        }
 
-    ul.navbar-nav li.nav-item {
-        margin: 0 5px;
-        padding: 0 10px;
+        div#navbarNav.collapse {
+            transition: 1s;
+            transform: translateX(105%);
+        }
+
+        div#navbarNav {
+            background: #ffffff;
+            left: 0px;
+            transform: translateX(0%);
+            position: absolute;
+            width: 100%;
+            transition: 1s;
+            height: 100%;
+            margin-top: 10px;
+            z-index: 999;
+        }
+
+        ul.navbar-nav {
+            padding: 15px;
+        }
+
+        ul.navbar-nav li.nav-item {
+            margin: 0 5px;
+            padding: 0 10px;
+        }
     }
-}
