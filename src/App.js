@@ -135,7 +135,7 @@ const  App = () => {
   useEffect(() => {
       setTimeout(function(){
         if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
-        if (document.getElementById('header-nav'))  document.getElementById('header-nav').classList.remove('hidden');
+        // if (document.getElementById('header-nav'))  document.getElementById('header-nav').classList.remove('hidden');
 
       },400);
   });
