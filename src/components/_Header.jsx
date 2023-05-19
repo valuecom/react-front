@@ -11,6 +11,8 @@ const _Header = (props) =>  {
 
     const handleNavClick = () => {
         document.getElementById('navbarNav').classList.toggle("collapse");
+        document.getElementById('navbar-toggler').classList.toggle("open");
+        
     }
 
     return (
@@ -27,7 +29,7 @@ const _Header = (props) =>  {
                     <div className="col-6 col-lg-10">
                         <nav className="navbar navbar-expand-lg justify-content-end">
                             <div className="hidden2" id="header-nav">
-                                <button onClick={handleNavClick} className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <button onClick={handleNavClick} id="navbar-toggler" className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                     <span className="navbar-toggler-icon"></span>
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarNav">

@@ -17,6 +17,7 @@ body {
     line-height: 1.5;
     min-height: 100vh;
     overflow-y:scroll;
+    overflow-x:hidden;
 }
 
 a {
@@ -274,46 +275,77 @@ input[type=text],input[type=email], select, textarea {
     }
 
 
-    @media (max-width: 991px) {
-        header {
-            min-height: 75px;
-        }
+        @media (max-width: 991px) {
+            header {
+                min-height: 75px;
+            }
+    
+            .navbar-toggler:focus {
+                box-shadow: none;
+            }
+    
+            .navbar-toggler {
+                border: none;
+            }
+    
+            .navbar.navbar-expand-lg {
+                position: inherit;
+            }
+    
+            div#navbarNav.collapse {
+                transform: translateX(105%);
+            }
+    
+            div#navbarNav {
+                display: block;
+                background: #ffffff;
+                left: 0px;
+                transform: translateX(0%);
+                position: absolute;
+                width: 100%;
+                transition: 0.6s;
+                height: 100%;
+                margin-top: 10px;
+                z-index: 999;
+            }
+    
+            ul.navbar-nav {
+                padding: 15px;
+            }
+    
+            ul.navbar-nav li.nav-item {
+                margin: 0 5px;
+                padding: 0 10px;
+            }
+    
+            span.navbar-toggler-icon {
+                background-image:none;
+                display: flex;
+                justify-content: space-around;
+                flex-direction: column;
+            }
+    
+            span.navbar-toggler-icon:before,
+            span.navbar-toggler-icon:after {
+                content: " ";
+                width: 30px;
+                height: 2px;
+                display: block;
+                background: #222;
+                margin: 5px 0;
+                transition: 0.6s;
+                transform: translateY(0px) rotate(0deg);
+            }
 
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
 
-        .navbar-toggler {
-            border: none;
-        }
+            
+            button.open span.navbar-toggler-icon:before {
+                transform: translateY(8px) rotate(45deg);
+            }
 
-        .navbar.navbar-expand-lg {
-            position: inherit;
-        }
+            button.open span.navbar-toggler-icon:after {
+                transform: translateY(-7px) rotate(-45deg);
+            }
 
-        div#navbarNav.collapse {
-            transition: 1s;
-            transform: translateX(105%);
+ 
         }
-
-        div#navbarNav {
-            background: #ffffff;
-            left: 0px;
-            transform: translateX(0%);
-            position: absolute;
-            width: 100%;
-            transition: 1s;
-            height: 100%;
-            margin-top: 10px;
-            z-index: 999;
-        }
-
-        ul.navbar-nav {
-            padding: 15px;
-        }
-
-        ul.navbar-nav li.nav-item {
-            margin: 0 5px;
-            padding: 0 10px;
-        }
-    }
