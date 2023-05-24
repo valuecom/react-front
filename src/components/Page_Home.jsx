@@ -1,12 +1,15 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import __GraphQL_Queries from "./__GraphQL_Queries";
 
-import {
-    Widget_HomeSlider
-} from "./";
+// import {
+//     Widget_HomeSliderBootstrap
+// } from "./";
 
 import { useQuery, gql } from "@apollo/client";
+
+
+const Widget_HomeSliderBootstrap = lazy( () => import("./Widget_HomeSliderBootstrap") );
 
 const Page_Home = () => {
 
@@ -54,19 +57,21 @@ const Page_Home = () => {
 
     return (
         <main className="page">
-            <Widget_HomeSlider images = {imgs} />
+            <Suspense fallback={<span style={{fontSize:'12px'}}>Loading...</span>} >
+                <Widget_HomeSliderBootstrap images = {imgs} />
+            </Suspense>
             <section className="py-3">
                 <div className="container-xxl">
-                    <div className="row">
+                    <div className="row px-sm-5 px-md-0">
                         {[6,3,3].map( (value, index) => {
                             // console.log('tolis')
                             // console.log(img_arr_inner[index]._targetUrl)
                             return (
-                                <div key={"img__"+index} className={"col-sm-" + value }>
-                                    <figure className="figure">
+                                <div key={"img__"+index} className={"col-md-" + value}>
+                                    <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
                                         <Link to={img_arr_inner[index]._targetUrl} >
                                             <div className="figure-img-wrap">
-                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height} className="figure-img img-fluid" alt={img_arr_inner[index].altText} />
+                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height} className="figure-img img-fluid" alt={img_arr_inner[index].altText} loading="lazy" />
                                             </div>
                                             <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
                                         </Link>
@@ -79,16 +84,16 @@ const Page_Home = () => {
             </section>
             <section className="py-3">
                 <div className="container-xxl">
-                    <div className="row">
+                    <div className="row px-sm-5 px-md-0">
                         {[3,3,6].map( (value, index) => {
                             // console.log('tolis')
                             index = index+3;
                             return (
-                                <div key={"img__"+index} className={"col-sm-" + value }>
-                                    <figure className="figure">
+                                <div key={"img__"+index} className={"col-md-" + value }>
+                                    <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
                                         <Link to={img_arr_inner[index]._targetUrl} >
                                             <div className="figure-img-wrap">
-                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height}  className="figure-img img-fluid" alt="..." />
+                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height}  className="figure-img img-fluid" alt={img_arr_inner[index].altText} loading="lazy" />
                                             </div>
                                             <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
                                         </Link>
@@ -101,13 +106,13 @@ const Page_Home = () => {
             </section>
             <section className="py-3 mb-5">
                 <div className="container-xxl">
-                    <div className="row">
+                    <div className="row px-sm-5 px-md-0">
                         {[6,3,3].map( (value, index) => {
                             // console.log('tolis')
                             index = index + 6;
                             return (
-                                <div key={"img__"+index} className={"col-sm-" + value }>
-                                    <figure className="figure">
+                                <div key={"img__"+index} className={"col-md-" + value }>
+                                    <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
                                         <Link to={img_arr_inner[index]._targetUrl} >
                                             <div className="figure-img-wrap">
                                                 <img src={img_arr_inner[index].img_src}  width={img_arr_inner[index].width} height={img_arr_inner[index].height}  className="figure-img img-fluid" loading="lazy" alt="..." />

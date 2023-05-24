@@ -70,41 +70,7 @@ footer li a {
 .figure .figure-caption{
     padding: 14px 2px 0;
 }
-.slick-next, .slick-prev {
-    right: 25px;
-    z-index: 9;
-    width: 35px;
-    height: 35px;
-    opacity: 0;
-    transition: 0.3s;
-}
-.slick-next{
-    right: 25px;
-}
-.slick-prev{
-    left:25px;
-}
-.slick-prev:before {
-    background-image: url(../images/home/arrow-left.png);
-    width: 35px;
-    height: 35px;
-    display: block;
-    content: " ";
-}
-.slick-next:before{
-    background-image: url(../images/home/arrow-right.png);
-    width: 35px;
-    height: 35px;
-    display: block;
-    content: " ";
-}
-.home-slider:hover .slick-arrow{
-    opacity: 1;
-}
-.single-item-1{
-    background-image: url("../images/home/ermis-gold.jpg");
-    background-size: cover;
-}
+ 
 /* sm */
 @media (min-width: 576px) {
     .logos-gallery {
@@ -348,4 +314,17 @@ input[type=text],input[type=email], select, textarea {
             }
 
  
+        }
+
+
+        @media (max-width:767px) {
+            figure.figure {
+                display: block;
+            }
+
+            .figure .figure-img {
+                width: 100%;
+                height: 360px;
+                object-fit: cover;
+            }
         }

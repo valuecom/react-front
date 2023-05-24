@@ -5,7 +5,7 @@ const Page_TemplatePoject = (props) => {
     const nodeData = props.nodeData;
     // console.log(nodeData);
     const GET_PROJECT_CONTENT = gql`query GET_PROJECT_CONTENT {
-        page( id: ${nodeData.databaseId}, idType: DATABASE_ID ) {
+        page( id: "${nodeData.uri.slice(1, -1)}", idType: URI ) {
             id
             title
             content
@@ -40,7 +40,7 @@ const Page_TemplatePoject = (props) => {
             <section className="mb-5 ">
                 <div className="container-fluid px-0">
                     <div className="project-featured-image">
-                        <img src={nodeMoreData.projectsExtras.heroImage.sourceUrl} alt="" />
+                        <img src={nodeMoreData.projectsExtras.heroImage.sourceUrl} alt="" width="2560" height="993"  />
                     </div>
                 </div>
             </section>

@@ -1,18 +1,17 @@
 import React  from "react";
 import { Link } from "react-router-dom";
-import { logo } from "../assets";
+// import { logo } from "../assets";
 
  
 
 
 const _Header = (props) =>  {
-    
+
     const menuNodes = props.menuNodes;
 
     const handleNavClick = () => {
         document.getElementById('navbarNav').classList.toggle("collapse");
         document.getElementById('navbar-toggler').classList.toggle("open");
-        
     }
 
     return (
@@ -21,9 +20,18 @@ const _Header = (props) =>  {
                 <div className="row align-items-center">
                     <div className="col-6 col-lg-2">
                         <div className="logo-wrap">
-                            <Link to="/">
-                                <img src={logo} alt="Valuecom" width="196" height="46" />
-                            </Link>
+                            {
+                                process.env.NODE_ENV === "development" 
+                                ?
+                                    <Link to="/">
+                                        <img src={"http://localhost/GitHubVC/newsite2023.valuecom.gr/react-front/public/images/logo.png"} alt="Valuecom" width="204" height="49" />
+                                    </Link>
+                                :
+                                    <Link to="/">
+                                        <img src={process.env.PUBLIC_URL + "/images/logo.png"} alt="Valuecom" width="204" height="49" />
+                                    </Link>
+                            }
+
                         </div>
                     </div>
                     <div className="col-6 col-lg-10">

@@ -134,7 +134,7 @@ const Page_Contact = (props) => {
             <main className="page">
                 <Widget_SimpleTitle widgetTitle={nodeData.title} />
                 <section>
-                    <div className="container-xxl w-50 px-5 pb-5">
+                    <div className="container-xxl col-lg-6 px-md-5 pb-5">
                         <div className="contact-form-wrap py-5">
                             <h3 style={{'fontWeight': '400'}}>Get in touch with us</h3>
                             <form action="#" method="post" onSubmit={handleContactSubmit} >

@@ -1,31 +1,46 @@
-import React, { useEffect } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+// import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useQuery, gql } from "@apollo/client";
 import __GraphQL_Queries from "./components/__GraphQL_Queries";
+
+
 import {
   _Header,
   _Footer,
-  Page_Home,
-  Page_WeAreTrusted,
-  Page_WeDeliver,
-  Page_TheTeam,
-  Page_Contact,
+  // Page_Home,
+  // Page_WeAreTrusted,
+  // Page_WeDeliver,
+  // Page_TheTeam,
+  // Page_Contact,
 
-  Page_CreativeReviews,
-  Page_TemplateCreativeReview,
+  // Page_CreativeReviews,
+  // Page_TemplateCreativeReview,
 
-  Page_TemplatePoject,
-  Page_TemplateSimple,
+  // Page_TemplatePoject,
+  // Page_TemplateSimple,
 
-  _AnimationLayout,
+  // _AnimationLayout,
 
-  Tool_EditPage
+  // Tool_EditPage
 } from "./components";
-
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/css/style.css';
+
+const Page_Home = lazy( () => import("./components/Page_Home") );
+const Page_WeAreTrusted = lazy( () => import("./components/Page_WeAreTrusted") );
+const Page_WeDeliver = lazy( () => import("./components/Page_WeDeliver") );
+const Page_TheTeam = lazy( () => import("./components/Page_TheTeam") );
+const Page_Contact = lazy( () => import("./components/Page_Contact") );
+const Page_CreativeReviews = lazy( () => import("./components/Page_CreativeReviews") );
+const Page_TemplateCreativeReview = lazy( () => import("./components/Page_TemplateCreativeReview") );
+const Page_TemplatePoject = lazy( () => import("./components/Page_TemplatePoject") );
+const Page_TemplateSimple = lazy( () => import("./components/Page_TemplateSimple") );
+const Tool_EditPage = lazy( () => import("./components/Tool_EditPage") );
+
+
+
 
 const PageComponentsMap_slug_component = {
   'we-are-trusted': Page_WeAreTrusted, 
@@ -51,8 +66,12 @@ if ( current_pathname.substr(current_pathname.length - 1) != "/" ){
 // console.log(current_pathname);
 let GET_MAIN_QUERY = null;
 
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-const caching_type = 'all site';
+let caching_type = 'all site';
+if (isMobile) caching_type = 'main queries';
+
+// const caching_type = 'all site';
 // const caching_type = 'main queries';
 // const caching_type = 'none';
 
@@ -137,98 +156,104 @@ const  App = () => {
         if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
         // if (document.getElementById('header-nav'))  document.getElementById('header-nav').classList.remove('hidden');
 
-      },400);
+      },1200);
   });
 
   const { data, loading, error } = useQuery(GET_MAIN_QUERY);
 
   if (loading) { console.log('loading main query'); return }
-  if (error) { console.log('error main query '); return }
+  if (error) { console.log(error.graphQLErrors); return }
   if (!data) { console.log('!data main query'); return }
 
  
-  // console.log(data);
+  console.log(data);
 
   const siteNodes = data.pages.nodes;
   const menuNodes = data.menuItems.nodes;
 
+  if (caching_type == 'all site'){
+      // homepage
+      const homePageData = data.homePage;
+
+      if (homePageData){
+        const parser = new DOMParser();
+        const parsedDocument = parser.parseFromString(homePageData.content, "text/html");
+        const imgs = parsedDocument.getElementsByTagName("img");
+        for (const [key, value] of Object.entries(imgs)) {
+            imagesPreload.push(value.src.replace('-1024x373', ''));
+        }
+        imagesPreload.push(homePageData.homepageExtras.image1.sourceUrl);
+        imagesPreload.push(homePageData.homepageExtras.image2.sourceUrl);
+        imagesPreload.push(homePageData.homepageExtras.image3.sourceUrl);
+        // imagesPreload.push(homePageData.homepageExtras.image4.sourceUrl);
+        // imagesPreload.push(homePageData.homepageExtras.image5.sourceUrl);
+        // imagesPreload.push(homePageData.homepageExtras.image6.sourceUrl);
+        // imagesPreload.push(homePageData.homepageExtras.image7.sourceUrl);
+        // imagesPreload.push(homePageData.homepageExtras.image8.sourceUrl);
+        // imagesPreload.push(homePageData.homepageExtras.image9.sourceUrl);
+      }
+      // weAreTrusted
+      const weAreTrustedData = data.weAreTrusted;
+      if (weAreTrustedData)
+        imagesPreload.push(weAreTrustedData.featuredImage.node.sourceUrl);
+
+      // weDeliver
+      const weDeliverData = data.weDeliver;
+      if (weDeliverData){
+          weDeliverData.children.edges.forEach((element, ind) => {
+            if (ind<2){
+              if (element.node.featuredImage){
+                imagesPreload.push(element.node.featuredImage.node.sourceUrl);
+              }
+            }
+          });
+      }
+
+      // theTeam
+      const theTeamData = data.theTeam;
+      if (theTeamData){
+        imagesPreload.push(theTeamData.weHaveFacesExtras.tile1.thumb.sourceUrl);
+        imagesPreload.push(theTeamData.weHaveFacesExtras.tile2.thumb.sourceUrl);
+        imagesPreload.push(theTeamData.weHaveFacesExtras.tile3.thumb.sourceUrl);
+        // imagesPreload.push(theTeamData.weHaveFacesExtras.tile4.thumb.sourceUrl);
+        // imagesPreload.push(theTeamData.weHaveFacesExtras.tile5.thumb.sourceUrl);
+        // imagesPreload.push(theTeamData.weHaveFacesExtras.tile6.thumb.sourceUrl);
+        // imagesPreload.push(theTeamData.weHaveFacesExtras.tile7.thumb.sourceUrl);
+        // imagesPreload.push(theTeamData.weHaveFacesExtras.tile8.thumb.sourceUrl);
+        // imagesPreload.push(theTeamData.weHaveFacesExtras.tile9.thumb.sourceUrl);
+      }
+
+      // pages
+      const otherPages = data.pages;
+      // console.log(otherPages);
+      otherPages.nodes.forEach((element, ind) => {
+        if (element.featuredImage){
+          if (
+            ind == 14 ||  // we believe 
+            ind == 16     // we team
+          ) 
+            imagesPreload.push(element.featuredImage.node.sourceUrl);
+        }
+      });
 
 
-  // homepage
-  const homePageData = data.homePage;
+      imagesPreload.forEach((image) => {
+          const newImage = new Image();
+          newImage.src = image;
+          window[image] = newImage;
+      });
+}
 
-  const parser = new DOMParser();
-  const parsedDocument = parser.parseFromString(homePageData.content, "text/html");
-  const imgs = parsedDocument.getElementsByTagName("img");
-  for (const [key, value] of Object.entries(imgs)) {
-      imagesPreload.push(value.src.replace('-1024x373', ''));
 
-  }
 
-  imagesPreload.push(homePageData.homepageExtras.image1.sourceUrl);
-  imagesPreload.push(homePageData.homepageExtras.image2.sourceUrl);
-  imagesPreload.push(homePageData.homepageExtras.image3.sourceUrl);
-  // imagesPreload.push(homePageData.homepageExtras.image4.sourceUrl);
-  // imagesPreload.push(homePageData.homepageExtras.image5.sourceUrl);
-  // imagesPreload.push(homePageData.homepageExtras.image6.sourceUrl);
-  // imagesPreload.push(homePageData.homepageExtras.image7.sourceUrl);
-  // imagesPreload.push(homePageData.homepageExtras.image8.sourceUrl);
-  // imagesPreload.push(homePageData.homepageExtras.image9.sourceUrl);
-
-  // weAreTrusted
-  const weAreTrustedData = data.weAreTrusted;
-  imagesPreload.push(weAreTrustedData.featuredImage.node.sourceUrl);
-
-  // weDeliver
-  const weDeliverData = data.weDeliver;
-  weDeliverData.children.edges.forEach((element, ind) => {
-    if (ind<2)
-      imagesPreload.push(element.node.featuredImage.node.sourceUrl);
-  });
-
-  // theTeam
-  const theTeamData = data.theTeam;
-  imagesPreload.push(theTeamData.weHaveFacesExtras.tile1.thumb.sourceUrl);
-  imagesPreload.push(theTeamData.weHaveFacesExtras.tile2.thumb.sourceUrl);
-  imagesPreload.push(theTeamData.weHaveFacesExtras.tile3.thumb.sourceUrl);
-  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile4.thumb.sourceUrl);
-  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile5.thumb.sourceUrl);
-  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile6.thumb.sourceUrl);
-  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile7.thumb.sourceUrl);
-  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile8.thumb.sourceUrl);
-  // imagesPreload.push(theTeamData.weHaveFacesExtras.tile9.thumb.sourceUrl);
-
-  // pages
-  const otherPages = data.pages;
-  // console.log(otherPages);
-  otherPages.nodes.forEach((element, ind) => {
-    if (element.featuredImage){
-      if (
-        ind == 14 ||  // we believe 
-        ind == 16     // we team
-      ) 
-        imagesPreload.push(element.featuredImage.node.sourceUrl);
-    }
-  });
-
-  // console.log("imagesPreload", imagesPreload );
-
-  const preloadImage = false;
-  if (preloadImage){
-    imagesPreload.forEach((image) => {
-        const newImage = new Image();
-        newImage.src = image;
-        window[image] = newImage;
-    });
-  }
 
 
 
   return (
-    <HelmetProvider>
-          <Helmet>
-              <title>VALUECOM | React</title>
-          </Helmet>
+    // <HelmetProvider>
+    //       <Helmet>
+    //           <title>VALUECOM | React</title>
+    //       </Helmet>
           <BrowserRouter>
               <_Header menuNodes={menuNodes} />
               {
@@ -238,6 +263,7 @@ const  App = () => {
                 :
                 <></>
               }
+              <Suspense fallback={<span style={{fontSize:'12px'}}></span>} >
                 <Routes >
                   {/* <Route element={<_AnimationLayout />}  > */}
                   <Route>
@@ -273,9 +299,10 @@ const  App = () => {
                       })}
                   </Route>
                 </Routes>
+                </Suspense>
               <_Footer />
           </BrowserRouter>
-    </HelmetProvider>
+    // </HelmetProvider>
   );
 }
 

@@ -4,6 +4,12 @@ const weDeliver_SLUG = "we-deliver";
 const theTeam_SLUG = "the-team";
 const creativeReview_SLUG = "creative-reviews";
 
+
+// when appolo sends to backend it adds __typename field to help with cache
+// so when adding allowed queris on backend need to add that query
+// you can find it in the ajax request header
+
+
 const __GraphQL_Queries = {
     queries : {
         // get menu items
