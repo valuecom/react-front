@@ -20,18 +20,9 @@ const _Header = (props) =>  {
                 <div className="row align-items-center">
                     <div className="col-6 col-lg-2">
                         <div className="logo-wrap">
-                            {
-                                process.env.NODE_ENV === "development" 
-                                ?
-                                    <Link to="/">
-                                        <img src={"http://localhost/GitHubVC/newsite2023.valuecom.gr/react-front/public/images/logo.png"} alt="Valuecom" width="204" height="49" />
-                                    </Link>
-                                :
-                                    <Link to="/">
-                                        <img src={process.env.PUBLIC_URL + "/images/logo.png"} alt="Valuecom" width="204" height="49" />
-                                    </Link>
-                            }
-
+                            <Link to="/">
+                                <img src={process.env.PUBLIC_URL + "https://newsite2023.valuecom.gr/images/logo.png"} alt="Valuecom" width="204" height="49" />
+                            </Link>
                         </div>
                     </div>
                     <div className="col-6 col-lg-10">

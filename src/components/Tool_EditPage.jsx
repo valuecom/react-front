@@ -28,7 +28,7 @@ const Tool_EditPage = () => {
         // console.log(page_id_for_url);
   
  
-        const target_url = 'http://localhost/GitHubVC/newsite2023.valuecom.gr/wp-admin/post.php?post=' + page_id_for_url + '&action=edit';
+        const target_url = 'https://newsite2023.valuecom.gr/backend/wp-admin/post.php?post=' + page_id_for_url + '&action=edit';
         window.open(target_url);
     };
 
