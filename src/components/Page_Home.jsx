@@ -9,10 +9,22 @@ import __GraphQL_Queries from "./__GraphQL_Queries";
 import { useQuery, gql } from "@apollo/client";
 
 
+ 
+function preloadImage(image){
+    if (image!==undefined){
+        const newImage = new Image();
+        newImage.src = image;
+        window[image] = newImage;
+    }
+}
+
+
 const Widget_HomeSliderBootstrap = lazy( () => import("./Widget_HomeSliderBootstrap") );
 
-const Page_Home = () => {
+const Page_Home = (props) => {
 
+    const preloadingArray = props.preloadingArray;
+    // console.log("preloadingArray", preloadingArray);
     const HOMEPAGE_CONTENT = gql`query HOMEPAGE_CONTENT
     {
       ${__GraphQL_Queries.queries.homePage}
@@ -41,7 +53,7 @@ const Page_Home = () => {
     // }
 
     const homepageExtrasArray = nodeMoreData.homepageExtras;
-    console.log(figures);
+    console.log("homepageExtrasArray", homepageExtrasArray);
 
 
     const img_arr_inner = [];
@@ -69,7 +81,7 @@ const Page_Home = () => {
                             return (
                                 <div key={"img__"+index} className={"col-md-" + value}>
                                     <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
-                                        <Link to={img_arr_inner[index]._targetUrl} >
+                                        <Link to={img_arr_inner[index]._targetUrl} onMouseEnter={ () => preloadImage(preloadingArray[img_arr_inner[index]._targetUrl]) } >
                                             <div className="figure-img-wrap">
                                                 <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height} className="figure-img img-fluid" alt={img_arr_inner[index].altText} loading="lazy" />
                                             </div>

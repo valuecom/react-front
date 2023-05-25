@@ -5,9 +5,22 @@ import __GraphQL_Queries from "./__GraphQL_Queries";
 import { useQuery, gql } from "@apollo/client";
 
 
+function preloadImage(image){
+    console.log(image);
+    if (image!==undefined){
+        const newImage = new Image();
+        newImage.src = image;
+        window[image] = newImage;
+    }
+}
+
 
 const Page_WeDeliver = (props) => {
+
     // const nodeData = props.nodeData;
+    const preloadingArray = props.preloadingProjectsArray;
+
+    console.log("preloadingArray", preloadingArray);
 
     const GET_CONTENT_WE_DELIVER = gql`query GET_CONTENT_WE_DELIVER
     {
@@ -56,7 +69,7 @@ const Page_WeDeliver = (props) => {
                             <div className="row" key={index}  >
                                 <div className="col-md-6">
                                     <figure className="figure mb-5">
-                                        <Link to={childPage[0].uri}>
+                                        <Link to={childPage[0].uri} onMouseEnter={ () => preloadImage(preloadingArray[childPage[0].uri]) } >
                                             <div className="figure-img-wrap">
                                                 <img src={childPage[0].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." width="636" height="417" />
                                             </div>
@@ -70,7 +83,7 @@ const Page_WeDeliver = (props) => {
                                     ?
                                         <div className="col-md-6" >
                                             <figure className="figure mb-5">
-                                                <Link to={childPage[1].uri}>
+                                                <Link to={childPage[1].uri} onMouseEnter={ () => preloadImage(preloadingArray[childPage[1].uri]) }  >
                                                     <div className="figure-img-wrap">
                                                         <img src={childPage[1].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..."  width="636" height="417" />
                                                     </div>

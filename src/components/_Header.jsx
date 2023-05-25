@@ -3,11 +3,18 @@ import { Link } from "react-router-dom";
 // import { logo } from "../assets";
 
  
-
+function preloadImage(image){
+    if (image!==undefined){
+        const newImage = new Image();
+        newImage.src = image;
+        window[image] = newImage;
+    }
+}
 
 const _Header = (props) =>  {
 
     const menuNodes = props.menuNodes;
+    const preloadingArray = props.preloadingArray;
 
     const handleNavClick = () => {
         document.getElementById('navbarNav').classList.toggle("collapse");
@@ -35,7 +42,7 @@ const _Header = (props) =>  {
                                     <ul className="navbar-nav fw-medium">
                                         {menuNodes.map((menuNode, index) => {
                                             return (
-                                                <li className="nav-item " key={index}>
+                                                <li className="nav-item " key={index} onMouseEnter={ () => preloadImage(preloadingArray[menuNode.uri]) }>
                                                     <Link className="nav-link" to={menuNode.uri} >{menuNode.label}</Link>
                                                 </li>
                                             );

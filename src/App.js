@@ -171,6 +171,11 @@ const  App = () => {
   const siteNodes = data.pages.nodes;
   const menuNodes = data.menuItems.nodes;
 
+
+  var preloadingArray = [];
+  var preloadingProjectsArray = [];
+
+
   if (caching_type == 'all site'){
       // homepage
       const homePageData = data.homePage;
@@ -204,8 +209,11 @@ const  App = () => {
             if (ind<2){
               if (element.node.featuredImage){
                 imagesPreload.push(element.node.featuredImage.node.sourceUrl);
+                
               }
             }
+            if (element.node.projectsExtras.heroImage)
+              preloadingProjectsArray[element.node.uri] = element.node.projectsExtras.heroImage.sourceUrl;
           });
       }
 
@@ -225,6 +233,7 @@ const  App = () => {
 
       // pages
       const otherPages = data.pages;
+      
       // console.log(otherPages);
       otherPages.nodes.forEach((element, ind) => {
         if (element.featuredImage){
@@ -233,6 +242,11 @@ const  App = () => {
             ind == 16     // we team
           ) 
             imagesPreload.push(element.featuredImage.node.sourceUrl);
+            preloadingArray[element.uri] = element.featuredImage.node.sourceUrl;
+            // bind images to nodes
+  
+
+
         }
       });
 
@@ -245,7 +259,7 @@ const  App = () => {
 }
 
 
-
+  // console.log(preloadingArray);
 
 
 
@@ -255,7 +269,7 @@ const  App = () => {
     //           <title>VALUECOM | React</title>
     //       </Helmet>
           <BrowserRouter>
-              <_Header menuNodes={menuNodes} />
+              <_Header menuNodes={menuNodes} preloadingArray={preloadingArray} />
               {
                 (process.env.NODE_ENV == 'development') 
                 ?
@@ -267,7 +281,7 @@ const  App = () => {
                 <Routes >
                   <Route element={<_AnimationLayout />}  >
                   {/* <Route> */}
-                    <Route exact path="/" element={<Page_Home /> } />
+                    <Route exact path="/" element={<Page_Home preloadingArray={preloadingArray}  /> } />
                       {siteNodes.map((siteNode, index) => {
                           if (siteNode.slug!='homepage'){
                               let PageComponent = PageComponentsMap_slug_component[siteNode.slug];
@@ -288,7 +302,7 @@ const  App = () => {
                                   );
                               }else if (PageComponent!=undefined) {// all pages that have custom template are mapped 
                                   return (
-                                    <Route key={index} path={siteNode.uri} element={<PageComponent nodeData={siteNode} />}   />
+                                    <Route key={index} path={siteNode.uri} element={<PageComponent nodeData={siteNode} preloadingArray={preloadingArray} preloadingProjectsArray={preloadingProjectsArray} />}   />
                                   );
                               } else { // all pages that dont have custom template are not mapped mapped
                                   return (

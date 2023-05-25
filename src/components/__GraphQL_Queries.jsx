@@ -199,6 +199,10 @@ const __GraphQL_Queries = {
                                     client
                                     ourServices
                                     project
+                                    mainText
+                                    heroImage{
+                                        sourceUrl
+                                    }
                                 }
                             }
                         }
