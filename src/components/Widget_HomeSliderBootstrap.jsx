@@ -20,8 +20,7 @@ console.log(figure_arr);
                                     <Carousel.Item  key={key_1}  className={classNameCaption}>
                                         <img className="d-block w-100"  src={_data.firstElementChild.src}  style={ {'objectFit':'cover', 'width':'100%'} } /* alt="..." key={key_2}*/  />
                                         <Carousel.Caption>
-                                        {/* <h3>{_data.firstElementChild.alt}</h3> */}
-                                        <p>{_data.lastElementChild.innerHTML}</p>
+                                            <div dangerouslySetInnerHTML={{__html:_data.lastElementChild.innerHTML}} ></div>
                                         </Carousel.Caption>
                                     </Carousel.Item>
                                 );

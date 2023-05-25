@@ -22,7 +22,7 @@ import Widget_SimpleContent from "./Widget_SimpleContent";
 import Widget_SimpleTitle from "./Widget_SimpleTitle";
 // import Tool_EditPage from "./Tool_EditPage";
 
-// import _AnimationLayout from "./_AnimationLayout";
+import _AnimationLayout from "./_AnimationLayout";
 
 export { 
     _Header,
@@ -47,7 +47,7 @@ export {
     Widget_SimpleTitle,
 
 
-    // _AnimationLayout,
+    _AnimationLayout,
 
     // Tool_EditPage
     

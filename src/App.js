@@ -20,8 +20,8 @@ import {
   // Page_TemplatePoject,
   // Page_TemplateSimple,
 
-  // _AnimationLayout,
-
+  _AnimationLayout,
+ 
   // Tool_EditPage
 } from "./components";
 
@@ -265,8 +265,8 @@ const  App = () => {
               }
               <Suspense fallback={<span style={{fontSize:'12px'}}></span>} >
                 <Routes >
-                  {/* <Route element={<_AnimationLayout />}  > */}
-                  <Route>
+                  <Route element={<_AnimationLayout />}  >
+                  {/* <Route> */}
                     <Route exact path="/" element={<Page_Home /> } />
                       {siteNodes.map((siteNode, index) => {
                           if (siteNode.slug!='homepage'){
