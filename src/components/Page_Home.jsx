@@ -31,7 +31,7 @@ const Page_Home = () => {
 
     const parser = new DOMParser();
     const parsedDocument = parser.parseFromString(home_gallery_html, "text/html");
-    const imgs = parsedDocument.getElementsByTagName("img");
+    const figures = parsedDocument.getElementsByTagName("figure");
     // const img_arr = {};
     // const src_set = [];
     // for (const [key, value] of Object.entries(imgs)) {
@@ -41,7 +41,7 @@ const Page_Home = () => {
     // }
 
     const homepageExtrasArray = nodeMoreData.homepageExtras;
-    // console.log(img_arr);
+    console.log(figures);
 
 
     const img_arr_inner = [];
@@ -58,7 +58,7 @@ const Page_Home = () => {
     return (
         <main className="page">
             <Suspense fallback={<span style={{fontSize:'12px'}}>Loading...</span>} >
-                <Widget_HomeSliderBootstrap images = {imgs} />
+                <Widget_HomeSliderBootstrap figures = {figures} />
             </Suspense>
             <section className="py-3">
                 <div className="container-xxl">

@@ -4,23 +4,25 @@ import Carousel from 'react-bootstrap/Carousel';
 const Widget_HomeSliderBootstrap = (props) => {
  
     // console.log(props);
-    const img_arr = [...props.images];
-
+    const figure_arr = [...props.figures];
+console.log(figure_arr);
     return (
         <section className="slider-section mb-5">
-            <div className="container-fluid px-0" >
-                <div className="slider" >
+            <div className="container-fluid px-0 h-100" >
+                <div className="slider h-100" >
                     <Carousel>
-                            {img_arr.map( (_data, index) => {
+                        
+                            {figure_arr.map( (_data, index) => {
                                 var key_1 = 'key_1_' + index;
                                 var key_2 = 'key_2_' + index;
+                                var classNameCaption = 'custom_caption_' + index;
                                 return (
-                                    <Carousel.Item  key={key_1} >
-                                        <img className="d-block w-100" src={_data.src} style={ {'objectFit':'cover', 'width':'100%'} } srcSet={_data.srcset} alt="..." key={key_2} width="1920" height="700" />
-                                        {/* <Carousel.Caption>
-                                        <h3>First slide label</h3>
-                                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                                        </Carousel.Caption> */}
+                                    <Carousel.Item  key={key_1}  className={classNameCaption}>
+                                        <img className="d-block w-100"  src={_data.firstElementChild.src}  style={ {'objectFit':'cover', 'width':'100%'} } /* alt="..." key={key_2}*/  />
+                                        <Carousel.Caption>
+                                        {/* <h3>{_data.firstElementChild.alt}</h3> */}
+                                        <p>{_data.lastElementChild.innerHTML}</p>
+                                        </Carousel.Caption>
                                     </Carousel.Item>
                                 );
                             })}
