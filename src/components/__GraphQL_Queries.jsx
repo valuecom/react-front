@@ -21,6 +21,14 @@ const __GraphQL_Queries = {
                       label
                 }
             }`,
+        footerMenuItems: `footerMenuItems:menuItems(where: {location: FOOTER_MENU})  
+            {
+                nodes {
+                      id
+                      uri
+                      label
+                }
+            }`,
         pages: `pages(first: 10000) 
             {
                 nodes {

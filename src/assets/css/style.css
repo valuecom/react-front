@@ -77,7 +77,9 @@ footer li a {
 .slider-section{
     height: 36.5vw;
 }
-
+.aligncenter {
+    text-align:center;
+}
 /* sm */
 @media (min-width: 576px) {
     .logos-gallery {
@@ -228,7 +230,21 @@ input[type=text],input[type=email], select, textarea {
 
     .footer-menu li{
         display:inline;
+        margin:15px;
+        position: relative;
     }
+    /* .footer-menu li:after{
+        content: "";
+        width: 2px;
+        background-color: #ffffff;
+        height: 17px;
+        position: absolute;
+        top: 1px;
+        right: -12px;
+    }
+    .footer-menu li:last-child:after{
+        display:none;
+    } */
 
     .iframe-creative-review{
         width:100%;

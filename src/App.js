@@ -81,6 +81,7 @@ if (caching_type == 'all site'){
       {
         ${__GraphQL_Queries.queries.pages}
         ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.footerMenuItems}
         ${__GraphQL_Queries.queries.homePage}
         ${__GraphQL_Queries.queries.weAreTrusted}
         ${__GraphQL_Queries.queries.weDeliver}
@@ -96,6 +97,7 @@ if (caching_type == 'all site'){
       {
         ${__GraphQL_Queries.queries.pages}
         ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.footerMenuItems}
         ${__GraphQL_Queries.queries.homePage}
       }`;
       break;
@@ -104,6 +106,7 @@ if (caching_type == 'all site'){
       {
         ${__GraphQL_Queries.queries.pages}
         ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.footerMenuItems}
         ${__GraphQL_Queries.queries.weAreTrusted}
       }`;
       break;
@@ -112,6 +115,7 @@ if (caching_type == 'all site'){
       {
         ${__GraphQL_Queries.queries.pages}
         ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.footerMenuItems}
         ${__GraphQL_Queries.queries.weDeliver}
       }`;
       break;
@@ -120,6 +124,7 @@ if (caching_type == 'all site'){
       {
         ${__GraphQL_Queries.queries.pages}
         ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.footerMenuItems}
         ${__GraphQL_Queries.queries.theTeam}
       }`;
       break;
@@ -128,6 +133,7 @@ if (caching_type == 'all site'){
       {
         ${__GraphQL_Queries.queries.pages}
         ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.footerMenuItems}
         ${__GraphQL_Queries.queries.creativeReviews}
       }`;
       break;
@@ -136,6 +142,7 @@ if (caching_type == 'all site'){
       {
         ${__GraphQL_Queries.queries.pages}
         ${__GraphQL_Queries.queries.menuItems}
+        ${__GraphQL_Queries.queries.footerMenuItems}
       }`;
       // add creative review inner and project inner template
   }
@@ -170,6 +177,7 @@ const  App = () => {
 
   const siteNodes = data.pages.nodes;
   const menuNodes = data.menuItems.nodes;
+  const menuNodesFooter = data.footerMenuItems.nodes;
 
 
   var preloadingArray = [];
@@ -314,7 +322,7 @@ const  App = () => {
                   </Route>
                 </Routes>
                 </Suspense>
-              <_Footer />
+              <_Footer menuNodesFooter={menuNodesFooter} />
           </BrowserRouter>
     // </HelmetProvider>
   );
