@@ -13,6 +13,10 @@ const _Header = (props) =>  {
         document.getElementById('navbarNav').classList.toggle("collapse");
         document.getElementById('navbar-toggler').classList.toggle("open");
     }
+    const handleNavItemClick = () => {
+        document.getElementById('navbarNav').classList.toggle("collapse");
+        // document.getElementById('navbar-toggler').classList.toggle("open");
+    }
 
     return (
         <header className="d-flex align-items-center">
@@ -35,7 +39,7 @@ const _Header = (props) =>  {
                                     <ul className="navbar-nav fw-medium">
                                         {menuNodes.map((menuNode, index) => {
                                             return (
-                                                <li className="nav-item " key={index} onMouseEnter={ () => preloadImage(preloadingArray[menuNode.uri]) }>
+                                                <li onClick={handleNavClick} className="nav-item " key={index} onMouseEnter={ () => preloadImage(preloadingArray[menuNode.uri]) }>
                                                     <Link className="nav-link" to={menuNode.uri} >{menuNode.label}</Link>
                                                 </li>
                                             );

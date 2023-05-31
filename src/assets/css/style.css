@@ -86,7 +86,16 @@ footer li a {
     align-items: center;
     padding: 0 0 50px;
     font-size: 70px;
+    line-height: 1.2;
     word-break: break-all;
+}
+.carousel-control-next {
+    right: 20px;
+    justify-content: flex-end;
+}
+.carousel-control-prev {
+    left: 20px;
+    justify-content: flex-start;
 }
 
 
@@ -128,8 +137,31 @@ footer li a {
 }
 
 /* xl */
-@media (min-width: 1200px) {
-    
+@media (min-width: 768px) and (max-width: 1023px) {
+    .home_slide_caption_1 .carousel-caption {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        padding: 0;
+        font-size: 50px;
+        line-height: 1.2;
+        word-break: break-all;
+        bottom: 0;
+    }
+    .home_slide_caption_0 .carousel-caption {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        padding: 0;
+        font-size: 18px;
+        line-height: 1.2;
+        word-break: break-all;
+        bottom: 20px;
+    }
 }
 
 /* xxl */
@@ -275,6 +307,7 @@ input[type=text],input[type=email], select, textarea {
 
 
         @media (max-width: 991px) {
+
             header {
                 min-height: 75px;
             }
@@ -351,6 +384,9 @@ input[type=text],input[type=email], select, textarea {
 
 
         @media (max-width:767px) {
+            .carousel-control-prev, .carousel-control-next {
+                display: none !important;
+            }
             figure.figure {
                 display: block;
             }
@@ -361,6 +397,29 @@ input[type=text],input[type=email], select, textarea {
                 object-fit: cover;
             }
             .slider-section{
-                height: 50vw;
+                height: 65vw;
             }
+            .home_slide_caption_1 .carousel-caption {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                height: 100%;
+                align-items: center;
+                padding: 0;
+                font-size: 29px;
+                line-height: 1.2;
+                bottom: 0;
+            }
+            .home_slide_caption_0 .carousel-caption {
+                display: flex;
+                justify-content: flex-end;
+                flex-direction: column;
+                height: 100%;
+                align-items: center;
+                padding: 0;
+                line-height: 1.1;
+                font-size: 12px;
+                bottom: 7px;
+            }
+
         }
