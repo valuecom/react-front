@@ -2,7 +2,8 @@ import React, { Suspense, lazy, useRef, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import __GraphQL_Queries from "./__GraphQL_Queries";
 import preloadImage from './__Utils';
-import { gsap } from "gsap";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 // import {
 //     Widget_HomeSliderBootstrap
 // } from "./";
@@ -16,9 +17,21 @@ const Page_Home = (props) => {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from(".box", {  scale:0  });
-            gsap.to(".box", {  scale:1  });
- 
+            gsap.registerPlugin(ScrollTrigger);
+
+            for (let i=0;i<9;i++){
+                let d = 0.05*i;
+                gsap.from(".box-"+i, {  
+                    scrollTrigger: {
+                        trigger: ".box-"+i
+                    },
+                    delay: d,
+                    transform: "translateY(50px)",
+                    opacity:0,
+                    duration:0.3
+                });
+            }
+
             // gsap.to(".box-4", {  scale:3 });
         }, refBox);
         return () => ctx.revert();
