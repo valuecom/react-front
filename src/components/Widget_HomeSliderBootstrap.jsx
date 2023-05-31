@@ -10,7 +10,7 @@ console.log(figure_arr);
         <section className="slider-section mb-5">
             <div className="container-fluid px-0 h-100" >
                 <div className="slider h-100" >
-                    <Carousel>
+                    <Carousel showControls indicators={false} pause={'hover'} >
                         
                             {figure_arr.map( (_data, index) => {
                                 var key_1 = 'key_1_' + index;
