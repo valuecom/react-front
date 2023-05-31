@@ -173,7 +173,7 @@ const  App = () => {
   if (!data) { console.log('!data main query'); return }
 
  
-  console.log(data);
+  // console.log(data);
 
   const siteNodes = data.pages.nodes;
   const menuNodes = data.menuItems.nodes;

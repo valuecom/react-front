@@ -30,7 +30,7 @@ const Page_Contact = (props) => {
     const nodeData = props.nodeData;
 
     const handleLoadedScript = _ => {
-        console.log('script google recaptcha loaded!');
+        // console.log('script google recaptcha loaded!');
     }
  
     
@@ -102,7 +102,7 @@ const Page_Contact = (props) => {
                 .then(response => {
                     return response.json();
                 }).then(result => {
-                    console.log(result);
+                    // console.log(result);
                     if (result.status==200){
                        document.getElementById('contact-msg-error').innerHTML = '';
                        document.getElementById('contact-msg').innerHTML = result.message;
@@ -112,7 +112,7 @@ const Page_Contact = (props) => {
                     }
                 })
                 .catch(error => {
-                    console.log(error);
+                    // console.log(error);
                 });
         
         

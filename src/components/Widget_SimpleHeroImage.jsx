@@ -1,9 +1,27 @@
+import React, {  useRef, useLayoutEffect } from "react";
+import { gsap } from "gsap";
+
 const Widget_SimpleHeroImage = (props) => {
+
     const imgObj = props.imgObj;
-    console.log(imgObj.mediaDetails.sizes);
+
+    // animation 
+    const refBox = useRef();
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from(refBox.current, {  transform: "translateY(50px)"  });
+            gsap.to(refBox.current, {  transform: "translateY(0)"  });
+    
+            // gsap.to(".box-4", {  scale:3 });
+        }, refBox);
+        return () => ctx.revert();
+    });
+
+
     return (
         <section>
-            <div className="container-xxl d-flex justify-content-center pb-5">
+            <div className="container-xxl d-flex justify-content-center pb-5" ref={refBox} >
                 <img
                     src={imgObj.sourceUrl}
                     srcSet={imgObj.mediaDetails.sizes[2].sourceUrl + ' 600w, ' +imgObj.sourceUrl + ' 1280w' }

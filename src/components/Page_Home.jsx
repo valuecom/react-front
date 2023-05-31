@@ -1,27 +1,28 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useRef, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import __GraphQL_Queries from "./__GraphQL_Queries";
-
+import preloadImage from './__Utils';
+import { gsap } from "gsap";
 // import {
 //     Widget_HomeSliderBootstrap
 // } from "./";
-
 import { useQuery, gql } from "@apollo/client";
-
-
- 
-function preloadImage(image){
-    if (image!==undefined){
-        const newImage = new Image();
-        newImage.src = image;
-        window[image] = newImage;
-    }
-}
-
 
 const Widget_HomeSliderBootstrap = lazy( () => import("./Widget_HomeSliderBootstrap") );
 
 const Page_Home = (props) => {
+    // animation 
+    const refBox = useRef();
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from(".box", {  scale:0  });
+            gsap.to(".box", {  scale:1  });
+ 
+            // gsap.to(".box-4", {  scale:3 });
+        }, refBox);
+        return () => ctx.revert();
+    });
 
     const preloadingArray = props.preloadingArray;
     // console.log("preloadingArray", preloadingArray);
@@ -53,7 +54,7 @@ const Page_Home = (props) => {
     // }
 
     const homepageExtrasArray = nodeMoreData.homepageExtras;
-    console.log("homepageExtrasArray", homepageExtrasArray);
+    // console.log("homepageExtrasArray", homepageExtrasArray);
 
 
     const img_arr_inner = [];
@@ -64,11 +65,15 @@ const Page_Home = (props) => {
             img_arr_inner[n++] = { img_src: value.sourceUrl, title: value.title, _targetUrl: _targetUrl, altText: value.altText, width: value.mediaDetails.width, height: value.mediaDetails.height };
         }
     }
+    //  console.log(img_arr_inner);
 
-//  console.log(img_arr_inner);
+
+
+
+
 
     return (
-        <main className="page">
+        <main className="page" ref={refBox} >
             <Suspense fallback={<span style={{fontSize:'12px'}}>Loading...</span>} >
                 <Widget_HomeSliderBootstrap figures = {figures} />
             </Suspense>
@@ -79,7 +84,7 @@ const Page_Home = (props) => {
                             // console.log('tolis')
                             // console.log(img_arr_inner[index]._targetUrl)
                             return (
-                                <div key={"img__"+index} className={"col-md-" + value}>
+                                <div key={"img__"+index} className={"box box-" + index + " col-md-" + value} >
                                     <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
                                         <Link to={img_arr_inner[index]._targetUrl} onMouseEnter={ () => preloadImage(preloadingArray[img_arr_inner[index]._targetUrl]) } >
                                             <div className="figure-img-wrap">
@@ -101,7 +106,7 @@ const Page_Home = (props) => {
                             // console.log('tolis')
                             index = index+3;
                             return (
-                                <div key={"img__"+index} className={"col-md-" + value }>
+                                <div key={"img__"+index} className={"box box-" + index + " col-md-" + value } >
                                     <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
                                         <Link to={img_arr_inner[index]._targetUrl} >
                                             <div className="figure-img-wrap">
@@ -123,7 +128,7 @@ const Page_Home = (props) => {
                             // console.log('tolis')
                             index = index + 6;
                             return (
-                                <div key={"img__"+index} className={"col-md-" + value }>
+                                <div key={"img__"+index} className={"box box-" + index + " col-md-" + value }>
                                     <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
                                         <Link to={img_arr_inner[index]._targetUrl} >
                                             <div className="figure-img-wrap">

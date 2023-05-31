@@ -1,18 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import __GraphQL_Queries from "./__GraphQL_Queries";
-
 import { useQuery, gql } from "@apollo/client";
-
-
-function preloadImage(image){
-    console.log(image);
-    if (image!==undefined){
-        const newImage = new Image();
-        newImage.src = image;
-        window[image] = newImage;
-    }
-}
+import preloadImage from "./__Utils";
 
 
 const Page_WeDeliver = (props) => {

@@ -1,15 +1,8 @@
 import React  from "react";
 import { Link } from "react-router-dom";
 // import { logo } from "../assets";
+import preloadImage from "./__Utils";
 
- 
-function preloadImage(image){
-    if (image!==undefined){
-        const newImage = new Image();
-        newImage.src = image;
-        window[image] = newImage;
-    }
-}
 
 const _Header = (props) =>  {
 
