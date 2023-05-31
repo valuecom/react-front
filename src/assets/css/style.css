@@ -170,6 +170,12 @@ footer li a {
         grid-template-columns: repeat(6, minmax(0, 1fr));
     }
 }
+@media (max-width: 1350px) {
+    .card img{
+        width: 100%;
+        height: auto;
+    }
+}
 
 
 input[type=text],input[type=email], select, textarea {
@@ -327,7 +333,8 @@ input[type=text],input[type=email], select, textarea {
             div#navbarNav.collapse {
                 transform: translateX(105%);
             }
-    
+
+            
             div#navbarNav {
                 display: block;
                 background: #ffffff;
