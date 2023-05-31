@@ -333,7 +333,7 @@ input[type=text],input[type=email], select, textarea {
                 background: #ffffff;
                 left: 0px;
                 transform: translateX(0%);
-                position: absolute;
+                position: fixed;
                 width: 100%;
                 transition: 0.6s;
                 height: 100%;
