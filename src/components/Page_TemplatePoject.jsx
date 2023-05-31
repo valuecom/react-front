@@ -1,6 +1,15 @@
+import React, {useEffect} from "react";
 import { useQuery, gql } from "@apollo/client";
 
 const Page_TemplatePoject = (props) => {
+
+
+    useEffect(() => {
+        document.body.classList.add('project')
+        return () => {
+          document.body.classList.remove('project')
+        }
+    }, [])
 
     const nodeData = props.nodeData;
     // console.log(nodeData);

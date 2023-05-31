@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import __GraphQL_Queries from "./__GraphQL_Queries";
 import { useQuery, gql } from "@apollo/client";
@@ -10,7 +10,14 @@ const Page_WeDeliver = (props) => {
     // const nodeData = props.nodeData;
     const preloadingArray = props.preloadingProjectsArray;
 
-    console.log("preloadingArray", preloadingArray);
+    useEffect(() => {
+        document.body.classList.add('we-deliver')
+        return () => {
+          document.body.classList.remove('we-deliver')
+        }
+    }, [])
+
+    // console.log("preloadingArray", preloadingArray);
 
     const GET_CONTENT_WE_DELIVER = gql`query GET_CONTENT_WE_DELIVER
     {

@@ -35,8 +35,8 @@ const Page_Contact = (props) => {
  
     
     useEffect( () => {
-      
-            
+        document.body.classList.add('contact-us')
+ 
         
         const script = document.createElement('script');
         script.src = "https://www.google.com/recaptcha/api.js?render=" + reCAPTCHA_site_key;
@@ -46,6 +46,7 @@ const Page_Contact = (props) => {
 
         // clean up after unload
         return () => {
+            document.body.classList.remove('contact-us')
             document.getElementById('g-rec').remove();
             if (document.getElementsByClassName('grecaptcha-badge')[0]) 
                 document.getElementsByClassName('grecaptcha-badge')[0].remove();
@@ -131,32 +132,30 @@ const Page_Contact = (props) => {
 
     return (
         <>
-            <main className="page">
-                <Widget_SimpleTitle widgetTitle={nodeData.title} />
-                <section>
-                    <div className="container-xxl col-lg-6 px-md-5 pb-5">
-                        <div className="contact-form-wrap py-5">
-                            <h3 style={{'fontWeight': '400'}}>Get in touch with us</h3>
-                            <form action="#" method="post" onSubmit={handleContactSubmit} >
-                                <input type="text" id="form_name" name="name" placeholder="Name" required maxLength="100" />
-                                <input type="email" id="form_email" name="email" placeholder="Email"  required />
-                                <textarea id="form_message" name="message" placeholder="Message" style={{'height':"200px"}}  required maxLength="2000"  ></textarea>
-                                <input style={{'backgroundColor': "#FDDD31", 'color': "#1D1D1D", 'fontWeight':"600"}} type="submit" value="Send"  />
-                                <div id="contact-msg" className="contact-msg" ></div>
-                                <div id="contact-msg-error" className="contact-msg-error" ></div>
-                            </form>
-                        </div>
-                        <hr />
-                        <div className="contact-info-wrap py-5">
-                            <p style={{'color':"#757575"}} >6 AG. GEORGIOU KARITSI SQR. 10561<br />
-                                ATHENS,GREECE<br />
-                                <Link to="tel:+30 210 3252103">+30 210 3252103</Link><br />
-                                email: <Link to="mailto:admin@valuecom.gr">admin@valuecom.gr</Link>
-                            </p>
-                        </div>
+            <Widget_SimpleTitle widgetTitle={nodeData.title} />
+            <section>
+                <div className="container-xxl col-lg-6 px-md-5 pb-5">
+                    <div className="contact-form-wrap py-5">
+                        <h3 style={{'fontWeight': '400'}}>Get in touch with us</h3>
+                        <form action="#" method="post" onSubmit={handleContactSubmit} >
+                            <input type="text" id="form_name" name="name" placeholder="Name" required maxLength="100" />
+                            <input type="email" id="form_email" name="email" placeholder="Email"  required />
+                            <textarea id="form_message" name="message" placeholder="Message" style={{'height':"200px"}}  required maxLength="2000"  ></textarea>
+                            <input style={{'backgroundColor': "#FDDD31", 'color': "#1D1D1D", 'fontWeight':"600"}} type="submit" value="Send"  />
+                            <div id="contact-msg" className="contact-msg" ></div>
+                            <div id="contact-msg-error" className="contact-msg-error" ></div>
+                        </form>
                     </div>
-                </section>
-            </main>
+                    <hr />
+                    <div className="contact-info-wrap py-5">
+                        <p style={{'color':"#757575"}} >6 AG. GEORGIOU KARITSI SQR. 10561<br />
+                            ATHENS,GREECE<br />
+                            <Link to="tel:+30 210 3252103">+30 210 3252103</Link><br />
+                            email: <Link to="mailto:admin@valuecom.gr">admin@valuecom.gr</Link>
+                        </p>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }

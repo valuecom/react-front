@@ -1,5 +1,6 @@
- import { useQuery, gql } from "@apollo/client";
- 
+
+import React, { useEffect } from "react"; 
+import { useQuery, gql } from "@apollo/client"; 
 import Widget_SimpleTitle from "./Widget_SimpleTitle";
 import Widget_SimpleHeroImage from "./Widget_SimpleHeroImage";
 import Widget_SimpleContent from "./Widget_SimpleContent";
@@ -10,6 +11,13 @@ const Page_WeAreTrusted = (props) => {
 
     const nodeData = props.nodeData;
 
+    useEffect(() => {
+        document.body.classList.add('we-are-trusted')
+        return () => {
+          document.body.classList.remove('we-are-trusted')
+        }
+    }, [])
+    
     const GET_CLIENTS_CONTENT = gql`query GET_CLIENTS_CONTENT
     {
       ${__GraphQL_Queries.queries.weAreTrusted}

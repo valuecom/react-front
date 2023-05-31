@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import __GraphQL_Queries from "./__GraphQL_Queries";
 import Widget_SimpleTitle from "./Widget_SimpleTitle";
 import { useQuery, gql } from "@apollo/client";
@@ -8,6 +8,13 @@ import { useQuery, gql } from "@apollo/client";
 const Page_TheTeam = (props) => {
 
     const nodeData = props.nodeData;
+
+    useEffect(() => {
+        document.body.classList.add('the-team')
+        return () => {
+          document.body.classList.remove('the-team')
+        }
+    }, [])
 
     const GET_FACES = gql`query GET_FACES
     {
