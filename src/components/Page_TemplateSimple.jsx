@@ -1,3 +1,4 @@
+import React, { useEffect }  from "react";
 import Widget_SimpleTitle  from "./Widget_SimpleTitle";
 import Widget_SimpleHeroImage  from "./Widget_SimpleHeroImage";
 import Widget_SimpleContent  from "./Widget_SimpleContent";
@@ -5,6 +6,13 @@ import Widget_SimpleContent  from "./Widget_SimpleContent";
 const Page_WeBelieve = (props) => {
     const nodeData = props.nodeData;
  
+
+    useEffect(() => {
+        document.body.classList.add('simple')
+        return () => {
+          document.body.classList.remove('simple')
+        }
+    }, [])
 
     return (
         <>

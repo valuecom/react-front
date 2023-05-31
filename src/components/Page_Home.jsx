@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useRef, useLayoutEffect } from "react";
+import React, { Suspense, lazy, useRef, useLayoutEffect, useEffect } from "react";
 import { Link } from "react-router-dom";
 import __GraphQL_Queries from "./__GraphQL_Queries";
 import preloadImage from './__Utils';
@@ -36,6 +36,13 @@ const Page_Home = (props) => {
         }, refBox);
         return () => ctx.revert();
     });
+
+    useEffect(() => {
+        document.body.classList.add('home')
+        return () => {
+          document.body.classList.remove('home')
+        }
+    }, [])
 
     const preloadingArray = props.preloadingArray;
     // console.log("preloadingArray", preloadingArray);
@@ -79,14 +86,8 @@ const Page_Home = (props) => {
         }
     }
     //  console.log(img_arr_inner);
-
-
-
-
-
-
     return (
-        <main className="page" ref={refBox} >
+        <div ref={refBox} >
             <Suspense fallback={<span style={{fontSize:'12px'}}>Loading...</span>} >
                 <Widget_HomeSliderBootstrap figures = {figures} />
             </Suspense>
@@ -156,7 +157,7 @@ const Page_Home = (props) => {
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
     )
 }
 

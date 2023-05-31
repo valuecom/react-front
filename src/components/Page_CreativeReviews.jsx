@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import __GraphQL_Queries from "./__GraphQL_Queries";
 import { Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
@@ -9,6 +9,13 @@ import{
 
 const Page_CreativeReviews = (props) => {
     const nodeData = props.nodeData;
+
+    useEffect(() => {
+        document.body.classList.add('creative-reviews')
+        return () => {
+          document.body.classList.remove('creative-reviews')
+        }
+    }, [])
 
     const GET_CONTENT_CREATIVE_REVIEWS = gql`query GET_CONTENT_CREATIVE_REVIEWS
     {
