@@ -15,7 +15,7 @@ console.log(figure_arr);
                             {figure_arr.map( (_data, index) => {
                                 var key_1 = 'key_1_' + index;
                                 var key_2 = 'key_2_' + index;
-                                var classNameCaption = 'custom_caption_' + index;
+                                var classNameCaption = 'home_slide_caption_' + index;
                                 return (
                                     <Carousel.Item  key={key_1}  className={classNameCaption}>
                                         <img className="d-block w-100"  src={_data.firstElementChild.src}  style={ {'objectFit':'cover', 'width':'100%'} } /* alt="..." key={key_2}*/  />

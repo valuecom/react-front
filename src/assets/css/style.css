@@ -70,6 +70,25 @@ footer li a {
 .figure .figure-caption{
     padding: 14px 2px 0;
 }
+.home_slide_caption_0 .carousel-caption {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    padding: 0 0 50px;
+}
+.home_slide_caption_1 .carousel-caption {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    padding: 0 0 50px;
+    font-size: 70px;
+    word-break: break-all;
+}
+
 
 .carousel.slide, .carousel-inner, .carousel-item, .carousel-item > img{
     height: 100%;
