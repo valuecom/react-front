@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, {  useRef, useLayoutEffect, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Widget_SimpleTitle from "./Widget_SimpleTitle";
-
+import gsap from "gsap";
+// import ScrollTrigger from "gsap/ScrollTrigger";
 
 // mutation SEND_EMAIL {
 // 	sendEmail(
@@ -51,6 +52,18 @@ const Page_Contact = (props) => {
             if (document.getElementsByClassName('grecaptcha-badge')[0]) 
                 document.getElementsByClassName('grecaptcha-badge')[0].remove();
         }
+    });
+
+    const refBox = useRef();
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from(refBox.current, {
+                transform: "translateY(50px)",
+                duration:0.3
+            });
+        }, refBox);
+        return () => ctx.revert();
     });
 
     const handleContactSubmit = (e) => {
@@ -133,7 +146,7 @@ const Page_Contact = (props) => {
     return (
         <>
             <Widget_SimpleTitle widgetTitle={nodeData.title} />
-            <section>
+            <section ref={refBox} >
                 <div className="container-xxl col-lg-6 px-md-5 pb-5">
                     <div className="contact-form-wrap py-5">
                         <h3 style={{'fontWeight': '400'}}>Get in touch with us</h3>

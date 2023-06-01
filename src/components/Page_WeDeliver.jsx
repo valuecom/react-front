@@ -26,7 +26,7 @@ const Page_WeDeliver = (props) => {
             gsap.registerPlugin(ScrollTrigger);
 
             for (let i=0;i<document.getElementsByClassName('figure').length;i++){
-                let d = 0.2*(i%2);
+                let d = 0.05*(i%2);
                 gsap.from(".box-"+i, {  
                     scrollTrigger: {
                         trigger: ".box-"+i

@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect, useLayoutEffect } from "react";
 import __GraphQL_Queries from "./__GraphQL_Queries";
 import { Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import{
     creativeReviewsFeaturedImage
 }  from "../assets";
-
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 const Page_CreativeReviews = (props) => {
     const nodeData = props.nodeData;
@@ -16,6 +17,30 @@ const Page_CreativeReviews = (props) => {
           document.body.classList.remove('creative-reviews')
         }
     }, [])
+
+    const refBox = useRef();
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            for (let i=0;i<document.getElementsByClassName('figure').length;i++){
+                let d = 0.05*(i%2);
+                gsap.from(".box-"+i, {  
+                    scrollTrigger: {
+                        trigger: ".box-"+i
+                    },
+                    delay: d,
+                    transform: "translateY(100px)",
+                    opacity:0,
+                    duration:0.8
+                });
+            }
+
+            // gsap.to(".box-4", {  scale:3 });
+        }, refBox);
+        return () => ctx.revert();
+    });
 
     const GET_CONTENT_CREATIVE_REVIEWS = gql`query GET_CONTENT_CREATIVE_REVIEWS
     {
@@ -49,7 +74,7 @@ const Page_CreativeReviews = (props) => {
  console.log(childPageArray);
 
     return(
-        <>
+        <div ref={refBox} >
             <section className="page-title-section">
                 <div className="container-xxl">
                     <div className="page-title-wrap my-5 px-5">
@@ -70,7 +95,7 @@ const Page_CreativeReviews = (props) => {
                         return (
                             <div className="row" key={index}  >
                                 <div className="col-md-6">
-                                    <figure className="figure mb-5">
+                                    <figure className={"box-" + index*2 +" figure mb-5"}>
                                         <Link to={childPage[0].uri}>
                                             <div className="figure-img-wrap">
                                                 <img src={childPage[0].featuredImage.node.sourceUrl?childPage[0].featuredImage.node.sourceUrl:creativeReviewsFeaturedImage} className="figure-img img-fluid" alt="..." />
@@ -83,7 +108,7 @@ const Page_CreativeReviews = (props) => {
                                     childPage[1]
                                     ?
                                         <div className="col-md-6" >
-                                            <figure className="figure mb-5">
+                                            <figure className={"box-" + (index*2+1) +" figure mb-5"}>
                                                 <Link to={childPage[1].uri}>
                                                     <div className="figure-img-wrap">
                                                         <img src={childPage[1].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." />
@@ -100,7 +125,7 @@ const Page_CreativeReviews = (props) => {
                     })}
                 </div>
             </section>
-        </>
+        </div>
     );
 }
 
