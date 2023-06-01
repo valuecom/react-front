@@ -7,7 +7,7 @@ const _Footer = (props) => {
 
     return (
         <footer id="footer" className=" py-5 mt-auto hidden">
-            <div className="container-xxl d-flex justify-content-end">
+            <div className="container-xxl d-flex justify-content-start">
                 <ul className="footer-menu m-0 p-0">
                     {menuNodesFooter.map((menuNode, index) => {
                         return (

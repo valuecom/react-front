@@ -22,9 +22,9 @@ const Widget_SimpleHeroImage = (props) => {
     return (
         <section>
             <div className="container-xxl d-flex justify-content-center pb-5" ref={refBox} >
-                <img
+                <img className="simple-page-featured-image"
                     src={imgObj.sourceUrl}
-                    srcSet={imgObj.mediaDetails.sizes[2].sourceUrl + ' 600w, ' +imgObj.sourceUrl + ' 1280w' }
+                    // srcSet={imgObj.mediaDetails.sizes[2].sourceUrl + ' 600w, ' +imgObj.sourceUrl + ' 1280w' }
                     style={{objectFit:'cover'}}
                     width="1296"
                     height="384"

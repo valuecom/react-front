@@ -32,6 +32,11 @@ header {
 footer {
     background-color: var(--color_dark);
 }
+@media (max-width: 960px){
+    ul.footer-menu{
+        display: grid;
+    }
+}
 
 footer li {
     list-style: none;
@@ -171,7 +176,7 @@ footer li a {
     }
 }
 @media (max-width: 1350px) {
-    .card img{
+    .card img, .logos-gallery img, .simple-page-featured-image{
         width: 100%;
         height: auto;
     }
@@ -223,6 +228,7 @@ input[type=text],input[type=email], select, textarea {
         object-fit:cover;
         width:100%;
         max-height: 1000px;
+        height: 39vw;
     }
 
     .video-frame {
