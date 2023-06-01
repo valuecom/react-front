@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import __GraphQL_Queries from "./__GraphQL_Queries";
 import { useQuery, gql } from "@apollo/client";
 import preloadImage from "./__Utils";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 
 const Page_WeDeliver = (props) => {
@@ -16,6 +18,31 @@ const Page_WeDeliver = (props) => {
           document.body.classList.remove('we-deliver')
         }
     }, [])
+
+    const refBox = useRef();
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            for (let i=0;i<document.getElementsByClassName('figure').length;i++){
+                let d = 0.05*(i%2);
+                gsap.from(".box-"+i, {  
+                    scrollTrigger: {
+                        trigger: ".box-"+i
+                    },
+                    delay: d,
+                    transform: "translateY(100px)",
+                    opacity:0,
+                    duration:0.8
+                });
+            }
+
+            // gsap.to(".box-4", {  scale:3 });
+        }, refBox);
+        return () => ctx.revert();
+    });
+
 
     // console.log("preloadingArray", preloadingArray);
 
@@ -50,7 +77,7 @@ const Page_WeDeliver = (props) => {
     //  console.log(childPageArray);
 
     return(
-        <>
+        <div ref={refBox}>
             <section className="page-title-section">
                 <div className="container-xxl">
                     <div className="page-title-wrap my-5 px-5">
@@ -65,7 +92,7 @@ const Page_WeDeliver = (props) => {
                         return (
                             <div className="row" key={index}  >
                                 <div className="col-md-6">
-                                    <figure className="figure mb-5">
+                                    <figure className={"box-" + index*2 +" figure mb-5"}>
                                         <Link to={childPage[0].uri} onMouseEnter={ () => preloadImage(preloadingArray[childPage[0].uri]) } >
                                             <div className="figure-img-wrap">
                                                 <img src={childPage[0].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." width="636" height="417" />
@@ -79,7 +106,7 @@ const Page_WeDeliver = (props) => {
                                     childPage[1]
                                     ?
                                         <div className="col-md-6" >
-                                            <figure className="figure mb-5">
+                                            <figure className={"box-" + (index*2+1) +" figure mb-5"}>
                                                 <Link to={childPage[1].uri} onMouseEnter={ () => preloadImage(preloadingArray[childPage[1].uri]) }  >
                                                     <div className="figure-img-wrap">
                                                         <img src={childPage[1].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..."  width="636" height="417" />
@@ -97,7 +124,7 @@ const Page_WeDeliver = (props) => {
                     })}
                 </div>
             </section>
-        </>
+        </div>
     )
 }
  
