@@ -20,7 +20,7 @@ const Page_Home = (props) => {
             gsap.registerPlugin(ScrollTrigger);
 
             for (let i=0;i<9;i++){
-                let d = 0.05*i;
+                let d = 0.05*(i%3);
                 gsap.from(".box-"+i, {  
                     scrollTrigger: {
                         trigger: ".box-"+i

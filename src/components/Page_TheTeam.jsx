@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useRef, useLayoutEffect, useEffect } from "react";
 import __GraphQL_Queries from "./__GraphQL_Queries";
 import Widget_SimpleTitle from "./Widget_SimpleTitle";
 import { useQuery, gql } from "@apollo/client";
-
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 
 const Page_TheTeam = (props) => {
@@ -15,6 +16,30 @@ const Page_TheTeam = (props) => {
           document.body.classList.remove('the-team')
         }
     }, [])
+
+    const refBox = useRef();
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            for (let i=0;i<9;i++){
+                let d = 0.05*(i%3);
+                gsap.from(".box-"+i, {
+                    scrollTrigger: {
+                        trigger: ".box-"+i
+                    },
+                    delay: d,
+                    transform: "translateY(50px)",
+                    opacity:0,
+                    duration:0.3
+                });
+            }
+
+            // gsap.to(".box-4", {  scale:3 });
+        }, refBox);
+        return () => ctx.revert();
+    });
 
     const GET_FACES = gql`query GET_FACES
     {
@@ -41,8 +66,8 @@ const Page_TheTeam = (props) => {
 
     console.log(card_array);
 
-    return (  
-        <>
+    return (
+        <div ref={refBox} >
             <Widget_SimpleTitle widgetTitle={props.nodeData.title} />
             <section>
                 <div className="container-xxl">
@@ -50,7 +75,7 @@ const Page_TheTeam = (props) => {
                         <div className="col-12 the-team-cards d-grid px-md-5 px-xxl-0 pb-5">
                             {card_array.map( (card, index) => {
                                 return (
-                                    <div key={index} className="card">
+                                    <div key={index} className={"card box-" + index}>
                                         <img src={card.thumb.sourceUrl} className="card-img-top" alt="..." width="413" height="275" />
                                         <div className="card-body">
                                             <h5 className="card-title">{card.title}</h5>
@@ -58,16 +83,15 @@ const Page_TheTeam = (props) => {
                                             <hr />
                                             <div dangerouslySetInnerHTML={{__html:card.text}} ></div>
                                         </div>
-                                    </div>  
+                                    </div>
                                 );
                             })}
                         </div>
                     </div>
                 </div>
-
             </section>
-        </>
+        </div>
     );
 }
- 
+
 export default Page_TheTeam;
