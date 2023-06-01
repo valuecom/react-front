@@ -20,7 +20,7 @@ const _Footer = (props) => {
             </div>
         </footer>
     );
-
+ 
 }
 
 export default _Footer;
