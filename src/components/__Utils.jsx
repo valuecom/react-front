@@ -6,5 +6,12 @@ const preloadImage = (image) => {
     }
 }
 
+const logginF = (txt) => {
+    console.log(txt);
+}
 
-export default preloadImage;
+
+export {
+    preloadImage,
+    logginF
+}

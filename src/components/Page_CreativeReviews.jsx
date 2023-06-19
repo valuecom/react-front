@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useLayoutEffect } from "react";
 import __GraphQL_Queries from "./__GraphQL_Queries";
+import { logginF } from './__Utils';
 import { Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import{
@@ -49,9 +50,9 @@ const Page_CreativeReviews = (props) => {
     
     const { data, loading, error } = useQuery(GET_CONTENT_CREATIVE_REVIEWS);
 
-    if (loading) { console.log('loading From Page_CreativeReviews'); return }
-    if (error) { console.log('error From Page_CreativeReviews'); return }
-    if (!data) { console.log('!data From Page_CreativeReviews'); return }
+    if (loading) { logginF('loading From Page_CreativeReviews'); return }
+    if (error) { logginF('error From Page_CreativeReviews'); return }
+    if (!data) { logginF('error From Page_CreativeReviews'); return }
 
     const nodeMoreData = data.creativeReviews;
 

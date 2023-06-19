@@ -5,7 +5,7 @@ const Widget_HomeSliderBootstrap = (props) => {
  
     // console.log(props);
     const figure_arr = [...props.figures];
-console.log(figure_arr);
+    // console.log(figure_arr);
     return (
         <section className="slider-section mb-5">
             <div className="container-fluid px-0 h-100" >

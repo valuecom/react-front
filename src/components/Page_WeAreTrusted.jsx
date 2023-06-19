@@ -4,7 +4,7 @@ import { useQuery, gql } from "@apollo/client";
 import Widget_SimpleTitle from "./Widget_SimpleTitle";
 import Widget_SimpleHeroImage from "./Widget_SimpleHeroImage";
 import Widget_SimpleContent from "./Widget_SimpleContent";
-
+import { logginF } from './__Utils';
 import __GraphQL_Queries from "./__GraphQL_Queries";
 
 const Page_WeAreTrusted = (props) => {
@@ -25,9 +25,9 @@ const Page_WeAreTrusted = (props) => {
 
     const { data, loading, error } = useQuery(GET_CLIENTS_CONTENT);
 
-    if (loading) { console.log('loading From Page_WeAreTrusted'); return }
-    if (error) { console.log('error From Page_WeAreTrusted'); return }
-    if (!data) { console.log('!data From Page_WeAreTrusted'); return }
+    if (loading) { logginF('loading From Page_WeAreTrusted'); return }
+    if (error) { logginF('error From Page_WeAreTrusted'); return }
+    if (!data) { logginF('error From Page_WeAreTrusted'); return }
   
     const nodeMoreData = data.weAreTrusted;
     // const content = parse(nodeMoreData.content);

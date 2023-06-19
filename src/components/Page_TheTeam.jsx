@@ -4,7 +4,7 @@ import Widget_SimpleTitle from "./Widget_SimpleTitle";
 import { useQuery, gql } from "@apollo/client";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-
+import { logginF } from './__Utils';
 
 const Page_TheTeam = (props) => {
 
@@ -48,9 +48,9 @@ const Page_TheTeam = (props) => {
 
     const { data, loading, error } = useQuery(GET_FACES);
 
-    if (loading) { console.log('loading From Page_TheTeam'); return }
-    if (error) { console.log('error From Page_TheTeam'); return }
-    if (!data) { console.log('!data From Page_TheTeam'); return }
+    if (loading) { logginF('loading From Page_TheTeam'); return }
+    if (error) { logginF('error From Page_TheTeam'); return }
+    if (!data) { logginF('error From Page_TheTeam'); return }
 
     const nodeMoreData = data.theTeam;
 
@@ -64,7 +64,7 @@ const Page_TheTeam = (props) => {
 
 
 
-    console.log(card_array);
+    // console.log(card_array);
 
     return (
         <div ref={refBox} >

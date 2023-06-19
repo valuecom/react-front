@@ -1,5 +1,7 @@
 import React, { useEffect }  from "react";
 
+import { logginF } from './__Utils';
+
 import { useQuery, gql } from "@apollo/client";
 
 const Page_TemplateCreativeReview = (props) => {
@@ -27,13 +29,13 @@ const Page_TemplateCreativeReview = (props) => {
 
     const { data, loading, error } = useQuery(GET_CONTENT_CREATIVE_REVIEW);
 
-    if (loading) { console.log('loading From Page_CreativeReviews'); return }
-    if (error) { console.log('error From Page_CreativeReviews'); return }
-    if (!data) { console.log('!data From Page_CreativeReviews'); return }
+    if (loading) { logginF('loading From Page_CreativeReviews'); return }
+    if (error) { logginF('error From Page_CreativeReviews'); return }
+    if (!data) { logginF('error From Page_CreativeReviews'); return }
 
     const nodeMoreData = data.page;
 
-    console.log(nodeMoreData);
+    // console.log(nodeMoreData);
 
     return ( 
         <>

@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useRef, useLayoutEffect, useEffect } from "react";
 import { Link } from "react-router-dom";
 import __GraphQL_Queries from "./__GraphQL_Queries";
-import preloadImage from './__Utils';
+import { preloadImage, logginF } from './__Utils';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 // import {
@@ -55,9 +55,9 @@ const Page_Home = (props) => {
 
     // console.log(data);
 
-    if (loading) { console.log('loading From Page_Home'); return }
-    if (error) { console.log('error From Page_Home'); return }
-    if (!data) { console.log('!data From Page_Home'); return }
+    if (loading) { logginF('loading From Page_Home'); return }
+    if (error) { logginF('error From Page_Home'); return }
+    if (!data) { logginF('error From Page_Home'); return }
 
     const nodeMoreData = data.homePage;
     const home_gallery_html = nodeMoreData.content;

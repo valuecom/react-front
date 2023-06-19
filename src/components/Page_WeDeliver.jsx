@@ -2,10 +2,9 @@ import React, { useRef, useEffect, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import __GraphQL_Queries from "./__GraphQL_Queries";
 import { useQuery, gql } from "@apollo/client";
-import preloadImage from "./__Utils";
+import { preloadImage, logginF } from "./__Utils";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-
 
 const Page_WeDeliver = (props) => {
 
@@ -53,9 +52,9 @@ const Page_WeDeliver = (props) => {
 
     const { data, loading, error } = useQuery(GET_CONTENT_WE_DELIVER);
 
-    if (loading) { console.log('loading From Page_WeDeliver'); return }
-    if (error) { console.log('error From Page_WeDeliver'); return }
-    if (!data) { console.log('!data From Page_WeDeliver'); return }
+    if (loading) { logginF('loading From Page_WeDeliver'); return }
+    if (error) { logginF('error From Page_WeDeliver'); return }
+    if (!data) { logginF('error From Page_WeDeliver'); return }
 
     const nodeMoreData = data.weDeliver;
 
@@ -95,7 +94,7 @@ const Page_WeDeliver = (props) => {
                                     <figure className={"box-" + index*2 +" figure mb-5"}>
                                         <Link to={childPage[0].uri} onMouseEnter={ () => preloadImage(preloadingArray[childPage[0].uri]) } >
                                             <div className="figure-img-wrap">
-                                                <img src={childPage[0].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." width="636" height="417" />
+                                                <img src={childPage[0].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." width="640" height="420" />
                                             </div>
                                             <figcaption className="figure-caption fw-medium">{childPage[0].projectsExtras.client}</figcaption>
                                             <figcaption className="figure-caption fw-bold p-0">{childPage[0].title}</figcaption>
@@ -109,7 +108,7 @@ const Page_WeDeliver = (props) => {
                                             <figure className={"box-" + (index*2+1) +" figure mb-5"}>
                                                 <Link to={childPage[1].uri} onMouseEnter={ () => preloadImage(preloadingArray[childPage[1].uri]) }  >
                                                     <div className="figure-img-wrap">
-                                                        <img src={childPage[1].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..."  width="636" height="417" />
+                                                        <img src={childPage[1].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..."  width="640" height="420" />
                                                     </div>
                                                     <figcaption className="figure-caption fw-medium">{childPage[1].projectsExtras.client}</figcaption>
                                                     <figcaption className="figure-caption fw-bold p-0">{childPage[1].title}</figcaption>

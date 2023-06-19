@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import { useQuery, gql } from "@apollo/client";
+import { logginF } from './__Utils';
 
 const Page_TemplatePoject = (props) => {
 
@@ -38,9 +39,9 @@ const Page_TemplatePoject = (props) => {
 
     const { data, loading, error } = useQuery(GET_PROJECT_CONTENT);
 
-    if (loading) { console.log('loading From Page_TemplateProject'); return }
-    if (error) { console.log('error From Page_TemplateProject'); return }
-    if (!data) { console.log('!data From Page_TemplateProject'); return }
+    if (loading) { logginF('loading From Page_TemplateProject'); return }
+    if (error) { logginF('error From Page_TemplateProject'); return }
+    if (!data) { logginF('error From Page_TemplateProject'); return }
 
     const nodeMoreData = data.page;
 
