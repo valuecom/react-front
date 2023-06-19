@@ -7,7 +7,10 @@ const preloadImage = (image) => {
 }
 
 const logginF = (txt) => {
-    console.log(txt);
+    if(process.env.NODE_ENV=="development"){
+        console.log(txt);
+    }
+    return;
 }
 
 

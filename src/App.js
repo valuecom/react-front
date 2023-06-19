@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useQuery, gql } from "@apollo/client";
 import __GraphQL_Queries from "./components/__GraphQL_Queries";
-
+import { logginF } from './components/__Utils';
 
 import {
   _Header,
@@ -168,9 +168,9 @@ const  App = () => {
 
   const { data, loading, error } = useQuery(GET_MAIN_QUERY);
 
-  if (loading) { console.log('loading main query'); return }
-  if (error) { console.log(error.graphQLErrors); return }
-  if (!data) { console.log('!data main query'); return }
+  if (loading) { logginF('loading main query'); return }
+  if (error) { logginF(error.graphQLErrors); return }
+  if (!data) { logginF('!data main query'); return }
 
  
   // console.log(data);
