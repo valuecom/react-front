@@ -25,7 +25,7 @@ const _Header = (props) =>  {
                     <div className="col-6 col-lg-2">
                         <div className="logo-wrap">
                             <Link to="/">
-                                <img src={"https://newsite2023.valuecom.gr/images/logo.png"} alt="Valuecom" width="204" height="49" />
+                                <img src={"https://valuecom.gr/images/logo.png"} alt="Valuecom" width="204" height="49" />
                             </Link>
                         </div>
                     </div>

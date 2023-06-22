@@ -2,6 +2,7 @@ import React, {  useRef, useLayoutEffect, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Widget_SimpleTitle from "./Widget_SimpleTitle";
 import gsap from "gsap";
+import { Helmet } from "react-helmet-async";
 // import ScrollTrigger from "gsap/ScrollTrigger";
 
 // mutation SEND_EMAIL {
@@ -118,8 +119,11 @@ const Page_Contact = (props) => {
                 }).then(result => {
                     // console.log(result);
                     if (result.status==200){
-                       document.getElementById('contact-msg-error').innerHTML = '';
-                       document.getElementById('contact-msg').innerHTML = result.message;
+                        document.getElementById('form_name').value='';
+                        document.getElementById('form_email').value='';
+                        document.getElementById('form_message').value='';
+                        document.getElementById('contact-msg-error').innerHTML = '';
+                        document.getElementById('contact-msg').innerHTML = result.message;
                     }else{
                         document.getElementById('contact-msg').innerHTML = '';
                         document.getElementById('contact-msg-error').innerHTML = result.message;
@@ -145,6 +149,9 @@ const Page_Contact = (props) => {
 
     return (
         <>
+            <Helmet>
+              <title>Contact | VALUECOM</title>
+            </Helmet>
             <Widget_SimpleTitle widgetTitle={nodeData.title} />
             <section ref={refBox} >
                 <div className="container-xxl col-lg-6 px-md-5 pb-5">

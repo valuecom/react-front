@@ -5,6 +5,7 @@ import { useQuery, gql } from "@apollo/client";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { logginF } from './__Utils';
+import { Helmet } from "react-helmet-async";
 
 const Page_TheTeam = (props) => {
 
@@ -67,30 +68,35 @@ const Page_TheTeam = (props) => {
     // console.log(card_array);
 
     return (
-        <div ref={refBox} >
-            <Widget_SimpleTitle widgetTitle={props.nodeData.title} />
-            <section>
-                <div className="container-xxl">
-                    <div className="row">
-                        <div className="col-12 the-team-cards d-grid px-md-5 px-xxl-0 pb-5">
-                            {card_array.map( (card, index) => {
-                                return (
-                                    <div key={index} className={"card box-" + index}>
-                                        <img src={card.thumb.sourceUrl} className="card-img-top" alt="..." width="413" height="275" />
-                                        <div className="card-body">
-                                            <h5 className="card-title">{card.title}</h5>
-                                            <p className="card-text">{card.subTitle}</p>
-                                            <hr />
-                                            <div dangerouslySetInnerHTML={{__html:card.text}} ></div>
+        <>
+            <Helmet>
+                <title>The team | VALUECOM</title>
+            </Helmet>
+            <div ref={refBox} >
+                <Widget_SimpleTitle widgetTitle={props.nodeData.title} />
+                <section>
+                    <div className="container-xxl">
+                        <div className="row">
+                            <div className="col-12 the-team-cards d-grid px-md-5 px-xxl-0 pb-5">
+                                {card_array.map( (card, index) => {
+                                    return (
+                                        <div key={index} className={"card box-" + index}>
+                                            <img src={card.thumb.sourceUrl} className="card-img-top" alt="..." width="413" height="275" />
+                                            <div className="card-body">
+                                                <h5 className="card-title">{card.title}</h5>
+                                                <p className="card-text">{card.subTitle}</p>
+                                                <hr />
+                                                <div dangerouslySetInnerHTML={{__html:card.text}} ></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                );
-                            })}
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
+                </section>
+            </div>
+        </>
     );
 }
 

@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { Helmet, HelmetProvider } from "react-helmet-async";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useQuery, gql } from "@apollo/client";
 import __GraphQL_Queries from "./components/__GraphQL_Queries";
 import { logginF } from './components/__Utils';
@@ -163,7 +163,7 @@ const  App = () => {
         if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
         // if (document.getElementById('header-nav'))  document.getElementById('header-nav').classList.remove('hidden');
 
-      },1200);
+      },1400);
   });
 
   const { data, loading, error } = useQuery(GET_MAIN_QUERY);
@@ -272,10 +272,10 @@ const  App = () => {
 
 
   return (
-    // <HelmetProvider>
-    //       <Helmet>
-    //           <title>VALUECOM | React</title>
-    //       </Helmet>
+    <HelmetProvider>
+          <Helmet>
+              <title>VALUECOM</title>
+          </Helmet>
           <BrowserRouter>
               <_Header menuNodes={menuNodes} preloadingArray={preloadingArray} />
               {
@@ -324,7 +324,7 @@ const  App = () => {
                 </Suspense>
               <_Footer menuNodesFooter={menuNodesFooter} />
           </BrowserRouter>
-    // </HelmetProvider>
+    </HelmetProvider>
   );
 }
 

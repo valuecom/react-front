@@ -1,6 +1,11 @@
+import { Helmet } from "react-helmet-async";
 const Widget_SimpleTitle = (props) => {
 
     return(  
+        <>
+        <Helmet>
+            <title>{props.widgetTitle} | VALUECOM</title>
+        </Helmet>
         <section className="page-title-section">
             <div className="container-xxl">
                 <div className="page-title-wrap my-5 px-5">
@@ -8,6 +13,7 @@ const Widget_SimpleTitle = (props) => {
                 </div>
             </div>
         </section>
+        </>
     );
     }
 

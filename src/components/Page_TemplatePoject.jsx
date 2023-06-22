@@ -1,7 +1,8 @@
 import React, {useEffect} from "react";
 import { useQuery, gql } from "@apollo/client";
 import { logginF } from './__Utils';
-
+import { Helmet
+ } from "react-helmet-async";
 const Page_TemplatePoject = (props) => {
 
 
@@ -47,6 +48,9 @@ const Page_TemplatePoject = (props) => {
 
     return(  
         <>
+            <Helmet>
+                <title>{nodeMoreData.projectsExtras.project} | VALUECOM</title>
+            </Helmet>
             <section className="mb-5 ">
                 <div className="container-fluid px-0">
                     <div className="project-featured-image">

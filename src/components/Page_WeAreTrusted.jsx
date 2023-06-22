@@ -6,7 +6,7 @@ import Widget_SimpleHeroImage from "./Widget_SimpleHeroImage";
 import Widget_SimpleContent from "./Widget_SimpleContent";
 import { logginF } from './__Utils';
 import __GraphQL_Queries from "./__GraphQL_Queries";
-
+import { Helmet } from "react-helmet-async";
 const Page_WeAreTrusted = (props) => {
 
     const nodeData = props.nodeData;
@@ -48,6 +48,9 @@ const Page_WeAreTrusted = (props) => {
 
     return (
         <>
+            <Helmet>
+                <title>We are trusted | VALUECOM</title>
+            </Helmet>
             <Widget_SimpleTitle widgetTitle={nodeData.title} />
             <Widget_SimpleHeroImage imgObj={nodeMoreData.featuredImage.node} />
             <Widget_SimpleContent contentHTML={nodeMoreData.content} />
