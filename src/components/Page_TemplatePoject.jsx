@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useLayoutEffect} from "react";
 import { useQuery, gql } from "@apollo/client";
 import { logginF } from './__Utils';
 import { Helmet
@@ -7,11 +7,18 @@ const Page_TemplatePoject = (props) => {
 
 
     useEffect(() => {
-        document.body.classList.add('project')
+        document.body.classList.add('project');
         return () => {
-          document.body.classList.remove('project')
+          document.body.classList.remove('project');
         }
     }, [])
+
+    useLayoutEffect(() => {
+        document.getElementById('footer').classList.remove('hidden');
+        return () => { 
+            document.getElementById('footer').classList.add('hidden');
+        }
+    });
 
     const nodeData = props.nodeData;
     // console.log(nodeData);

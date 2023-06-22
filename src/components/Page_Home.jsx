@@ -16,6 +16,7 @@ const Page_Home = (props) => {
     const refBox = useRef();
 
     useLayoutEffect(() => {
+        document.getElementById('footer').classList.remove('hidden');
         const ctx = gsap.context(() => {
             gsap.registerPlugin(ScrollTrigger);
 
@@ -34,13 +35,16 @@ const Page_Home = (props) => {
 
             // gsap.to(".box-4", {  scale:3 });
         }, refBox);
-        return () => ctx.revert();
+        return () => {
+            ctx.revert();
+            document.getElementById('footer').classList.add('hidden');
+        }
     });
 
     useEffect(() => {
-        document.body.classList.add('home')
+        document.body.classList.add('home');
         return () => {
-          document.body.classList.remove('home')
+          document.body.classList.remove('home');
         }
     }, [])
 

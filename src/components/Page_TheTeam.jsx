@@ -12,15 +12,16 @@ const Page_TheTeam = (props) => {
     const nodeData = props.nodeData;
 
     useEffect(() => {
-        document.body.classList.add('the-team')
+        document.body.classList.add('the-team');
         return () => {
-          document.body.classList.remove('the-team')
+          document.body.classList.remove('the-team');
         }
     }, [])
 
     const refBox = useRef();
 
     useLayoutEffect(() => {
+        document.getElementById('footer').classList.remove('hidden');
         const ctx = gsap.context(() => {
             gsap.registerPlugin(ScrollTrigger);
 
@@ -39,7 +40,10 @@ const Page_TheTeam = (props) => {
 
             // gsap.to(".box-4", {  scale:3 });
         }, refBox);
-        return () => ctx.revert();
+        return () => {
+            document.getElementById('footer').classList.add('hidden');
+            ctx.revert();
+        }
     });
 
     const GET_FACES = gql`query GET_FACES

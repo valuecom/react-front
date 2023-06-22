@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react";
+import React, { useEffect, useLayoutEffect }  from "react";
 
 import { logginF } from './__Utils';
 
@@ -9,11 +9,18 @@ const Page_TemplateCreativeReview = (props) => {
 
     
     useEffect(() => {
-        document.body.classList.add('creative-review')
+        document.body.classList.add('creative-review');
         return () => {
-          document.body.classList.remove('creative-review')
+          document.body.classList.remove('creative-review');
         }
     }, [])
+
+    useLayoutEffect(() => {
+        document.getElementById('footer').classList.remove('hidden');
+        return () => { 
+            document.getElementById('footer').classList.add('hidden');
+        }
+    });
 
     const GET_CONTENT_CREATIVE_REVIEW = gql`query GET_CONTENT_CREATIVE_REVIEW {
         page( id: ${nodeData.databaseId}, idType: DATABASE_ID ) {

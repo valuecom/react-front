@@ -13,15 +13,16 @@ const Page_WeDeliver = (props) => {
     const preloadingArray = props.preloadingProjectsArray;
 
     useEffect(() => {
-        document.body.classList.add('we-deliver')
+        document.body.classList.add('we-deliver');
         return () => {
-          document.body.classList.remove('we-deliver')
+          document.body.classList.remove('we-deliver');
         }
     }, [])
 
     const refBox = useRef();
 
     useLayoutEffect(() => {
+        document.getElementById('footer').classList.remove('hidden');
         const ctx = gsap.context(() => {
             gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +41,10 @@ const Page_WeDeliver = (props) => {
 
             // gsap.to(".box-4", {  scale:3 });
         }, refBox);
-        return () => ctx.revert();
+        return () => {
+            ctx.revert();
+            document.getElementById('footer').classList.add('hidden');
+        } 
     });
 
 

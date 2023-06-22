@@ -13,15 +13,23 @@ const Page_CreativeReviews = (props) => {
     const nodeData = props.nodeData;
 
     useEffect(() => {
-        document.body.classList.add('creative-reviews')
+        document.body.classList.add('creative-reviews');
         return () => {
-          document.body.classList.remove('creative-reviews')
+          document.body.classList.remove('creative-reviews');
         }
     }, [])
+
+    useLayoutEffect(() => {
+        document.getElementById('footer').classList.remove('hidden');
+        return () => { 
+            document.getElementById('footer').classList.add('hidden');
+        }
+    });
 
     const refBox = useRef();
 
     useLayoutEffect(() => {
+        document.getElementById('footer').classList.remove('hidden');
         const ctx = gsap.context(() => {
             gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +48,10 @@ const Page_CreativeReviews = (props) => {
 
             // gsap.to(".box-4", {  scale:3 });
         }, refBox);
-        return () => ctx.revert();
+        return () => {
+            document.getElementById('footer').classList.add('hidden');
+            ctx.revert();
+        }
     });
 
     const GET_CONTENT_CREATIVE_REVIEWS = gql`query GET_CONTENT_CREATIVE_REVIEWS

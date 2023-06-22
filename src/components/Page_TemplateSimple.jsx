@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react";
+import React, { useEffect, useLayoutEffect }  from "react";
 import Widget_SimpleTitle  from "./Widget_SimpleTitle";
 import Widget_SimpleHeroImage  from "./Widget_SimpleHeroImage";
 import Widget_SimpleContent  from "./Widget_SimpleContent";
@@ -8,12 +8,21 @@ const Page_WeBelieve = (props) => {
  
 
     useEffect(() => {
-        document.body.classList.add('simple')
+        document.body.classList.add('simple');
+        document.getElementById('footer').classList.remove('hidden');
         return () => {
-          document.body.classList.remove('simple')
+          document.body.classList.remove('simple');
+          document.getElementById('footer').classList.add('hidden');
         }
     }, [])
 
+    useLayoutEffect(() => {
+        document.getElementById('footer').classList.remove('hidden');
+        return () => { 
+            document.getElementById('footer').classList.add('hidden');
+        }
+    });
+    
     return (
         <>
             {

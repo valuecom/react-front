@@ -158,13 +158,11 @@ const  App = () => {
     let imagesPreload = [];
     
   // show footer a liitle bit late for LCP reasons
-  useEffect(() => {
-      setTimeout(function(){
-        if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
-        // if (document.getElementById('header-nav'))  document.getElementById('header-nav').classList.remove('hidden');
-
-      },1600);
-  });
+  // useEffect(() => {
+  //     setTimeout(function(){
+  //       if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
+  //     },1400);
+  // });
 
   const { data, loading, error } = useQuery(GET_MAIN_QUERY);
 

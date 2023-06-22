@@ -37,9 +37,8 @@ const Page_Contact = (props) => {
  
     
     useEffect( () => {
-        document.body.classList.add('contact-us')
- 
-        
+        document.body.classList.add('contact-us');
+
         const script = document.createElement('script');
         script.src = "https://www.google.com/recaptcha/api.js?render=" + reCAPTCHA_site_key;
         script.id = "g-rec";
@@ -48,23 +47,34 @@ const Page_Contact = (props) => {
 
         // clean up after unload
         return () => {
-            document.body.classList.remove('contact-us')
-            document.getElementById('g-rec').remove();
-            if (document.getElementsByClassName('grecaptcha-badge')[0]) 
-                document.getElementsByClassName('grecaptcha-badge')[0].remove();
+            document.body.classList.remove('contact-us');
         }
     });
 
     const refBox = useRef();
 
     useLayoutEffect(() => {
+        document.getElementById('footer').classList.remove('hidden');
         const ctx = gsap.context(() => {
             gsap.from(refBox.current, {
                 transform: "translateY(50px)",
                 duration:0.3
             });
         }, refBox);
-        return () => ctx.revert();
+        return () => { 
+            document.getElementById('footer').classList.add('hidden');
+            document.getElementById('g-rec').remove();
+            if (document.getElementsByClassName('grecaptcha-badge')[0]) {
+                document.getElementsByClassName('grecaptcha-badge')[0].remove();
+            }else{
+                setTimeout(function(){
+                    if (document.getElementsByClassName('grecaptcha-badge')[0]) {
+                        document.getElementsByClassName('grecaptcha-badge')[0].remove();
+                    }
+                },1200)
+            }
+            ctx.revert();
+        }
     });
 
     const handleContactSubmit = (e) => {
@@ -124,6 +134,9 @@ const Page_Contact = (props) => {
                         document.getElementById('form_message').value='';
                         document.getElementById('contact-msg-error').innerHTML = '';
                         document.getElementById('contact-msg').innerHTML = result.message;
+                        setTimeout(function(){
+                            document.getElementById('contact-msg').innerHTML = '';
+                        }, 4000);
                     }else{
                         document.getElementById('contact-msg').innerHTML = '';
                         document.getElementById('contact-msg-error').innerHTML = result.message;
