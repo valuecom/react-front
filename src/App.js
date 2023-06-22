@@ -163,7 +163,7 @@ const  App = () => {
         if (document.getElementById('footer'))  document.getElementById('footer').classList.remove('hidden');
         // if (document.getElementById('header-nav'))  document.getElementById('header-nav').classList.remove('hidden');
 
-      },1400);
+      },1600);
   });
 
   const { data, loading, error } = useQuery(GET_MAIN_QUERY);
