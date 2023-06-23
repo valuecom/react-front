@@ -332,7 +332,8 @@ const __GraphQL_Queries = {
                       }
                   }
               }
-          }`,
+            }`,
+            emailSent: `emailSent( form_name: $form_name , form_email: $form_email, form_message: $form_message, form_google_token: $form_google_token )`,
     }
 };
 export default __GraphQL_Queries;

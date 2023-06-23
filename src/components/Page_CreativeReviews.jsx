@@ -19,13 +19,6 @@ const Page_CreativeReviews = (props) => {
         }
     }, [])
 
-    useLayoutEffect(() => {
-        document.getElementById('footer').classList.remove('hidden');
-        return () => { 
-            document.getElementById('footer').classList.add('hidden');
-        }
-    });
-
     const refBox = useRef();
 
     useLayoutEffect(() => {

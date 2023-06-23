@@ -9,10 +9,8 @@ const Page_WeBelieve = (props) => {
 
     useEffect(() => {
         document.body.classList.add('simple');
-        document.getElementById('footer').classList.remove('hidden');
         return () => {
           document.body.classList.remove('simple');
-          document.getElementById('footer').classList.add('hidden');
         }
     }, [])
 
