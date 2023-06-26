@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Widget_SimpleTitle from "./Widget_SimpleTitle";
 import gsap from "gsap";
 import { Helmet } from "react-helmet-async";
-import { useLazyQuery, gql } from "@apollo/client";
+import {  gql, useApolloClient  } from "@apollo/client";
 import { logginF } from './__Utils';
 import __GraphQL_Queries from "./__GraphQL_Queries";
 // import ScrollTrigger from "gsap/ScrollTrigger";
@@ -13,6 +13,9 @@ let reCAPTCHA_site_key = process.env.REACT_APP_GOOGLE_RECAPTCHA_SITE_KEY; // sit
 const Page_Contact = (props) => {
 
     const nodeData = props.nodeData;
+
+    // use later in button action
+    const client = useApolloClient();
 
     const handleLoadedScript = _ => {
         // console.log('script google recaptcha loaded!');
@@ -61,27 +64,14 @@ const Page_Contact = (props) => {
     });
 
  
-    const SEND_EMAIL = gql`query SEND_EMAIL($form_name: String, $form_email: String, $form_message: String, $form_google_token: String){
-        ${__GraphQL_Queries.queries.emailSent}
-    } `;
 
-    const [contactSubmit, { data, loading, error }] = useLazyQuery(SEND_EMAIL,{
-        fetchPolicy: 'no-cache', // Doesn't check cache before making a network request
-    });
 
-    if (loading) { logginF('loading From Page_Contact'); return }
-    if (error) { logginF('error From Page_Contact'); return }
-    // if (data) { alert(123); return; }
-    let data_json;
-    if (data) {
-        data_json = JSON.parse(data.emailSent);
-        // console.log( JSON.parse(data.emailSent) );
-    } 
-    // if (!data) { logginF('!data From Page_Contact'); return }
 
     const handleContactSubmit = (e) => {
         e.preventDefault();
- 
+        document.getElementById('contact_submit').disabled=true;
+        logginF('button pressed');
+
         window.grecaptcha.ready(_ => {
         window.grecaptcha
             .execute(reCAPTCHA_site_key, { action: "submitContact" })
@@ -102,7 +92,10 @@ const Page_Contact = (props) => {
                 // form_email html validation
                 // form_message html validation
 
-                if (!doSubmit) return false;
+                if (!doSubmit){
+                    document.getElementById('contact_submit').disabled=false;
+                    return false;
+                } 
 
                 const data_vars = {
                     'form_name': form_name,
@@ -111,45 +104,42 @@ const Page_Contact = (props) => {
                     'form_google_token': form_google_token,
                 } ;
 
-                
-                contactSubmit({ variables: data_vars });
+                const SEND_EMAIL = gql`query SEND_EMAIL($form_name: String, $form_email: String, $form_message: String, $form_google_token: String){
+                    ${__GraphQL_Queries.queries.emailSent}
+                } `;
 
-                // let json_url = process.env.REACT_APP_CONTACT_URL;
+                client.query({
+                    fetchPolicy: 'network-only',
+                    query: SEND_EMAIL,
+                    variables: data_vars
+                }).then(result_data => {
+                    document.getElementById('contact_submit').disabled=false;
+                    var result = JSON.parse(result_data.data.emailSent);
+                    if (result.status==200){
+                        document.getElementById('form_name').value='';
+                        document.getElementById('form_email').value='';
+                        document.getElementById('form_message').value='';
+                        document.getElementById('contact-msg-error').innerHTML = '';
+                        document.getElementById('contact-msg').innerHTML = result.message;
+                        setTimeout(function(){
+                            document.getElementById('contact-msg').innerHTML = '';
+                        }, 5000);
 
-                // fetch(json_url,{
-                //     method: "POST", // *GET, POST, PUT, DELETE, etc.
-                //     mode: "cors", // no-cors, *cors, same-origin
-                //     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-                //     credentials: "same-origin", // include, *same-origin, omit
-                //     headers: {
-                //       "Content-Type": "application/json",
-                //       // 'Content-Type': 'application/x-www-form-urlencoded',
-                //     },
-                //     redirect: "follow", // manual, *follow, error
-                //     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                //     body: JSON.stringify(data), // body data type must match "Content-Type" header
-                // })
-                // .then(response => {
-                //     return response.json();
-                // }).then(result => {
-                //     // console.log(result);
-                //     if (result.status==200){
-                //         document.getElementById('form_name').value='';
-                //         document.getElementById('form_email').value='';
-                //         document.getElementById('form_message').value='';
-                //         document.getElementById('contact-msg-error').innerHTML = '';
-                //         document.getElementById('contact-msg').innerHTML = result.message;
-                //         setTimeout(function(){
-                //             document.getElementById('contact-msg').innerHTML = '';
-                //         }, 4000);
-                //     }else{
-                //         document.getElementById('contact-msg').innerHTML = '';
-                //         document.getElementById('contact-msg-error').innerHTML = result.message;
-                //     }
-                // })
-                // .catch(error => {
-                //     // console.log(error);
-                // });
+                        document.getElementById("form_name").classList.remove("input-error");
+                        // document.getElementById("form_email").classList.remove("input-error");
+                        // document.getElementById("form_message").classList.remove("input-error");
+
+                    }else{
+                        document.getElementById('contact-msg').innerHTML = '';
+                        document.getElementById('contact-msg-error').innerHTML = result.message;
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('contact-msg').innerHTML = '';
+                    document.getElementById('contact-msg-error').innerHTML = 'There was an error!';
+                    document.getElementById('contact_submit').disabled=false;
+                    logginF(error);
+                });
  
             });
 
@@ -175,9 +165,9 @@ const Page_Contact = (props) => {
                             <input type="text" id="form_name" name="name" placeholder="Name" required maxLength="100" />
                             <input type="email" id="form_email" name="email" placeholder="Email"  required />
                             <textarea id="form_message" name="message" placeholder="Message" style={{'height':"200px"}}  required maxLength="2000"  ></textarea>
-                            <input style={{'backgroundColor': "#FDDD31", 'color': "#1D1D1D", 'fontWeight':"600"}} type="submit" value="Send"  />
-                            <div id="contact-msg" className="contact-msg" >{data && data_json.status==200 ?  data_json.message: '' }</div>
-                            <div id="contact-msg-error" className="contact-msg-error" >{data && data_json.status==304 ?  data_json.message: '' }</div>
+                            <input id="contact_submit" style={{'backgroundColor': "#FDDD31", 'color': "#1D1D1D", 'fontWeight':"600"}} type="submit" value="Send"  />
+                            <div id="contact-msg" className="contact-msg" ></div>
+                            <div id="contact-msg-error" className="contact-msg-error" ></div>
                         </form>
                     </div>
                     <hr />
