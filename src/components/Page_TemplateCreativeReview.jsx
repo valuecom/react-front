@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect }  from "react";
 
 import { logginF } from './__Utils';
-
+import { Helmet } from "react-helmet-async";
 import { useQuery, gql } from "@apollo/client";
 
 const Page_TemplateCreativeReview = (props) => {
@@ -46,6 +46,9 @@ const Page_TemplateCreativeReview = (props) => {
 
     return ( 
         <>
+            <Helmet>
+                <title>{nodeMoreData.title} | VALUECOM</title>
+            </Helmet>
             <iframe className="iframe-creative-review" src={nodeMoreData.creativeReviewTemplateExtras.frameUrl} height={nodeMoreData.creativeReviewTemplateExtras.frameHeight} ></iframe>
         </>
      );

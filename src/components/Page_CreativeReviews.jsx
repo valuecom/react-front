@@ -3,6 +3,7 @@ import __GraphQL_Queries from "./__GraphQL_Queries";
 import { logginF } from './__Utils';
 import { Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
+import { Helmet } from "react-helmet-async";
 import{
     creativeReviewsFeaturedImage
 }  from "../assets";
@@ -79,58 +80,63 @@ const Page_CreativeReviews = (props) => {
  console.log(childPageArray);
 
     return(
-        <div ref={refBox} >
-            <section className="page-title-section">
-                <div className="container-xxl">
-                    <div className="page-title-wrap my-5 px-5">
-                        <h1 className="page-title fs-1 fw-normal text-center text-lg-start">{nodeMoreData.title}</h1>
-                        {
-                            content_text.length>0
-                            ?
-                            <p className="mt-5 text-center text-lg-start">{content_text[0].innerText}</p>
-                            :
-                            <></>
-                        }
+        <>
+            <Helmet>
+              <title>Creative Reviews | VALUECOM</title>
+            </Helmet>
+            <div ref={refBox} >
+                <section className="page-title-section">
+                    <div className="container-xxl">
+                        <div className="page-title-wrap my-5 px-5">
+                            <h1 className="page-title fs-1 fw-normal text-center text-lg-start">{nodeMoreData.title}</h1>
+                            {
+                                content_text.length>0
+                                ?
+                                <p className="mt-5 text-center text-lg-start">{content_text[0].innerText}</p>
+                                :
+                                <></>
+                            }
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section className="py-3">
-                <div className="container-xxl">
-                    {childPageArray.map((childPage, index) => {
-                        return (
-                            <div className="row" key={index}  >
-                                <div className="col-md-6">
-                                    <figure className={"box-" + index*2 +" figure mb-5"}>
-                                        <Link to={childPage[0].uri}>
-                                            <div className="figure-img-wrap">
-                                                <img src={childPage[0].featuredImage.node.sourceUrl?childPage[0].featuredImage.node.sourceUrl:creativeReviewsFeaturedImage} className="figure-img img-fluid" alt="..." />
+                </section>
+                <section className="py-3">
+                    <div className="container-xxl">
+                        {childPageArray.map((childPage, index) => {
+                            return (
+                                <div className="row" key={index}  >
+                                    <div className="col-md-6">
+                                        <figure className={"box-" + index*2 +" figure mb-5"}>
+                                            <Link to={childPage[0].uri}>
+                                                <div className="figure-img-wrap">
+                                                    <img src={childPage[0].featuredImage.node.sourceUrl?childPage[0].featuredImage.node.sourceUrl:creativeReviewsFeaturedImage} className="figure-img img-fluid" alt="..." />
+                                                </div>
+                                                <figcaption className="figure-caption text-center mt-2 fw-bold p-0">{childPage[0].title}</figcaption>
+                                            </Link>
+                                        </figure>
+                                    </div>
+                                    { 
+                                        childPage[1]
+                                        ?
+                                            <div className="col-md-6" >
+                                                <figure className={"box-" + (index*2+1) +" figure mb-5"}>
+                                                    <Link to={childPage[1].uri}>
+                                                        <div className="figure-img-wrap">
+                                                            <img src={childPage[1].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." />
+                                                        </div>
+                                                    </Link>
+                                                    <figcaption className="figure-caption text-center mt-2 fw-bold p-0">{childPage[1].title}</figcaption>
+                                                </figure>
                                             </div>
-                                            <figcaption className="figure-caption text-center mt-2 fw-bold p-0">{childPage[0].title}</figcaption>
-                                        </Link>
-                                    </figure>
+                                        :
+                                            <></>
+                                    }
                                 </div>
-                                { 
-                                    childPage[1]
-                                    ?
-                                        <div className="col-md-6" >
-                                            <figure className={"box-" + (index*2+1) +" figure mb-5"}>
-                                                <Link to={childPage[1].uri}>
-                                                    <div className="figure-img-wrap">
-                                                        <img src={childPage[1].featuredImage.node.sourceUrl} className="figure-img img-fluid" alt="..." />
-                                                    </div>
-                                                </Link>
-                                                <figcaption className="figure-caption text-center mt-2 fw-bold p-0">{childPage[1].title}</figcaption>
-                                            </figure>
-                                        </div>
-                                    :
-                                        <></>
-                                }
-                            </div>
-                        );
-                    })}
-                </div>
-            </section>
-        </div>
+                            );
+                        })}
+                    </div>
+                </section>
+            </div>
+        </>
     );
 }
 
