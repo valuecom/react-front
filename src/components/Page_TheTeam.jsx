@@ -64,12 +64,13 @@ const Page_TheTeam = (props) => {
         // console.log(key);
         // console.log(value);
         if (value!= "Page_Wehavefacesextras")
-          card_array[card_array.length] = value;
+            if(value.title!=null)
+                card_array[card_array.length] = value;
     }
 
 
 
-    // console.log(card_array);
+    console.log(card_array);
 
     return (
         <>
