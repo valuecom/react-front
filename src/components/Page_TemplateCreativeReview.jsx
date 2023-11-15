@@ -48,6 +48,11 @@ const Page_TemplateCreativeReview = (props) => {
         <>
             <Helmet>
                 <title>{nodeMoreData.title} | VALUECOM</title>
+                <meta
+                    name="description"
+                    content="FullStack Marketing."
+                />
+                <meta property="og:title" content={nodeMoreData.title + " | VALUECOM"} />
             </Helmet>
             <iframe className="iframe-creative-review" src={nodeMoreData.creativeReviewTemplateExtras.frameUrl} height={nodeMoreData.creativeReviewTemplateExtras.frameHeight} ></iframe>
         </>

@@ -4,6 +4,7 @@ import __GraphQL_Queries from "./__GraphQL_Queries";
 import { preloadImage, logginF } from './__Utils';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Helmet } from "react-helmet-async";
 // import {
 //     Widget_HomeSliderBootstrap
 // } from "./";
@@ -91,77 +92,84 @@ const Page_Home = (props) => {
     }
     //  console.log(img_arr_inner);
     return (
-        <div ref={refBox} >
-            <Suspense fallback={<span style={{fontSize:'12px'}}>Loading...</span>} >
-                <Widget_HomeSliderBootstrap figures = {figures} />
-            </Suspense>
-            <section className="py-3">
-                <div className="container-xxl">
-                    <div className="row px-sm-5 px-md-0">
-                        {[6,3,3].map( (value, index) => {
-                            // console.log('tolis')
-                            // console.log(img_arr_inner[index]._targetUrl)
-                            return (
-                                <div key={"img__"+index} className={"box box-" + index + " col-md-" + value} >
-                                    <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
-                                        <Link to={img_arr_inner[index]._targetUrl} onMouseEnter={ () => preloadImage(preloadingArray[img_arr_inner[index]._targetUrl]) } >
-                                            <div className="figure-img-wrap">
-                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height} className="figure-img img-fluid" alt={img_arr_inner[index].altText} loading="lazy" />
-                                            </div>
-                                            <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
-                                        </Link>
-                                    </figure>
-                                </div>
-                            );
-                        })}
+        <>
+            <Helmet>
+                <title>VALUECOM</title>
+                <meta name="description" content="Χρυσός Ερμής στην κατηγορία Ιnternal Communications για την καμπάνια “Ready to Make a Difference” της Janssen Greece. FullStack Marketing." />
+                <meta property="og:title" content={"VALUECOM"} />
+            </Helmet>
+            <div ref={refBox} >
+                <Suspense fallback={<span style={{fontSize:'12px'}}>Loading...</span>} >
+                    <Widget_HomeSliderBootstrap figures = {figures} />
+                </Suspense>
+                <section className="py-3">
+                    <div className="container-xxl">
+                        <div className="row px-sm-5 px-md-0">
+                            {[6,3,3].map( (value, index) => {
+                                // console.log('tolis')
+                                // console.log(img_arr_inner[index]._targetUrl)
+                                return (
+                                    <div key={"img__"+index} className={"box box-" + index + " col-md-" + value} >
+                                        <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
+                                            <Link to={img_arr_inner[index]._targetUrl} onMouseEnter={ () => preloadImage(preloadingArray[img_arr_inner[index]._targetUrl]) } >
+                                                <div className="figure-img-wrap">
+                                                    <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height} className="figure-img img-fluid" alt={img_arr_inner[index].altText} loading="lazy" />
+                                                </div>
+                                                <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
+                                            </Link>
+                                        </figure>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section className="py-3">
-                <div className="container-xxl">
-                    <div className="row px-sm-5 px-md-0">
-                        {[3,3,6].map( (value, index) => {
-                            // console.log('tolis')
-                            index = index+3;
-                            return (
-                                <div key={"img__"+index} className={"box box-" + index + " col-md-" + value } >
-                                    <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
-                                        <Link to={img_arr_inner[index]._targetUrl} >
-                                            <div className="figure-img-wrap">
-                                                <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height}  className="figure-img img-fluid" alt={img_arr_inner[index].altText} loading="lazy" />
-                                            </div>
-                                            <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
-                                        </Link>
-                                    </figure>
-                                </div>
-                            );
-                        })}
+                </section>
+                <section className="py-3">
+                    <div className="container-xxl">
+                        <div className="row px-sm-5 px-md-0">
+                            {[3,3,6].map( (value, index) => {
+                                // console.log('tolis')
+                                index = index+3;
+                                return (
+                                    <div key={"img__"+index} className={"box box-" + index + " col-md-" + value } >
+                                        <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
+                                            <Link to={img_arr_inner[index]._targetUrl} >
+                                                <div className="figure-img-wrap">
+                                                    <img src={img_arr_inner[index].img_src} width={img_arr_inner[index].width} height={img_arr_inner[index].height}  className="figure-img img-fluid" alt={img_arr_inner[index].altText} loading="lazy" />
+                                                </div>
+                                                <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
+                                            </Link>
+                                        </figure>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section className="py-3 mb-5">
-                <div className="container-xxl">
-                    <div className="row px-sm-5 px-md-0">
-                        {[6,3,3].map( (value, index) => {
-                            // console.log('tolis')
-                            index = index + 6;
-                            return (
-                                <div key={"img__"+index} className={"box box-" + index + " col-md-" + value }>
-                                    <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
-                                        <Link to={img_arr_inner[index]._targetUrl} >
-                                            <div className="figure-img-wrap">
-                                                <img src={img_arr_inner[index].img_src}  width={img_arr_inner[index].width} height={img_arr_inner[index].height}  className="figure-img img-fluid" loading="lazy" alt="..." />
-                                            </div>
-                                            <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
-                                        </Link>
-                                    </figure>
-                                </div>
-                            );
-                        })}
+                </section>
+                <section className="py-3 mb-5">
+                    <div className="container-xxl">
+                        <div className="row px-sm-5 px-md-0">
+                            {[6,3,3].map( (value, index) => {
+                                // console.log('tolis')
+                                index = index + 6;
+                                return (
+                                    <div key={"img__"+index} className={"box box-" + index + " col-md-" + value }>
+                                        <figure className="figure mx-sm-5 px-sm-5 mx-md-0 px-md-0">
+                                            <Link to={img_arr_inner[index]._targetUrl} >
+                                                <div className="figure-img-wrap">
+                                                    <img src={img_arr_inner[index].img_src}  width={img_arr_inner[index].width} height={img_arr_inner[index].height}  className="figure-img img-fluid" loading="lazy" alt="..." />
+                                                </div>
+                                                <figcaption className="figure-caption fw-medium fs-5">{img_arr_inner[index].title}</figcaption>
+                                            </Link>
+                                        </figure>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
-                </div>
-            </section>
-        </div>
+                </section>
+            </div>
+        </>
     )
 }
 

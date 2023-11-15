@@ -271,13 +271,10 @@ const  App = () => {
 
   return (
     <HelmetProvider>
-          <Helmet>
-              <title>VALUECOM</title>
-          </Helmet>
           <BrowserRouter>
               <_Header menuNodes={menuNodes} preloadingArray={preloadingArray} />
               {
-                (process.env.NODE_ENV == 'development') 
+                (process.env.NODE_ENV == 'development')
                 ?
                 <Tool_EditPage />
                 :

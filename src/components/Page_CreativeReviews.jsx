@@ -83,6 +83,11 @@ const Page_CreativeReviews = (props) => {
         <>
             <Helmet>
               <title>Creative Reviews | VALUECOM</title>
+              <meta
+                name="description"
+                content="We work with respect & integrity, transparency & accountability. We believe in team effort & invest in making our team better."
+              />
+              <meta property="og:title" content={"Creative Reviews | VALUECOM"} />
             </Helmet>
             <div ref={refBox} >
                 <section className="page-title-section">

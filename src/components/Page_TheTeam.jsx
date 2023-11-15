@@ -70,12 +70,14 @@ const Page_TheTeam = (props) => {
 
 
 
-    console.log(card_array);
+    // console.log(card_array);
 
     return (
         <>
             <Helmet>
                 <title>The team | VALUECOM</title>
+                <meta name="description" content="To make great work you need to create an environment that fosters greatness. A place where talented individuals are empowered to create and deliver their best." />
+                <meta property="og:title" content={"The team | VALUECOM"} />
             </Helmet>
             <div ref={refBox} >
                 <Widget_SimpleTitle widgetTitle={props.nodeData.title} />

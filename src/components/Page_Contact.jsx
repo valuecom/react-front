@@ -155,6 +155,11 @@ const Page_Contact = (props) => {
         <>
             <Helmet>
               <title>Contact | VALUECOM</title>
+              <meta
+                name="description"
+                content="We constantly strive to make VALUECOM this sort of place. How? Through our culture! Our way of work is “excellence” – excellence means we give it our best."
+              />
+              <meta property="og:title" content={"Contact | VALUECOM"} />
             </Helmet>
             <Widget_SimpleTitle widgetTitle={nodeData.title} />
             <section ref={refBox} >

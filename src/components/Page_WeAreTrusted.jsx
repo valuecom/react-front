@@ -57,6 +57,11 @@ const Page_WeAreTrusted = (props) => {
         <>
             <Helmet>
                 <title>We are trusted | VALUECOM</title>
+                <meta
+                name="description"
+                content="To make great work you need to create an environment that fosters greatness. A place where talented individuals are empowered to create and deliver their best."
+              />
+                <meta property="og:title" content={"We are trusted | VALUECOM"} />
             </Helmet>
             <Widget_SimpleTitle widgetTitle={nodeData.title} />
             <Widget_SimpleHeroImage imgObj={nodeMoreData.featuredImage.node} />

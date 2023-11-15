@@ -5,6 +5,11 @@ const Widget_SimpleTitle = (props) => {
         <>
         <Helmet>
             <title>{props.widgetTitle} | VALUECOM</title>
+            <meta
+                name="description"
+                content="FullStack Marketing."
+              />
+            <meta property="og:title" content={props.widgetTitle + " | VALUECOM"} />
         </Helmet>
         <section className="page-title-section">
             <div className="container-xxl">

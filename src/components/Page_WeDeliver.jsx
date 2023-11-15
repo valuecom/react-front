@@ -84,6 +84,11 @@ const Page_WeDeliver = (props) => {
         <>
             <Helmet>
                 <title>We deliver | VALUECOM</title>
+                <meta
+                name="description"
+                content="To make great work you need to create an environment that fosters greatness. A place where talented individuals are empowered to create and deliver their best."
+              />
+                <meta property="og:title" content={"We deliver | VALUECOM"} />
             </Helmet>
             <div ref={refBox}>
                 <section className="page-title-section">
